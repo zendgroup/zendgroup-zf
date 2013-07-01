@@ -1,14 +1,21 @@
-1 - Create 2 domain at system32/driver/etc/hosts or /etc/hosts
-     homeserver.local and assets.homeserver.local
+Zend Group Install Document
+==================================
+1 - Create 2 domain:
+
+	at C:\Windows\System32\Driver\etc\hosts for windows 
+	or /etc/hosts for linux
+
+	127.0.0.1 homeserver.local
+	127.0.0.1 assets.homeserver.local     
 
 2 - Create 2 virtual host
 
 	<VirtualHost *:80>
 		ServerAdmin admin@thuydx.com
-		DocumentRoot "D:\zendgroup\public"
+		DocumentRoot "Path/To/Project/public"
 		ServerName homeserver.local
 		ServerAlias www.homeserver.local
-		<Directory "D:\zendgroup\public">
+		<Directory "Path/To/Project/public">
 			Options Indexes FollowSymLinks
 			AllowOverride All
 			Order allow,deny
@@ -17,10 +24,10 @@
 	</VirtualHost>
 	<VirtualHost *:80>
 		ServerAdmin admin@thuydx.com
-		DocumentRoot "D:\zendgroup\assets"
+		DocumentRoot "Path/To/Project/assets"
 		ServerName assets.homeserver.local
 		ServerAlias assets.homeserver.local
-		<Directory "D:\zendgroup\assets">
+		<Directory "Path/To/Project/assets">
 			Options Indexes FollowSymLinks
 			AllowOverride All
 			Order allow,deny
