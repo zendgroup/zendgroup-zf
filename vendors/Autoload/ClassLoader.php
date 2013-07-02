@@ -15,7 +15,6 @@ namespace Autoload;
 /**
  * ClassLoader implements a PSR-0 class loader
  *
- * See https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
  *
  *     $loader = new \Composer\Autoload\ClassLoader();
  *
