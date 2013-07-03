@@ -39,7 +39,7 @@ Zend Group Install Document
 	change
 
 3 - Config ZF2 Library and Doctrine2 Libray at public/.htaccess
-	Please add 2 libraries about to include_path in php.ini file.
+	Please add 2 libraries above to include_path in php.ini file.
 
 	If you can't edit php.ini you can go to vendors/Autoload/autoload_namespace file and uncomment from line 7 to line 12
 	to include ZF2 and Doctrine2. 
