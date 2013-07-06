@@ -1,13 +1,13 @@
 <?php
 
+defined('DS')
+|| define('DS', DIRECTORY_SEPARATOR);
+
 define('REQUEST_MICROTIME', microtime(true))
 || define('REQUEST_MICROTIME', microtime(true));
 
 defined('WEB_ROOT')
 || define('WEB_ROOT', realpath(dirname(dirname(dirname(__FILE__)))));
-
-defined('DS')
-|| define('DS', DIRECTORY_SEPARATOR);
 
 defined('LIBRARY_PATH')
 || define('LIBRARY_PATH', WEB_ROOT . DS . 'vendors' . DS);
