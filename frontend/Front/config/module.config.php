@@ -27,7 +27,7 @@
 return array(
     'router' => array(
         'routes' => array(
-            'home' => array(
+            'default' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
                     'route'    => '/',
@@ -120,18 +120,18 @@ return array(
     	// The DefaultNavigationFactory we configured in (1) uses 'default' as the sitemap key
     	'default' => array(
     		// And finally, here is where we define our page hierarchy
-//     		'home' => array(
-//     			'label' => 'Home',
-//     			'route' => 'home/',
-//     		),
-//     		'about' => array(
-//     			'label' => 'About',
-//     			'route' => 'about/',
-//     		),
-//     		'contact' => array(
-//     			'label' => 'Contact',
-//     			'route' => 'contact/'
-//     		),
+    		'home' => array(
+    			'label' => 'Home',
+    			'route' => 'home',
+    		),
+    		'about' => array(
+    			'label' => 'About',
+    			'route' => 'about',
+    		),
+    		'contact' => array(
+    			'label' => 'Contact',
+    			'route' => 'contact'
+    		),
     	),
     ),
     'service_manager' => array(
@@ -162,7 +162,7 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => array(
-            'layout/layout'           => FRONT_TEMPLATES_PATH . '/layout/layout_1_column.phtml',
+            'layout/layout'           => FRONT_TEMPLATES_PATH . 'layout/layout_1_column.phtml',
             'front/index/index' => __DIR__ . '/../view/front/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',

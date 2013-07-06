@@ -1,4 +1,5 @@
 <?php
+namespace AdminCP;
 return array(
     'router' => array(
         'routes' => array(
@@ -71,13 +72,16 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => array(
-            'layout/layout'           => BACKEND_TEMPLATES_PATH .'layout/layout.phtml',
-            'admincp/index/index' => __DIR__ . '/../view/admincp/index/index.phtml',
+            'layout/admin_layout'           => BACKEND_TEMPLATES_PATH .'layout/layout.phtml',
+            'admincp/index/index' => __DIR__ . '/../view/admin-cp/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
+    ),
+    'module_layouts' => array(
+        		__NAMESPACE__ => 'layout/admin_layout'
     ),
 );
