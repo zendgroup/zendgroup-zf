@@ -26,16 +26,19 @@
 
 namespace Front\Controller;
 
+use ZG\Utils\ModelGenerator;
+
 use Zend\View\Model\ViewModel;
 use ZG\Mvc\Controller\ActionController;
-
+use ZG\Utils\ModelGeneral;
 class IndexController extends ActionController
 {
     public function indexAction()
     {
-        
-        
-        return new ViewModel();
+//         ModelGenerator::setModelPath(LIBRARY_PATH . 'ZG' . DS . 'Model' . DS . '');
+//         ModelGenerator::setNamespace('ZG\\Model\Repositories');
+//         ModelGenerator::general();
+//         return new ViewModel();
         //$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
     	
