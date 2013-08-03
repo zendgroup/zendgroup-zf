@@ -1,0 +1,26 @@
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+    <?php echo $this->headTitle('ZF2 '. $this->translate('Zend Group Admin Control Panel'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+    <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0'); ?>
+    <?php echo $this->headMeta()->appendName('description', 'Zend Group Admin Control Panel'); ?>
+    <?php echo $this->headMeta()->appendName('keywords', 'ZendGroup, ZG, ZendFramework2'); ?>
+    <?php echo $this->headMeta()->appendName('author', 'ZendGroup'); ?>
+
+    <!-- styles -->
+    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
+                    ->appendStylesheet(ASSETS_LINK . '/backend/system/css/bootstrap.css')
+                    ->appendStylesheet(ASSETS_LINK . '/backend/system/css/font-awesome.css')
+                    ->appendStylesheet(ASSETS_LINK . '/backend/system/css/jquery-ui.css')
+                    ->appendStylesheet(ASSETS_LINK . '/backend/system/css/fullcalendar.css')
+                    ->appendStylesheet(ASSETS_LINK . '/backend/system/css/prettyPhoto.css')
+                    ->appendStylesheet(ASSETS_LINK . '/backend/system/css/rateit.css')
+                    ->appendStylesheet(ASSETS_LINK . '/backend/system/css/bootstrap-datetimepicker.min.css')
+                    ->appendStylesheet(ASSETS_LINK . '/backend/system/css/jquery.cleditor.css')
+                    ->appendStylesheet(ASSETS_LINK . '/backend/system/css/uniform.default.css')
+                    ->appendStylesheet(ASSETS_LINK . '/backend/system/css/bootstrap-toggle-buttons.css')
+                    ->appendStylesheet(ASSETS_LINK . '/backend/system/css/style.css')
+                    ->appendStylesheet(ASSETS_LINK . '/backend/system/css/widgets.css')
+                    ->appendStylesheet(ASSETS_LINK . '/backend/system/css/bootstrap-responsive.css');?>
+</head>

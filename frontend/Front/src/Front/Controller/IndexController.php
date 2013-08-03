@@ -30,35 +30,35 @@ use ZG\Utils\ModelGenerator;
 
 use Zend\View\Model\ViewModel;
 use ZG\Mvc\Controller\ActionController;
-use ZG\Utils\ModelGeneral;
+
 class IndexController extends ActionController
 {
     public function indexAction()
     {
-//         ModelGenerator::setModelPath(LIBRARY_PATH . 'ZG' . DS . 'Model' . DS . '');
-//         ModelGenerator::setNamespace('ZG\\Model\Repositories');
-//         ModelGenerator::general();
+        ModelGenerator::setModelPath(LIBRARY_PATH . 'ZG' . DS . 'Model' . DS . '');
+        ModelGenerator::setNamespace('ZG\\Model\Repositories');
+        ModelGenerator::general();
 //         return new ViewModel();
         //$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
-    	
-		
+
+
 		//echo $this->search_largest_prime(50);
-		
+
 		//$this->show_fibonacci(7);
 
      //   $this->count_word('122 is larger than 11 but smaller than 199 and 1a3 is not a number');
 //die;
-// $a = new \ZGlib\Model\Entities\Albums();
+// $a = new \ZG\Model\Entities\Albums();
 // echo '<pre>'; var_dump($a); die();
 //        echo '<pre>'; var_dump($album1); die();
-//         $user = new \ZGlib\Model\Entities\Users();
+//         $user = new \ZG\Model\Entities\Users();
 //         $user->setUserName('thuydx');
 //         $objectManager->persist($user);
 //         $objectManager->flush();
 
 //         echo '<pre>'; var_dump($user->getUserName()); die();
-        
+
     }
     /*
     public function check_prime($n) {
@@ -68,7 +68,7 @@ class IndexController extends ActionController
         if ($n == 1 || $n % 2 == 0 || $n % 3 == 0) {
             return false;
         }
-        
+
         $j = sqrt($n);
         for ($i = 5; $i <= $j; $i += 6){
 			if ($n % $i == 0 || $n % ($i + 2) == 0)
@@ -77,7 +77,7 @@ class IndexController extends ActionController
 				return true;
         }
     }
-    
+
     public function search_largest_prime($n) {
 		for($n; $n>=0;$n--)
 		{
@@ -87,11 +87,11 @@ class IndexController extends ActionController
 		    }
 		}
     }
-    
+
     public function show_fibonacci($n) {
         $f0 = 0;
         $f1 = 1;
-        
+
         for ($i =0; $i <= $n; $i++ ) {
             if ($i <= 1){
                 $next = $i;
@@ -101,10 +101,10 @@ class IndexController extends ActionController
                 $f1 = $next;
             }
             echo $next . ' ';
-        }        
+        }
     }
-  
-    
+
+
     public function count_word($str) {
         $str2 = '';
         $num_count = 0;
@@ -115,14 +115,14 @@ class IndexController extends ActionController
                 $str2 .= $temp;
             } else {
                 echo $str2 . ' - ' . (string)$str2 / 2 .'<br>';
-                
-                
-                
+
+
+
                 if (is_numeric($str2)) {
                     $num_count++;
                 } else {
                     $word_count++;
-                }    
+                }
                 $str2 = '';
             }
         }

@@ -12,6 +12,7 @@ return array(
     //'Doctrine\\Common' => $vendorDir . '/Doctrine2/',
     'ZG' => $libDir,
     'DoctrineORMModule' => $vendorDir . '/DoctrineORMModule/src/',
+    'Elastica' => $vendorDir . '/ElasticaSearch/',
     'DoctrineModule' => $vendorDir . '/DoctrineModule/src/',
     'ZendDeveloperTools' => $vendorDir . '/ZendDeveloperTools/src/',
 );

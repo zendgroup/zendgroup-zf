@@ -16,7 +16,10 @@
 
     <!-- Scripts -->
     <?php echo $this->headScript()->appendFile(ASSETS_LINK . '/frontend/default/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-                                  ->appendFile(ASSETS_LINK . '/frontend/default/js/jquery-1.7.2.min.js') ?>
+                                  ->appendFile(ASSETS_LINK . '/frontend/default/js/jquery-1.10.2.js')
+                                  ->appendFile(ASSETS_LINK . '/ckeditor/ckeditor.js')
+
+     ?>
 
   </head>
 
@@ -32,10 +35,10 @@
           </a>
           <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('ThuyDX\'s Blog') ?></a>
           <div class="nav-collapse">
-          
+
             <?php echo $this->navigation('Navigation')->menu()->setUlClass('nav'); ?>
 <!--             <ul class="nav"> -->
-<!--                <li class="active"><a href="<?php //echo $this->url('home') ?>"><?php //echo $this->translate('Home') ?></a></li> --> 
+<!--                <li class="active"><a href="<?php //echo $this->url('home') ?>"><?php //echo $this->translate('Home') ?></a></li> -->
 <!--                <li class=""><a href="<?php //echo $this->url('home') ?>"><?php //echo $this->translate('About') ?></a></li> -->
 <!--                <li class=""><a href="<?php //echo $this->url('home') ?>"><?php //echo $this->translate('Contact') ?></a></li> -->
 <!--              </ul> -->
@@ -115,7 +118,7 @@
                                   ->appendFile(ASSETS_LINK . '/frontend/default/js/bootstrap-button.js')
                                   ->appendFile(ASSETS_LINK . '/frontend/default/js/bootstrap-collapse.js')
                                   ->appendFile(ASSETS_LINK . '/frontend/default/js/bootstrap-carousel.js')
-                                  ->appendFile(ASSETS_LINK . '/frontend/default/js/bootstrap-typeahead.js')
+                                  ->appendFile(ASSETS_LINK . '/frontend/default/js/bootstrap-typeahead.js');
 
     ?>
 
