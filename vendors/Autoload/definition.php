@@ -34,5 +34,5 @@ defined('ASSETS_PATH')
 || define('ASSETS_PATH', WEB_ROOT . DS . 'assets' . DS);
 
 defined('ASSETS_LINK')
-|| define('ASSETS_LINK', 'http://assets.homeserver.local');
+|| define('ASSETS_LINK', 'http://assets.zendgroup.local');
 
