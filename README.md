@@ -8,4 +8,4 @@ Zend Group Repository
 + Integrate Doctrine2 Module
 + Integrate Doctrine2 ORM
 + Integrate Developer Tools
-+ Clear directory structure for big projects
++ Integrate CKEditor
