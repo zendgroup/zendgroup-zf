@@ -1,0 +1,101 @@
+<?php echo $this->doctype(); ?>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <?php echo $this->headTitle("ThuyDX's Blog". $this->translate(''))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+    <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+    <?php echo $this->headMeta()->appendName('description', 'Blog base in ZF2') ?>
+    <?php echo $this->headMeta()->appendName('author', 'ThuyDX - WDS GROUP') ?>
+
+    <!-- Le styles -->
+    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => ASSETS_LINK . '/frontend/default/images/favicon.ico'))
+                    ->appendStylesheet(ASSETS_LINK . '/frontend/default/css/bootstrap.css')
+                    ->appendStylesheet(ASSETS_LINK . '/frontend/default/css/style.css')
+                    ->appendStylesheet(ASSETS_LINK . '/frontend/default/css/bootstrap-responsive.css') ?>
+
+    <!-- Scripts -->
+    <?php echo $this->headScript()->appendFile(ASSETS_LINK . '/frontend/default/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                                  ->appendFile(ASSETS_LINK . '/frontend/default/js/jquery-1.10.2.js')
+                                  ->appendFile(ASSETS_LINK . '/ckeditor/ckeditor.js')
+
+     ?>
+
+  </head>
+
+  <body id="page">
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('ThuyDX\'s Blog') ?></a>
+          <div class="nav-collapse">
+
+            <?php echo $this->navigation('Navigation')->menu()->setUlClass('nav'); ?>
+<!--             <ul class="nav"> -->
+<!--                <li class="active"><a href="<?php //echo $this->url('home') ?>"><?php //echo $this->translate('Home') ?></a></li> -->
+<!--                <li class=""><a href="<?php //echo $this->url('home') ?>"><?php //echo $this->translate('About') ?></a></li> -->
+<!--                <li class=""><a href="<?php //echo $this->url('home') ?>"><?php //echo $this->translate('Contact') ?></a></li> -->
+<!--              </ul> -->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+        <div class="hero-unit">
+        <!-- <h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
+        	<p><?php echo sprintf($this->translate('Congratulations! You have successfully installed the %sZF2 Skeleton Application%s. You are currently running Zend Framework version %s. This skeleton can serve as a simple starting point for you to begin building your application on ZF2.'), '<a href="#" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
+        	<p>
+        		<a class="btn btn-success btn-large"
+        			href="#" target="_blank"><?php echo $this->translate('Fork Zend Framework 2 on GitHub') ?> &raquo;</a>
+        	</p>
+         -->
+        </div>
+        <div class="row show-grid">
+        	<div class="span12">
+        	    <?php echo $this->navigation('Navigation')->breadcrumbs(); ?>
+        	</div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row show-grid">
+        	<div class="span9">
+                <?php echo $this->content; ?>
+        	</div>
+        	<div class="span3">
+        		<?php echo $this->render('layout/sidebar_right');?>
+        	</div>
+        </div>
+         <div class="clearfix"></div>
+
+          <footer>
+            <p>&copy; 2005 - 2012 by WDS GROUP. <?php echo $this->translate('All rights reserved.') ?></p>
+          </footer>
+
+    </div> <!-- /container -->
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <?php
+    	echo $this->headScript()->appendFile(ASSETS_LINK . '/frontend/default/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                                  ->appendFile(ASSETS_LINK . '/frontend/default/js/bootstrap-transition.js')
+                                  ->appendFile(ASSETS_LINK . '/frontend/default/js/bootstrap-alert.js')
+                                  ->appendFile(ASSETS_LINK . '/frontend/default/js/bootstrap-modal.js')
+                                  ->appendFile(ASSETS_LINK . '/frontend/default/js/bootstrap-dropdown.js')
+                                  ->appendFile(ASSETS_LINK . '/frontend/default/js/bootstrap-scrollspy.js')
+                                  ->appendFile(ASSETS_LINK . '/frontend/default/js/bootstrap-tab.js')
+                                  ->appendFile(ASSETS_LINK . '/frontend/default/js/bootstrap-tooltip.js')
+                                  ->appendFile(ASSETS_LINK . '/frontend/default/js/bootstrap-popover.js')
+                                  ->appendFile(ASSETS_LINK . '/frontend/default/js/bootstrap-button.js')
+                                  ->appendFile(ASSETS_LINK . '/frontend/default/js/bootstrap-collapse.js')
+                                  ->appendFile(ASSETS_LINK . '/frontend/default/js/bootstrap-carousel.js')
+                                  ->appendFile(ASSETS_LINK . '/frontend/default/js/bootstrap-typeahead.js');
+
+    ?>
+
+  </body>
+</html>

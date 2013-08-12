@@ -1,6 +1,31 @@
 <?php
 
-namespace ZG\Model\Entities;
+/**
+ *
+ * ZEND GROUP
+ *
+ * @name        Content.php
+ * @category    Model
+ * @package 	Entities
+ * @subpackage  
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @link 		http://zendgroup.vn
+ * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
+ * @license     http://zendgroup.vn/license/
+ * @version     $0.1$
+ * 3:52:05 AM - Apr 3, 2013
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ */
+            
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +33,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Content
  *
  * @ORM\Table(name="content")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\ContentRepository")
+ * @ORM\Entity
  */
 class Content
 {
@@ -22,18 +47,18 @@ class Content
     private $contentId;
 
     /**
-     * @var \DateTime $startDate
+     * @var integer $created
      *
-     * @ORM\Column(name="start_date", type="date", nullable=true)
+     * @ORM\Column(name="created", type="integer", nullable=true)
      */
-    private $startDate;
+    private $created;
 
     /**
-     * @var \DateTime $expiryDate
+     * @var integer $modified
      *
-     * @ORM\Column(name="expiry_date", type="date", nullable=true)
+     * @ORM\Column(name="modified", type="integer", nullable=true)
      */
-    private $expiryDate;
+    private $modified;
 
     /**
      * @var boolean $hideFromMenu
@@ -43,14 +68,25 @@ class Content
     private $hideFromMenu;
 
     /**
-     * @var Users
+     * @var integer $contentContentId
      *
-     * @ORM\ManyToOne(targetEntity="Users")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
-     * })
+     * @ORM\Column(name="content_content_id", type="integer", nullable=false)
      */
-    private $user;
+    private $contentContentId;
+
+    /**
+     * @var integer $ordering
+     *
+     * @ORM\Column(name="ordering", type="integer", nullable=false)
+     */
+    private $ordering;
+
+    /**
+     * @var text $contentParams
+     *
+     * @ORM\Column(name="content_params", type="text", nullable=true)
+     */
+    private $contentParams;
 
     /**
      * @var ContentTypes
@@ -61,6 +97,16 @@ class Content
      * })
      */
     private $contentType;
+
+    /**
+     * @var Users
+     *
+     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
+     * })
+     */
+    private $user;
 
 
     /**
@@ -74,49 +120,47 @@ class Content
     }
 
     /**
-     * Set startDate
+     * Set created
      *
-     * @param \DateTime $startDate
+     * @param integer $created
      * @return Content
      */
-    public function setStartDate($startDate)
+    public function setCreated($created)
     {
-        $this->startDate = $startDate;
-    
+        $this->created = $created;
         return $this;
     }
 
     /**
-     * Get startDate
+     * Get created
      *
-     * @return \DateTime 
+     * @return integer 
      */
-    public function getStartDate()
+    public function getCreated()
     {
-        return $this->startDate;
+        return $this->created;
     }
 
     /**
-     * Set expiryDate
+     * Set modified
      *
-     * @param \DateTime $expiryDate
+     * @param integer $modified
      * @return Content
      */
-    public function setExpiryDate($expiryDate)
+    public function setModified($modified)
     {
-        $this->expiryDate = $expiryDate;
-    
+        $this->modified = $modified;
         return $this;
     }
 
     /**
-     * Get expiryDate
+     * Get modified
      *
-     * @return \DateTime 
+     * @return integer 
      */
-    public function getExpiryDate()
+    public function getModified()
     {
-        return $this->expiryDate;
+        return $this->modified;
     }
 
     /**
@@ -128,7 +172,6 @@ class Content
     public function setHideFromMenu($hideFromMenu)
     {
         $this->hideFromMenu = $hideFromMenu;
-    
         return $this;
     }
 
@@ -143,26 +186,69 @@ class Content
     }
 
     /**
-     * Set user
+     * Set contentContentId
      *
-     * @param Users $user
+     * @param integer $contentContentId
      * @return Content
      */
-    public function setUser(\Users $user = null)
+    public function setContentContentId($contentContentId)
     {
-        $this->user = $user;
-    
+        $this->contentContentId = $contentContentId;
         return $this;
     }
 
     /**
-     * Get user
+     * Get contentContentId
      *
-     * @return Users 
+     * @return integer 
      */
-    public function getUser()
+    public function getContentContentId()
     {
-        return $this->user;
+        return $this->contentContentId;
+    }
+
+    /**
+     * Set ordering
+     *
+     * @param integer $ordering
+     * @return Content
+     */
+    public function setOrdering($ordering)
+    {
+        $this->ordering = $ordering;
+        return $this;
+    }
+
+    /**
+     * Get ordering
+     *
+     * @return integer 
+     */
+    public function getOrdering()
+    {
+        return $this->ordering;
+    }
+
+    /**
+     * Set contentParams
+     *
+     * @param text $contentParams
+     * @return Content
+     */
+    public function setContentParams($contentParams)
+    {
+        $this->contentParams = $contentParams;
+        return $this;
+    }
+
+    /**
+     * Get contentParams
+     *
+     * @return text 
+     */
+    public function getContentParams()
+    {
+        return $this->contentParams;
     }
 
     /**
@@ -174,7 +260,6 @@ class Content
     public function setContentType(\ContentTypes $contentType = null)
     {
         $this->contentType = $contentType;
-    
         return $this;
     }
 
@@ -186,5 +271,27 @@ class Content
     public function getContentType()
     {
         return $this->contentType;
+    }
+
+    /**
+     * Set user
+     *
+     * @param Users $user
+     * @return Content
+     */
+    public function setUser(\Users $user = null)
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Users 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
