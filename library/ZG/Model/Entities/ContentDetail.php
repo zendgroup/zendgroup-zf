@@ -1,6 +1,31 @@
 <?php
 
-namespace ZG\Model\Entities;
+/**
+ *
+ * ZEND GROUP
+ *
+ * @name        ContentDetail.php
+ * @category    Model
+ * @package 	Entities
+ * @subpackage  
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @link 		http://zendgroup.vn
+ * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
+ * @license     http://zendgroup.vn/license/
+ * @version     $0.1$
+ * 3:52:05 AM - Apr 3, 2013
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ */
+            
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +33,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ContentDetail
  *
  * @ORM\Table(name="content_detail")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\ContentDetailRepository")
+ * @ORM\Entity
  */
 class ContentDetail
 {
@@ -43,11 +68,11 @@ class ContentDetail
     private $summary;
 
     /**
-     * @var string $detail
+     * @var text $fullContent
      *
-     * @ORM\Column(name="detail", type="string", length=255, nullable=true)
+     * @ORM\Column(name="full_content", type="text", nullable=true)
      */
-    private $detail;
+    private $fullContent;
 
     /**
      * @var string $metaTitle
@@ -110,7 +135,6 @@ class ContentDetail
     public function setTitle($title)
     {
         $this->title = $title;
-    
         return $this;
     }
 
@@ -133,7 +157,6 @@ class ContentDetail
     public function setAlias($alias)
     {
         $this->alias = $alias;
-    
         return $this;
     }
 
@@ -156,7 +179,6 @@ class ContentDetail
     public function setSummary($summary)
     {
         $this->summary = $summary;
-    
         return $this;
     }
 
@@ -171,26 +193,25 @@ class ContentDetail
     }
 
     /**
-     * Set detail
+     * Set fullContent
      *
-     * @param string $detail
+     * @param text $fullContent
      * @return ContentDetail
      */
-    public function setDetail($detail)
+    public function setFullContent($fullContent)
     {
-        $this->detail = $detail;
-    
+        $this->fullContent = $fullContent;
         return $this;
     }
 
     /**
-     * Get detail
+     * Get fullContent
      *
-     * @return string 
+     * @return text 
      */
-    public function getDetail()
+    public function getFullContent()
     {
-        return $this->detail;
+        return $this->fullContent;
     }
 
     /**
@@ -202,7 +223,6 @@ class ContentDetail
     public function setMetaTitle($metaTitle)
     {
         $this->metaTitle = $metaTitle;
-    
         return $this;
     }
 
@@ -225,7 +245,6 @@ class ContentDetail
     public function setMetaKeyword($metaKeyword)
     {
         $this->metaKeyword = $metaKeyword;
-    
         return $this;
     }
 
@@ -248,7 +267,6 @@ class ContentDetail
     public function setMetaDescription($metaDescription)
     {
         $this->metaDescription = $metaDescription;
-    
         return $this;
     }
 
@@ -271,7 +289,6 @@ class ContentDetail
     public function setLocale(\Locale $locale = null)
     {
         $this->locale = $locale;
-    
         return $this;
     }
 
@@ -294,7 +311,6 @@ class ContentDetail
     public function setContent(\Content $content = null)
     {
         $this->content = $content;
-    
         return $this;
     }
 
