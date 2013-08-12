@@ -1,6 +1,31 @@
 <?php
 
-namespace ZG\Model\Entities;
+/**
+ *
+ * ZEND GROUP
+ *
+ * @name        UserProjects.php
+ * @category    Model
+ * @package 	Entities
+ * @subpackage  
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @link 		http://zendgroup.vn
+ * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
+ * @license     http://zendgroup.vn/license/
+ * @version     $0.1$
+ * 3:52:05 AM - Apr 3, 2013
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ */
+            
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +33,7 @@ use Doctrine\ORM\Mapping as ORM;
  * UserProjects
  *
  * @ORM\Table(name="user_projects")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\UserProjectsRepository")
+ * @ORM\Entity
  */
 class UserProjects
 {
@@ -57,16 +82,16 @@ class UserProjects
     private $projectCustomer;
 
     /**
-     * @var \DateTime $projectStartDate
+     * @var integer $projectStartDate
      *
-     * @ORM\Column(name="project_start_date", type="date", nullable=true)
+     * @ORM\Column(name="project_start_date", type="integer", nullable=true)
      */
     private $projectStartDate;
 
     /**
-     * @var \DateTime $projectEndDate
+     * @var integer $projectEndDate
      *
-     * @ORM\Column(name="project_end_date", type="date", nullable=true)
+     * @ORM\Column(name="project_end_date", type="integer", nullable=true)
      */
     private $projectEndDate;
 
@@ -156,7 +181,6 @@ class UserProjects
     public function setUserPosition($userPosition)
     {
         $this->userPosition = $userPosition;
-    
         return $this;
     }
 
@@ -179,7 +203,6 @@ class UserProjects
     public function setProjectName($projectName)
     {
         $this->projectName = $projectName;
-    
         return $this;
     }
 
@@ -202,7 +225,6 @@ class UserProjects
     public function setProjectCode($projectCode)
     {
         $this->projectCode = $projectCode;
-    
         return $this;
     }
 
@@ -225,7 +247,6 @@ class UserProjects
     public function setProjectDescription($projectDescription)
     {
         $this->projectDescription = $projectDescription;
-    
         return $this;
     }
 
@@ -248,7 +269,6 @@ class UserProjects
     public function setProjectCustomer($projectCustomer)
     {
         $this->projectCustomer = $projectCustomer;
-    
         return $this;
     }
 
@@ -265,20 +285,19 @@ class UserProjects
     /**
      * Set projectStartDate
      *
-     * @param \DateTime $projectStartDate
+     * @param integer $projectStartDate
      * @return UserProjects
      */
     public function setProjectStartDate($projectStartDate)
     {
         $this->projectStartDate = $projectStartDate;
-    
         return $this;
     }
 
     /**
      * Get projectStartDate
      *
-     * @return \DateTime 
+     * @return integer 
      */
     public function getProjectStartDate()
     {
@@ -288,20 +307,19 @@ class UserProjects
     /**
      * Set projectEndDate
      *
-     * @param \DateTime $projectEndDate
+     * @param integer $projectEndDate
      * @return UserProjects
      */
     public function setProjectEndDate($projectEndDate)
     {
         $this->projectEndDate = $projectEndDate;
-    
         return $this;
     }
 
     /**
      * Get projectEndDate
      *
-     * @return \DateTime 
+     * @return integer 
      */
     public function getProjectEndDate()
     {
@@ -317,7 +335,6 @@ class UserProjects
     public function setTeamSize($teamSize)
     {
         $this->teamSize = $teamSize;
-    
         return $this;
     }
 
@@ -340,7 +357,6 @@ class UserProjects
     public function setProjectScope($projectScope)
     {
         $this->projectScope = $projectScope;
-    
         return $this;
     }
 
@@ -363,7 +379,6 @@ class UserProjects
     public function setDevelopmentEnvironment($developmentEnvironment)
     {
         $this->developmentEnvironment = $developmentEnvironment;
-    
         return $this;
     }
 
@@ -386,7 +401,6 @@ class UserProjects
     public function setDatabase($database)
     {
         $this->database = $database;
-    
         return $this;
     }
 
@@ -409,7 +423,6 @@ class UserProjects
     public function setProgrammingLanguage($programmingLanguage)
     {
         $this->programmingLanguage = $programmingLanguage;
-    
         return $this;
     }
 
@@ -432,7 +445,6 @@ class UserProjects
     public function setEngineering($engineering)
     {
         $this->engineering = $engineering;
-    
         return $this;
     }
 
@@ -455,7 +467,6 @@ class UserProjects
     public function setTools($tools)
     {
         $this->tools = $tools;
-    
         return $this;
     }
 
@@ -478,7 +489,6 @@ class UserProjects
     public function setSpecificTechnologies($specificTechnologies)
     {
         $this->specificTechnologies = $specificTechnologies;
-    
         return $this;
     }
 
@@ -501,7 +511,6 @@ class UserProjects
     public function setUser(\Users $user = null)
     {
         $this->user = $user;
-    
         return $this;
     }
 

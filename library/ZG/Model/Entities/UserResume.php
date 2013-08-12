@@ -1,6 +1,31 @@
 <?php
 
-namespace ZG\Model\Entities;
+/**
+ *
+ * ZEND GROUP
+ *
+ * @name        UserResume.php
+ * @category    Model
+ * @package 	Entities
+ * @subpackage  
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @link 		http://zendgroup.vn
+ * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
+ * @license     http://zendgroup.vn/license/
+ * @version     $0.1$
+ * 3:52:05 AM - Apr 3, 2013
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ */
+            
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +33,7 @@ use Doctrine\ORM\Mapping as ORM;
  * UserResume
  *
  * @ORM\Table(name="user_resume")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\UserResumeRepository")
+ * @ORM\Entity
  */
 class UserResume
 {
@@ -198,7 +223,6 @@ class UserResume
     public function setCurrentPosition($currentPosition)
     {
         $this->currentPosition = $currentPosition;
-    
         return $this;
     }
 
@@ -221,7 +245,6 @@ class UserResume
     public function setPositionExpectation($positionExpectation)
     {
         $this->positionExpectation = $positionExpectation;
-    
         return $this;
     }
 
@@ -244,7 +267,6 @@ class UserResume
     public function setJobDescription($jobDescription)
     {
         $this->jobDescription = $jobDescription;
-    
         return $this;
     }
 
@@ -267,7 +289,6 @@ class UserResume
     public function setLanguage($language)
     {
         $this->language = $language;
-    
         return $this;
     }
 
@@ -290,7 +311,6 @@ class UserResume
     public function setEducation($education)
     {
         $this->education = $education;
-    
         return $this;
     }
 
@@ -313,7 +333,6 @@ class UserResume
     public function setCertificate($certificate)
     {
         $this->certificate = $certificate;
-    
         return $this;
     }
 
@@ -336,7 +355,6 @@ class UserResume
     public function setProgrammingSkill($programmingSkill)
     {
         $this->programmingSkill = $programmingSkill;
-    
         return $this;
     }
 
@@ -359,7 +377,6 @@ class UserResume
     public function setAnalysisSkill($analysisSkill)
     {
         $this->analysisSkill = $analysisSkill;
-    
         return $this;
     }
 
@@ -382,7 +399,6 @@ class UserResume
     public function setSdmk($sdmk)
     {
         $this->sdmk = $sdmk;
-    
         return $this;
     }
 
@@ -405,7 +421,6 @@ class UserResume
     public function setSdpk($sdpk)
     {
         $this->sdpk = $sdpk;
-    
         return $this;
     }
 
@@ -428,7 +443,6 @@ class UserResume
     public function setEngineeringSkill($engineeringSkill)
     {
         $this->engineeringSkill = $engineeringSkill;
-    
         return $this;
     }
 
@@ -451,7 +465,6 @@ class UserResume
     public function setCommunicationSkill($communicationSkill)
     {
         $this->communicationSkill = $communicationSkill;
-    
         return $this;
     }
 
@@ -474,7 +487,6 @@ class UserResume
     public function setProblemSolving($problemSolving)
     {
         $this->problemSolving = $problemSolving;
-    
         return $this;
     }
 
@@ -497,7 +509,6 @@ class UserResume
     public function setTeamwork($teamwork)
     {
         $this->teamwork = $teamwork;
-    
         return $this;
     }
 
@@ -520,7 +531,6 @@ class UserResume
     public function setPracticalExperience($practicalExperience)
     {
         $this->practicalExperience = $practicalExperience;
-    
         return $this;
     }
 
@@ -543,7 +553,6 @@ class UserResume
     public function setHardwarePlatforms($hardwarePlatforms)
     {
         $this->hardwarePlatforms = $hardwarePlatforms;
-    
         return $this;
     }
 
@@ -566,7 +575,6 @@ class UserResume
     public function setProgrammingLanguage($programmingLanguage)
     {
         $this->programmingLanguage = $programmingLanguage;
-    
         return $this;
     }
 
@@ -589,7 +597,6 @@ class UserResume
     public function setSoftwareTools($softwareTools)
     {
         $this->softwareTools = $softwareTools;
-    
         return $this;
     }
 
@@ -612,7 +619,6 @@ class UserResume
     public function setMethodlogics($methodlogics)
     {
         $this->methodlogics = $methodlogics;
-    
         return $this;
     }
 
@@ -635,7 +641,6 @@ class UserResume
     public function setProgrammingLanguageDetail($programmingLanguageDetail)
     {
         $this->programmingLanguageDetail = $programmingLanguageDetail;
-    
         return $this;
     }
 
@@ -658,7 +663,6 @@ class UserResume
     public function setReference($reference)
     {
         $this->reference = $reference;
-    
         return $this;
     }
 
@@ -681,7 +685,6 @@ class UserResume
     public function setUser(\Users $user = null)
     {
         $this->user = $user;
-    
         return $this;
     }
 

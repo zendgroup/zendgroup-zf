@@ -1,6 +1,31 @@
 <?php
 
-namespace ZG\Model\Entities;
+/**
+ *
+ * ZEND GROUP
+ *
+ * @name        Users.php
+ * @category    Model
+ * @package 	Entities
+ * @subpackage  
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @link 		http://zendgroup.vn
+ * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
+ * @license     http://zendgroup.vn/license/
+ * @version     $0.1$
+ * 3:52:05 AM - Apr 3, 2013
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ */
+            
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +33,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Users
  *
  * @ORM\Table(name="users")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\UsersRepository")
+ * @ORM\Entity
  */
 class Users
 {
@@ -36,11 +61,11 @@ class Users
     private $userPassword;
 
     /**
-     * @var \DateTime $userPasswordDate
+     * @var integer $passwordModifyDate
      *
-     * @ORM\Column(name="user_password_date", type="date", nullable=true)
+     * @ORM\Column(name="password_modify_date", type="integer", nullable=true)
      */
-    private $userPasswordDate;
+    private $passwordModifyDate;
 
     /**
      * @var string $userEmail
@@ -57,16 +82,9 @@ class Users
     private $userTitle;
 
     /**
-     * @var \DateTime $userJoinDate
+     * @var integer $userLastVisit
      *
-     * @ORM\Column(name="user_join_date", type="date", nullable=true)
-     */
-    private $userJoinDate;
-
-    /**
-     * @var \DateTime $userLastVisit
-     *
-     * @ORM\Column(name="user_last_visit", type="date", nullable=true)
+     * @ORM\Column(name="user_last_visit", type="integer", nullable=true)
      */
     private $userLastVisit;
 
@@ -112,6 +130,153 @@ class Users
      */
     private $userSkinId;
 
+    /**
+     * @var string $firstName
+     *
+     * @ORM\Column(name="first_name", type="string", length=45, nullable=true)
+     */
+    private $firstName;
+
+    /**
+     * @var string $lastName
+     *
+     * @ORM\Column(name="last_name", type="string", length=45, nullable=true)
+     */
+    private $lastName;
+
+    /**
+     * @var integer $dateOfBirth
+     *
+     * @ORM\Column(name="date_of_birth", type="integer", nullable=true)
+     */
+    private $dateOfBirth;
+
+    /**
+     * @var integer $created
+     *
+     * @ORM\Column(name="created", type="integer", nullable=true)
+     */
+    private $created;
+
+    /**
+     * @var integer $modified
+     *
+     * @ORM\Column(name="modified", type="integer", nullable=true)
+     */
+    private $modified;
+
+    /**
+     * @var string $website
+     *
+     * @ORM\Column(name="website", type="string", length=255, nullable=true)
+     */
+    private $website;
+
+    /**
+     * @var string $gender
+     *
+     * @ORM\Column(name="gender", type="string", nullable=true)
+     */
+    private $gender;
+
+    /**
+     * @var string $maritalStatus
+     *
+     * @ORM\Column(name="marital_status", type="string", nullable=true)
+     */
+    private $maritalStatus;
+
+    /**
+     * @var string $telephone
+     *
+     * @ORM\Column(name="telephone", type="string", length=45, nullable=true)
+     */
+    private $telephone;
+
+    /**
+     * @var string $mobilePhone
+     *
+     * @ORM\Column(name="mobile_phone", type="string", length=45, nullable=true)
+     */
+    private $mobilePhone;
+
+    /**
+     * @var string $contactName
+     *
+     * @ORM\Column(name="contact_name", type="string", length=45, nullable=true)
+     */
+    private $contactName;
+
+    /**
+     * @var string $contactAddress
+     *
+     * @ORM\Column(name="contact_address", type="string", length=255, nullable=true)
+     */
+    private $contactAddress;
+
+    /**
+     * @var string $contactTelephone
+     *
+     * @ORM\Column(name="contact_telephone", type="string", length=45, nullable=true)
+     */
+    private $contactTelephone;
+
+    /**
+     * @var string $contactPhone
+     *
+     * @ORM\Column(name="contact_phone", type="string", length=255, nullable=true)
+     */
+    private $contactPhone;
+
+    /**
+     * @var string $contactEmail
+     *
+     * @ORM\Column(name="contact_email", type="string", length=125, nullable=true)
+     */
+    private $contactEmail;
+
+    /**
+     * @var string $contactFax
+     *
+     * @ORM\Column(name="contact_fax", type="string", length=45, nullable=true)
+     */
+    private $contactFax;
+
+    /**
+     * @var string $contactCity
+     *
+     * @ORM\Column(name="contact_city", type="string", length=125, nullable=true)
+     */
+    private $contactCity;
+
+    /**
+     * @var string $contactCounty
+     *
+     * @ORM\Column(name="contact_county", type="string", length=125, nullable=true)
+     */
+    private $contactCounty;
+
+    /**
+     * @var string $contactState
+     *
+     * @ORM\Column(name="contact_state", type="string", length=125, nullable=true)
+     */
+    private $contactState;
+
+    /**
+     * @var string $contactCountry
+     *
+     * @ORM\Column(name="contact_country", type="string", length=125, nullable=true)
+     */
+    private $contactCountry;
+
+    /**
+     * @var text $userParams
+     *
+     * @ORM\Column(name="user_params", type="text", nullable=true)
+     */
+    private $userParams;
+
 
     /**
      * Get userId
@@ -132,7 +297,6 @@ class Users
     public function setUserName($userName)
     {
         $this->userName = $userName;
-    
         return $this;
     }
 
@@ -155,7 +319,6 @@ class Users
     public function setUserPassword($userPassword)
     {
         $this->userPassword = $userPassword;
-    
         return $this;
     }
 
@@ -170,26 +333,25 @@ class Users
     }
 
     /**
-     * Set userPasswordDate
+     * Set passwordModifyDate
      *
-     * @param \DateTime $userPasswordDate
+     * @param integer $passwordModifyDate
      * @return Users
      */
-    public function setUserPasswordDate($userPasswordDate)
+    public function setPasswordModifyDate($passwordModifyDate)
     {
-        $this->userPasswordDate = $userPasswordDate;
-    
+        $this->passwordModifyDate = $passwordModifyDate;
         return $this;
     }
 
     /**
-     * Get userPasswordDate
+     * Get passwordModifyDate
      *
-     * @return \DateTime 
+     * @return integer 
      */
-    public function getUserPasswordDate()
+    public function getPasswordModifyDate()
     {
-        return $this->userPasswordDate;
+        return $this->passwordModifyDate;
     }
 
     /**
@@ -201,7 +363,6 @@ class Users
     public function setUserEmail($userEmail)
     {
         $this->userEmail = $userEmail;
-    
         return $this;
     }
 
@@ -224,7 +385,6 @@ class Users
     public function setUserTitle($userTitle)
     {
         $this->userTitle = $userTitle;
-    
         return $this;
     }
 
@@ -239,45 +399,21 @@ class Users
     }
 
     /**
-     * Set userJoinDate
-     *
-     * @param \DateTime $userJoinDate
-     * @return Users
-     */
-    public function setUserJoinDate($userJoinDate)
-    {
-        $this->userJoinDate = $userJoinDate;
-    
-        return $this;
-    }
-
-    /**
-     * Get userJoinDate
-     *
-     * @return \DateTime 
-     */
-    public function getUserJoinDate()
-    {
-        return $this->userJoinDate;
-    }
-
-    /**
      * Set userLastVisit
      *
-     * @param \DateTime $userLastVisit
+     * @param integer $userLastVisit
      * @return Users
      */
     public function setUserLastVisit($userLastVisit)
     {
         $this->userLastVisit = $userLastVisit;
-    
         return $this;
     }
 
     /**
      * Get userLastVisit
      *
-     * @return \DateTime 
+     * @return integer 
      */
     public function getUserLastVisit()
     {
@@ -293,7 +429,6 @@ class Users
     public function setUserActivity($userActivity)
     {
         $this->userActivity = $userActivity;
-    
         return $this;
     }
 
@@ -316,7 +451,6 @@ class Users
     public function setUserPostCount($userPostCount)
     {
         $this->userPostCount = $userPostCount;
-    
         return $this;
     }
 
@@ -339,7 +473,6 @@ class Users
     public function setUserIpAddress($userIpAddress)
     {
         $this->userIpAddress = $userIpAddress;
-    
         return $this;
     }
 
@@ -362,7 +495,6 @@ class Users
     public function setUserLanguageId($userLanguageId)
     {
         $this->userLanguageId = $userLanguageId;
-    
         return $this;
     }
 
@@ -385,7 +517,6 @@ class Users
     public function setUserTemplateId($userTemplateId)
     {
         $this->userTemplateId = $userTemplateId;
-    
         return $this;
     }
 
@@ -408,7 +539,6 @@ class Users
     public function setUserSkinId($userSkinId)
     {
         $this->userSkinId = $userSkinId;
-    
         return $this;
     }
 
@@ -420,5 +550,467 @@ class Users
     public function getUserSkinId()
     {
         return $this->userSkinId;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     * @return Users
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string 
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     * @return Users
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string 
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set dateOfBirth
+     *
+     * @param integer $dateOfBirth
+     * @return Users
+     */
+    public function setDateOfBirth($dateOfBirth)
+    {
+        $this->dateOfBirth = $dateOfBirth;
+        return $this;
+    }
+
+    /**
+     * Get dateOfBirth
+     *
+     * @return integer 
+     */
+    public function getDateOfBirth()
+    {
+        return $this->dateOfBirth;
+    }
+
+    /**
+     * Set created
+     *
+     * @param integer $created
+     * @return Users
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return integer 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set modified
+     *
+     * @param integer $modified
+     * @return Users
+     */
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+        return $this;
+    }
+
+    /**
+     * Get modified
+     *
+     * @return integer 
+     */
+    public function getModified()
+    {
+        return $this->modified;
+    }
+
+    /**
+     * Set website
+     *
+     * @param string $website
+     * @return Users
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
+        return $this;
+    }
+
+    /**
+     * Get website
+     *
+     * @return string 
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * Set gender
+     *
+     * @param string $gender
+     * @return Users
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+        return $this;
+    }
+
+    /**
+     * Get gender
+     *
+     * @return string 
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * Set maritalStatus
+     *
+     * @param string $maritalStatus
+     * @return Users
+     */
+    public function setMaritalStatus($maritalStatus)
+    {
+        $this->maritalStatus = $maritalStatus;
+        return $this;
+    }
+
+    /**
+     * Get maritalStatus
+     *
+     * @return string 
+     */
+    public function getMaritalStatus()
+    {
+        return $this->maritalStatus;
+    }
+
+    /**
+     * Set telephone
+     *
+     * @param string $telephone
+     * @return Users
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+        return $this;
+    }
+
+    /**
+     * Get telephone
+     *
+     * @return string 
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * Set mobilePhone
+     *
+     * @param string $mobilePhone
+     * @return Users
+     */
+    public function setMobilePhone($mobilePhone)
+    {
+        $this->mobilePhone = $mobilePhone;
+        return $this;
+    }
+
+    /**
+     * Get mobilePhone
+     *
+     * @return string 
+     */
+    public function getMobilePhone()
+    {
+        return $this->mobilePhone;
+    }
+
+    /**
+     * Set contactName
+     *
+     * @param string $contactName
+     * @return Users
+     */
+    public function setContactName($contactName)
+    {
+        $this->contactName = $contactName;
+        return $this;
+    }
+
+    /**
+     * Get contactName
+     *
+     * @return string 
+     */
+    public function getContactName()
+    {
+        return $this->contactName;
+    }
+
+    /**
+     * Set contactAddress
+     *
+     * @param string $contactAddress
+     * @return Users
+     */
+    public function setContactAddress($contactAddress)
+    {
+        $this->contactAddress = $contactAddress;
+        return $this;
+    }
+
+    /**
+     * Get contactAddress
+     *
+     * @return string 
+     */
+    public function getContactAddress()
+    {
+        return $this->contactAddress;
+    }
+
+    /**
+     * Set contactTelephone
+     *
+     * @param string $contactTelephone
+     * @return Users
+     */
+    public function setContactTelephone($contactTelephone)
+    {
+        $this->contactTelephone = $contactTelephone;
+        return $this;
+    }
+
+    /**
+     * Get contactTelephone
+     *
+     * @return string 
+     */
+    public function getContactTelephone()
+    {
+        return $this->contactTelephone;
+    }
+
+    /**
+     * Set contactPhone
+     *
+     * @param string $contactPhone
+     * @return Users
+     */
+    public function setContactPhone($contactPhone)
+    {
+        $this->contactPhone = $contactPhone;
+        return $this;
+    }
+
+    /**
+     * Get contactPhone
+     *
+     * @return string 
+     */
+    public function getContactPhone()
+    {
+        return $this->contactPhone;
+    }
+
+    /**
+     * Set contactEmail
+     *
+     * @param string $contactEmail
+     * @return Users
+     */
+    public function setContactEmail($contactEmail)
+    {
+        $this->contactEmail = $contactEmail;
+        return $this;
+    }
+
+    /**
+     * Get contactEmail
+     *
+     * @return string 
+     */
+    public function getContactEmail()
+    {
+        return $this->contactEmail;
+    }
+
+    /**
+     * Set contactFax
+     *
+     * @param string $contactFax
+     * @return Users
+     */
+    public function setContactFax($contactFax)
+    {
+        $this->contactFax = $contactFax;
+        return $this;
+    }
+
+    /**
+     * Get contactFax
+     *
+     * @return string 
+     */
+    public function getContactFax()
+    {
+        return $this->contactFax;
+    }
+
+    /**
+     * Set contactCity
+     *
+     * @param string $contactCity
+     * @return Users
+     */
+    public function setContactCity($contactCity)
+    {
+        $this->contactCity = $contactCity;
+        return $this;
+    }
+
+    /**
+     * Get contactCity
+     *
+     * @return string 
+     */
+    public function getContactCity()
+    {
+        return $this->contactCity;
+    }
+
+    /**
+     * Set contactCounty
+     *
+     * @param string $contactCounty
+     * @return Users
+     */
+    public function setContactCounty($contactCounty)
+    {
+        $this->contactCounty = $contactCounty;
+        return $this;
+    }
+
+    /**
+     * Get contactCounty
+     *
+     * @return string 
+     */
+    public function getContactCounty()
+    {
+        return $this->contactCounty;
+    }
+
+    /**
+     * Set contactState
+     *
+     * @param string $contactState
+     * @return Users
+     */
+    public function setContactState($contactState)
+    {
+        $this->contactState = $contactState;
+        return $this;
+    }
+
+    /**
+     * Get contactState
+     *
+     * @return string 
+     */
+    public function getContactState()
+    {
+        return $this->contactState;
+    }
+
+    /**
+     * Set contactCountry
+     *
+     * @param string $contactCountry
+     * @return Users
+     */
+    public function setContactCountry($contactCountry)
+    {
+        $this->contactCountry = $contactCountry;
+        return $this;
+    }
+
+    /**
+     * Get contactCountry
+     *
+     * @return string 
+     */
+    public function getContactCountry()
+    {
+        return $this->contactCountry;
+    }
+
+    /**
+     * Set userParams
+     *
+     * @param text $userParams
+     * @return Users
+     */
+    public function setUserParams($userParams)
+    {
+        $this->userParams = $userParams;
+        return $this;
+    }
+
+    /**
+     * Get userParams
+     *
+     * @return text 
+     */
+    public function getUserParams()
+    {
+        return $this->userParams;
     }
 }

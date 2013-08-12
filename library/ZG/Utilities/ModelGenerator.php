@@ -43,7 +43,7 @@ class ModelGenerator
         		'port' => '3306',
         		'user' => 'customer',
         		'password' => '123456',
-        		'dbname' => 'zg_site',
+        		'dbname' => 'zendgroup_cms',
         		'charset' => 'utf8',
         );
 

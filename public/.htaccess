@@ -1,13 +1,18 @@
+# Turn on rewrite engine
 RewriteEngine On
+
+# Config Environtment
 SetEnv ZF2_PATH "C:\Program Files (x86)\Zend\ZendServer\share\ZendFramework2\library"
 SetEnv DT2_PATH "C:\Program Files (x86)\Zend\ZendServer\share\Doctrine2"
 SetEnv APPLICATION_ENV development
+
 # The following rule tells Apache that if the requested filename
 # exists, simply serve it.
 RewriteCond %{REQUEST_FILENAME} -s [OR]
 RewriteCond %{REQUEST_FILENAME} -l [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^.*$ - [NC,L]
+
 # The following rewrites all other queries to index.php. The 
 # condition ensures that if you are using Apache aliases to do
 # mass virtual hosting, the base path will be prepended to 

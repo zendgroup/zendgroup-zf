@@ -37,53 +37,53 @@ return array(
                     ),
                 ),
             ),
-            'about' => array(
-               	'type' => 'Zend\Mvc\Router\Http\Literal',
-               	'options' => array(
-               		'route'    => '/about',
-               		'defaults' => array(
-               			'controller' => 'Front\Controller\About',
-               			'action'     => 'index',
-               		),
-               		'may_terminate' => true,
-               		'child_routes' => array(
-               			'default' => array(
-               				'type'    => 'Segment',
-               				'options' => array(
-               					'route'    => '/[:controller[/:action]]',
-               					'constraints' => array(
-               						'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-               						'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-               						'param1' => '[a-zA-Z][a-zA-Z0-9_-]*',
-               						'param2' => '[a-zA-Z][a-zA-Z0-9_-]*',
-               					),
-               					'defaults' => array(
-               						'controller' => 'Front\Controller\About',
-               						'action'     => 'index',
-               						'param1' => 'value1',
-               						'param2' => 'value2',
-               					),
-               				),
-               				'may_terminate' => true,
-               				'child_routes' => array(
-               					'wildcard' => array(
-               						'type' => 'Wildcard',
-               					),
-               				),
-               			),
-                  		),
-               	),
-            ),
-            'contact' => array(
-               	'type' => 'Zend\Mvc\Router\Http\Literal',
-               	'options' => array(
-               		'route'    => '/contact',
-               		'defaults' => array(
-               		'controller' => 'Front\Controller\Contact',
-            		'action'     => 'index',
-            		),
-            	),
-            ),
+//             'about' => array(
+//                	'type' => 'Zend\Mvc\Router\Http\Literal',
+//                	'options' => array(
+//                		'route'    => '/about',
+//                		'defaults' => array(
+//                			'controller' => 'Front\Controller\About',
+//                			'action'     => 'index',
+//                		),
+//                		'may_terminate' => true,
+//                		'child_routes' => array(
+//                			'default' => array(
+//                				'type'    => 'Segment',
+//                				'options' => array(
+//                					'route'    => '/[:controller[/:action]]',
+//                					'constraints' => array(
+//                						'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+//                						'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+//                						'param1' => '[a-zA-Z][a-zA-Z0-9_-]*',
+//                						'param2' => '[a-zA-Z][a-zA-Z0-9_-]*',
+//                					),
+//                					'defaults' => array(
+//                						'controller' => 'Front\Controller\About',
+//                						'action'     => 'index',
+//                						'param1' => 'value1',
+//                						'param2' => 'value2',
+//                					),
+//                				),
+//                				'may_terminate' => true,
+//                				'child_routes' => array(
+//                					'wildcard' => array(
+//                						'type' => 'Wildcard',
+//                					),
+//                				),
+//                			),
+//                   		),
+//                	),
+//             ),
+//             'contact' => array(
+//                	'type' => 'Zend\Mvc\Router\Http\Literal',
+//                	'options' => array(
+//                		'route'    => '/contact',
+//                		'defaults' => array(
+//                		'controller' => 'Front\Controller\Contact',
+//             		'action'     => 'index',
+//             		),
+//             	),
+//             ),
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -95,6 +95,110 @@ return array(
                     'defaults' => array(
                         '__NAMESPACE__' => 'Front\Controller',
                         'controller'    => 'Index',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'about' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/about',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Front\Controller',
+                        'controller'    => 'About',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'license' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/license',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Front\Controller',
+                        'controller'    => 'License',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'changelog' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/changelog',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Front\Controller',
+                        'controller'    => 'Changelog',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'contact' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/contact',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Front\Controller',
+                        'controller'    => 'Contact',
                         'action'        => 'index',
                     ),
                 ),
@@ -128,6 +232,14 @@ return array(
     			'label' => 'About',
     			'route' => 'about',
     		),
+    		'license' => array(
+    			'label' => 'License',
+    			'route' => 'license',
+    		),
+    		'Changelog' => array(
+    			'label' => 'Changelog',
+    			'route' => 'changelog',
+    		),
     		'contact' => array(
     			'label' => 'Contact',
     			'route' => 'contact'
@@ -152,7 +264,11 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'front\Controller\Index' => 'Front\Controller\IndexController'
+            'front\Controller\Index' => 'Front\Controller\IndexController',
+            'front\Controller\Changelog' => 'Front\Controller\ChangelogController',
+            'front\Controller\License' => 'Front\Controller\LicenseController',
+            'front\Controller\About' => 'Front\Controller\AboutController',
+            'front\Controller\Contact' => 'Front\Controller\ContactController'
         ),
     ),
     'view_manager' => array(
@@ -162,7 +278,8 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => array(
-            'layout/layout'           => FRONT_TEMPLATES_PATH . 'layout/layout_1_column.phtml',
+            'layout/layout'           		=> FRONT_TEMPLATES_PATH . 'layout/layout_2_column.phtml',
+            'layout/sidebar_right'          => FRONT_TEMPLATES_PATH . 'layout/sidebar_right.phtml',
             'front/index/index' => __DIR__ . '/../view/front/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',

@@ -1,6 +1,31 @@
 <?php
 
-namespace ZG\Model\Entities;
+/**
+ *
+ * ZEND GROUP
+ *
+ * @name        CategoryDetail.php
+ * @category    Model
+ * @package 	Entities
+ * @subpackage  
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @link 		http://zendgroup.vn
+ * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
+ * @license     http://zendgroup.vn/license/
+ * @version     $0.1$
+ * 3:52:05 AM - Apr 3, 2013
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ */
+            
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +33,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CategoryDetail
  *
  * @ORM\Table(name="category_detail")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\CategoryDetailRepository")
+ * @ORM\Entity
  */
 class CategoryDetail
 {
@@ -96,7 +121,6 @@ class CategoryDetail
     public function setCategoryTitle($categoryTitle)
     {
         $this->categoryTitle = $categoryTitle;
-    
         return $this;
     }
 
@@ -119,7 +143,6 @@ class CategoryDetail
     public function setCategoryDescription($categoryDescription)
     {
         $this->categoryDescription = $categoryDescription;
-    
         return $this;
     }
 
@@ -142,7 +165,6 @@ class CategoryDetail
     public function setCategoryMetaTitle($categoryMetaTitle)
     {
         $this->categoryMetaTitle = $categoryMetaTitle;
-    
         return $this;
     }
 
@@ -165,7 +187,6 @@ class CategoryDetail
     public function setCategoryMetaDescription($categoryMetaDescription)
     {
         $this->categoryMetaDescription = $categoryMetaDescription;
-    
         return $this;
     }
 
@@ -188,7 +209,6 @@ class CategoryDetail
     public function setCategoryMetaKeyword($categoryMetaKeyword)
     {
         $this->categoryMetaKeyword = $categoryMetaKeyword;
-    
         return $this;
     }
 
@@ -211,7 +231,6 @@ class CategoryDetail
     public function setCategory(\Categories $category = null)
     {
         $this->category = $category;
-    
         return $this;
     }
 
@@ -234,7 +253,6 @@ class CategoryDetail
     public function setLocale(\Locale $locale = null)
     {
         $this->locale = $locale;
-    
         return $this;
     }
 

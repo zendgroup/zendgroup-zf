@@ -1,6 +1,31 @@
 <?php
 
-namespace ZG\Model\Entities;
+/**
+ *
+ * ZEND GROUP
+ *
+ * @name        Media.php
+ * @category    Model
+ * @package 	Entities
+ * @subpackage  
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @link 		http://zendgroup.vn
+ * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
+ * @license     http://zendgroup.vn/license/
+ * @version     $0.1$
+ * 3:52:05 AM - Apr 3, 2013
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ */
+            
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +33,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Media
  *
  * @ORM\Table(name="media")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\MediaRepository")
+ * @ORM\Entity
  */
 class Media
 {
@@ -20,6 +45,13 @@ class Media
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $attachmentId;
+
+    /**
+     * @var integer $fileTypeId
+     *
+     * @ORM\Column(name="file_type_id", type="integer", nullable=true)
+     */
+    private $fileTypeId;
 
     /**
      * @var string $mediaFileName
@@ -71,9 +103,9 @@ class Media
     private $mediaInfo;
 
     /**
-     * @var \DateTime $mediaTime
+     * @var integer $mediaTime
      *
-     * @ORM\Column(name="media_time", type="date", nullable=true)
+     * @ORM\Column(name="media_time", type="integer", nullable=true)
      */
     private $mediaTime;
 
@@ -83,16 +115,6 @@ class Media
      * @ORM\Column(name="media_status", type="integer", nullable=true)
      */
     private $mediaStatus;
-
-    /**
-     * @var FileTypes
-     *
-     * @ORM\ManyToOne(targetEntity="FileTypes")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="file_type_id", referencedColumnName="file_type_id")
-     * })
-     */
-    private $fileType;
 
     /**
      * @var Users
@@ -126,6 +148,28 @@ class Media
     }
 
     /**
+     * Set fileTypeId
+     *
+     * @param integer $fileTypeId
+     * @return Media
+     */
+    public function setFileTypeId($fileTypeId)
+    {
+        $this->fileTypeId = $fileTypeId;
+        return $this;
+    }
+
+    /**
+     * Get fileTypeId
+     *
+     * @return integer 
+     */
+    public function getFileTypeId()
+    {
+        return $this->fileTypeId;
+    }
+
+    /**
      * Set mediaFileName
      *
      * @param string $mediaFileName
@@ -134,7 +178,6 @@ class Media
     public function setMediaFileName($mediaFileName)
     {
         $this->mediaFileName = $mediaFileName;
-    
         return $this;
     }
 
@@ -157,7 +200,6 @@ class Media
     public function setMediaCaption($mediaCaption)
     {
         $this->mediaCaption = $mediaCaption;
-    
         return $this;
     }
 
@@ -180,7 +222,6 @@ class Media
     public function setMediaCounter($mediaCounter)
     {
         $this->mediaCounter = $mediaCounter;
-    
         return $this;
     }
 
@@ -203,7 +244,6 @@ class Media
     public function setMediaPath($mediaPath)
     {
         $this->mediaPath = $mediaPath;
-    
         return $this;
     }
 
@@ -226,7 +266,6 @@ class Media
     public function setMediaPathMd5($mediaPathMd5)
     {
         $this->mediaPathMd5 = $mediaPathMd5;
-    
         return $this;
     }
 
@@ -249,7 +288,6 @@ class Media
     public function setMediaSize($mediaSize)
     {
         $this->mediaSize = $mediaSize;
-    
         return $this;
     }
 
@@ -272,7 +310,6 @@ class Media
     public function setMediaInfo($mediaInfo)
     {
         $this->mediaInfo = $mediaInfo;
-    
         return $this;
     }
 
@@ -289,20 +326,19 @@ class Media
     /**
      * Set mediaTime
      *
-     * @param \DateTime $mediaTime
+     * @param integer $mediaTime
      * @return Media
      */
     public function setMediaTime($mediaTime)
     {
         $this->mediaTime = $mediaTime;
-    
         return $this;
     }
 
     /**
      * Get mediaTime
      *
-     * @return \DateTime 
+     * @return integer 
      */
     public function getMediaTime()
     {
@@ -318,7 +354,6 @@ class Media
     public function setMediaStatus($mediaStatus)
     {
         $this->mediaStatus = $mediaStatus;
-    
         return $this;
     }
 
@@ -333,29 +368,6 @@ class Media
     }
 
     /**
-     * Set fileType
-     *
-     * @param FileTypes $fileType
-     * @return Media
-     */
-    public function setFileType(\FileTypes $fileType = null)
-    {
-        $this->fileType = $fileType;
-    
-        return $this;
-    }
-
-    /**
-     * Get fileType
-     *
-     * @return FileTypes 
-     */
-    public function getFileType()
-    {
-        return $this->fileType;
-    }
-
-    /**
      * Set user
      *
      * @param Users $user
@@ -364,7 +376,6 @@ class Media
     public function setUser(\Users $user = null)
     {
         $this->user = $user;
-    
         return $this;
     }
 
@@ -387,7 +398,6 @@ class Media
     public function setContent(\Content $content = null)
     {
         $this->content = $content;
-    
         return $this;
     }
 
