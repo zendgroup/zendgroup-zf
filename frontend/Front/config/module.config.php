@@ -236,7 +236,7 @@ return array(
     			'label' => 'License',
     			'route' => 'license',
     		),
-    		'Changelog' => array(
+    		'changelog' => array(
     			'label' => 'Changelog',
     			'route' => 'changelog',
     		),
