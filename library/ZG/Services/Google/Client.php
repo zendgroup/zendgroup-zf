@@ -40,28 +40,27 @@ if (file_exists(dirname(__FILE__)  . '/local_config.php')) {
   $apiConfig = array_merge($defaultConfig, $apiConfig);
 }
 
+namespace ZG\Services\Google;
 // Include the top level classes, they each include their own dependencies
-require_once 'service/Google_Model.php';
-require_once 'service/Google_Service.php';
-require_once 'service/Google_ServiceResource.php';
-require_once 'auth/Google_AssertionCredentials.php';
-require_once 'auth/Google_Signer.php';
-require_once 'auth/Google_P12Signer.php';
-require_once 'service/Google_BatchRequest.php';
-require_once 'external/URITemplateParser.php';
-require_once 'auth/Google_Auth.php';
-require_once 'cache/Google_Cache.php';
-require_once 'io/Google_IO.php';
-require_once('service/Google_MediaFileUpload.php');
+use ZG\Services\Google\Model;
+use ZG\Services\Google\Service;
+use ZG\Services\Google\ServiceResource;
+use ZG\Services\Google\Auth\AssertionCredentials;
+use ZG\Services\Google\Auth\AbstractSigner;
+use ZG\Services\Google\Auth\P12Signer;
+use ZG\Services\Google\Utilities\BatchRequest;
+use ZG\Services\Google\External\URITemplateParser;
+use ZG\Services\Google\Auth\AbstractAuth;
+use ZG\Services\Google\Cache\AbstractCache;
+use ZG\Services\Google\IO\AbstractIO;
+use ZG\Services\Google\Utilities\MediaFileUpload;
 
 /**
  * The Google API Client
  * http://code.google.com/p/google-api-php-client/
  *
- * @author Chris Chabot <chabotc@google.com>
- * @author Chirag Shah <chirags@google.com>
  */
-class Google_Client {
+class Client {
   /**
    * @static
    * @var Google_Auth $auth
@@ -418,54 +417,5 @@ class Google_Client {
    */
   public function getCache() {
     return Google_Client::$cache;
-  }
-}
-
-// Exceptions that the Google PHP API Library can throw
-class Google_Exception extends Exception {}
-class Google_AuthException extends Google_Exception {}
-class Google_CacheException extends Google_Exception {}
-class Google_IOException extends Google_Exception {}
-class Google_ServiceException extends Google_Exception {
-  /**
-   * Optional list of errors returned in a JSON body of an HTTP error response.
-   */
-  protected $errors = array();
-
-  /**
-   * Override default constructor to add ability to set $errors.
-   *
-   * @param string $message
-   * @param int $code
-   * @param Exception|null $previous
-   * @param [{string, string}] errors List of errors returned in an HTTP
-   * response.  Defaults to [].
-   */
-  public function __construct($message, $code = 0, Exception $previous = null,
-                              $errors = array()) {
-    if(version_compare(PHP_VERSION, '5.3.0') >= 0) {
-      parent::__construct($message, $code, $previous);
-    } else {
-      parent::__construct($message, $code);
-    }
-
-    $this->errors = $errors;
-  }
-
-  /**
-   * An example of the possible errors returned.
-   *
-   * {
-   *   "domain": "global",
-   *   "reason": "authError",
-   *   "message": "Invalid Credentials",
-   *   "locationType": "header",
-   *   "location": "Authorization",
-   * }
-   *
-   * @return [{string, string}] List of errors return in an HTTP response or [].
-   */
-  public function getErrors() {
-    return $this->errors;
   }
 }
