@@ -19,11 +19,9 @@
  * This class defines attributes, valid values, and usage which is generated from
  * a given json schema. http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5
  *
- * @author Chirag Shah <chirags@google.com>
- *
  */
 
-namespace ZG\Services\Google\Service;
+namespace ZG\Services\Google;
 
 class Model
 {
@@ -115,7 +113,7 @@ protected function mapTypes($array) {
    */
   public function assertIsArray($obj, $type, $method) {
     if ($obj && !is_array($obj)) {
-      throw new Google_Exception("Incorrect parameter type passed to $method(), expected an"
+      throw new Exception("Incorrect parameter type passed to $method(), expected an"
           . " array containing items of type $type.");
     }
   }

@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-namespace ZG\Services\Google\Service;
+namespace ZG\Services\Google\Utilities;
 
 class Utils {
   public static function urlSafeB64Encode($data) {
