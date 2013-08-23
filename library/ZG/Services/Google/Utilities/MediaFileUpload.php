@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-namespace ZG\Services\Google\Service;
+namespace ZG\Services\Google\Utilities;
 
 use ZG\Services\Google\IO\HttpRequest;
 use ZG\Services\Google\IO\REST;
-use ZG\Services\Google\Service\Utils;
+use ZG\Services\Google\Utilities\Utils;
 use ZG\Services\Google\Client;
 
 class MediaFileUpload {
