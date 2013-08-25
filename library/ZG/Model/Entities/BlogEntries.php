@@ -1,31 +1,6 @@
 <?php
 
-/**
- *
- * ZEND GROUP
- *
- * @name        BlogEntries.php
- * @category    Model
- * @package 	Entities
- * @subpackage  
- * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
- * @link 		http://zendgroup.vn
- * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
- * @license     http://zendgroup.vn/license/
- * @version     $0.1$
- * 3:52:05 AM - Apr 3, 2013
- *
- * LICENSE
- *
- * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
- * It is also available through the Internet at this URL:
- * http://zendgroup.vn/license/
- * If you did not receive a copy of the license and are unable to
- * obtain it through the Internet, please send an email
- * to license@zendgroup.vn so we can send you a copy immediately.
- */
-            
-
+namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -33,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * BlogEntries
  *
  * @ORM\Table(name="blog_entries")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\BlogEntriesRepository")
  */
 class BlogEntries
 {
@@ -61,7 +36,7 @@ class BlogEntries
     private $entrySummary;
 
     /**
-     * @var text $entryContent
+     * @var string $entryContent
      *
      * @ORM\Column(name="entry_content", type="text", nullable=true)
      */
@@ -97,6 +72,7 @@ class BlogEntries
     public function setEntryTitle($entryTitle)
     {
         $this->entryTitle = $entryTitle;
+    
         return $this;
     }
 
@@ -119,6 +95,7 @@ class BlogEntries
     public function setEntrySummary($entrySummary)
     {
         $this->entrySummary = $entrySummary;
+    
         return $this;
     }
 
@@ -135,19 +112,20 @@ class BlogEntries
     /**
      * Set entryContent
      *
-     * @param text $entryContent
+     * @param string $entryContent
      * @return BlogEntries
      */
     public function setEntryContent($entryContent)
     {
         $this->entryContent = $entryContent;
+    
         return $this;
     }
 
     /**
      * Get entryContent
      *
-     * @return text 
+     * @return string 
      */
     public function getEntryContent()
     {
@@ -163,6 +141,7 @@ class BlogEntries
     public function setBlog(\Blogs $blog = null)
     {
         $this->blog = $blog;
+    
         return $this;
     }
 

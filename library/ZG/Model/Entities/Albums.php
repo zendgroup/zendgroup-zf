@@ -1,31 +1,6 @@
 <?php
 
-/**
- *
- * ZEND GROUP
- *
- * @name        Albums.php
- * @category    Model
- * @package 	Entities
- * @subpackage  
- * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
- * @link 		http://zendgroup.vn
- * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
- * @license     http://zendgroup.vn/license/
- * @version     $0.1$
- * 3:52:05 AM - Apr 3, 2013
- *
- * LICENSE
- *
- * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
- * It is also available through the Internet at this URL:
- * http://zendgroup.vn/license/
- * If you did not receive a copy of the license and are unable to
- * obtain it through the Internet, please send an email
- * to license@zendgroup.vn so we can send you a copy immediately.
- */
-            
-
+namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -33,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Albums
  *
  * @ORM\Table(name="albums")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\AlbumsRepository")
  */
 class Albums
 {
@@ -61,14 +36,11 @@ class Albums
     private $albumCreateDate;
 
     /**
-     * @var Gallery
+     * @var integer $galleryId
      *
-     * @ORM\ManyToOne(targetEntity="Gallery")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="gallery_id", referencedColumnName="gallery_id")
-     * })
+     * @ORM\Column(name="gallery_id", type="integer", nullable=false)
      */
-    private $gallery;
+    private $galleryId;
 
 
     /**
@@ -90,6 +62,7 @@ class Albums
     public function setAlbumTitle($albumTitle)
     {
         $this->albumTitle = $albumTitle;
+    
         return $this;
     }
 
@@ -112,6 +85,7 @@ class Albums
     public function setAlbumCreateDate($albumCreateDate)
     {
         $this->albumCreateDate = $albumCreateDate;
+    
         return $this;
     }
 
@@ -126,24 +100,25 @@ class Albums
     }
 
     /**
-     * Set gallery
+     * Set galleryId
      *
-     * @param Gallery $gallery
+     * @param integer $galleryId
      * @return Albums
      */
-    public function setGallery(\Gallery $gallery = null)
+    public function setGalleryId($galleryId)
     {
-        $this->gallery = $gallery;
+        $this->galleryId = $galleryId;
+    
         return $this;
     }
 
     /**
-     * Get gallery
+     * Get galleryId
      *
-     * @return Gallery 
+     * @return integer 
      */
-    public function getGallery()
+    public function getGalleryId()
     {
-        return $this->gallery;
+        return $this->galleryId;
     }
 }

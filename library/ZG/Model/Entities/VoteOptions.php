@@ -1,31 +1,6 @@
 <?php
 
-/**
- *
- * ZEND GROUP
- *
- * @name        VoteOptions.php
- * @category    Model
- * @package 	Entities
- * @subpackage  
- * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
- * @link 		http://zendgroup.vn
- * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
- * @license     http://zendgroup.vn/license/
- * @version     $0.1$
- * 3:52:05 AM - Apr 3, 2013
- *
- * LICENSE
- *
- * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
- * It is also available through the Internet at this URL:
- * http://zendgroup.vn/license/
- * If you did not receive a copy of the license and are unable to
- * obtain it through the Internet, please send an email
- * to license@zendgroup.vn so we can send you a copy immediately.
- */
-            
-
+namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -33,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * VoteOptions
  *
  * @ORM\Table(name="vote_options")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\VoteOptionsRepository")
  */
 class VoteOptions
 {
@@ -47,11 +22,18 @@ class VoteOptions
     private $voteOptionId;
 
     /**
-     * @var string $voteOption
+     * @var integer $voteId
      *
-     * @ORM\Column(name="vote_option", type="string", length=255, nullable=true)
+     * @ORM\Column(name="vote_id", type="integer", nullable=true)
      */
-    private $voteOption;
+    private $voteId;
+
+    /**
+     * @var string $voteOptionTitle
+     *
+     * @ORM\Column(name="vote_option_title", type="string", length=255, nullable=false)
+     */
+    private $voteOptionTitle;
 
     /**
      * @var integer $voteOptionCount
@@ -61,14 +43,11 @@ class VoteOptions
     private $voteOptionCount;
 
     /**
-     * @var Votes
+     * @var integer $voteOptionPercent
      *
-     * @ORM\ManyToOne(targetEntity="Votes")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="vote_id", referencedColumnName="vote_id")
-     * })
+     * @ORM\Column(name="vote_option_percent", type="integer", nullable=true)
      */
-    private $vote;
+    private $voteOptionPercent;
 
 
     /**
@@ -82,25 +61,49 @@ class VoteOptions
     }
 
     /**
-     * Set voteOption
+     * Set voteId
      *
-     * @param string $voteOption
+     * @param integer $voteId
      * @return VoteOptions
      */
-    public function setVoteOption($voteOption)
+    public function setVoteId($voteId)
     {
-        $this->voteOption = $voteOption;
+        $this->voteId = $voteId;
+    
         return $this;
     }
 
     /**
-     * Get voteOption
+     * Get voteId
+     *
+     * @return integer 
+     */
+    public function getVoteId()
+    {
+        return $this->voteId;
+    }
+
+    /**
+     * Set voteOptionTitle
+     *
+     * @param string $voteOptionTitle
+     * @return VoteOptions
+     */
+    public function setVoteOptionTitle($voteOptionTitle)
+    {
+        $this->voteOptionTitle = $voteOptionTitle;
+    
+        return $this;
+    }
+
+    /**
+     * Get voteOptionTitle
      *
      * @return string 
      */
-    public function getVoteOption()
+    public function getVoteOptionTitle()
     {
-        return $this->voteOption;
+        return $this->voteOptionTitle;
     }
 
     /**
@@ -112,6 +115,7 @@ class VoteOptions
     public function setVoteOptionCount($voteOptionCount)
     {
         $this->voteOptionCount = $voteOptionCount;
+    
         return $this;
     }
 
@@ -126,24 +130,25 @@ class VoteOptions
     }
 
     /**
-     * Set vote
+     * Set voteOptionPercent
      *
-     * @param Votes $vote
+     * @param integer $voteOptionPercent
      * @return VoteOptions
      */
-    public function setVote(\Votes $vote = null)
+    public function setVoteOptionPercent($voteOptionPercent)
     {
-        $this->vote = $vote;
+        $this->voteOptionPercent = $voteOptionPercent;
+    
         return $this;
     }
 
     /**
-     * Get vote
+     * Get voteOptionPercent
      *
-     * @return Votes 
+     * @return integer 
      */
-    public function getVote()
+    public function getVoteOptionPercent()
     {
-        return $this->vote;
+        return $this->voteOptionPercent;
     }
 }

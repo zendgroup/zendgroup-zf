@@ -1,31 +1,6 @@
 <?php
 
-/**
- *
- * ZEND GROUP
- *
- * @name        Categories.php
- * @category    Model
- * @package 	Entities
- * @subpackage  
- * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
- * @link 		http://zendgroup.vn
- * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
- * @license     http://zendgroup.vn/license/
- * @version     $0.1$
- * 3:52:05 AM - Apr 3, 2013
- *
- * LICENSE
- *
- * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
- * It is also available through the Internet at this URL:
- * http://zendgroup.vn/license/
- * If you did not receive a copy of the license and are unable to
- * obtain it through the Internet, please send an email
- * to license@zendgroup.vn so we can send you a copy immediately.
- */
-            
-
+namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -33,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Categories
  *
  * @ORM\Table(name="categories")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\CategoriesRepository")
  */
 class Categories
 {
@@ -139,6 +114,7 @@ class Categories
     public function setCategoryVisit($categoryVisit)
     {
         $this->categoryVisit = $categoryVisit;
+    
         return $this;
     }
 
@@ -161,6 +137,7 @@ class Categories
     public function setCategoryIcon($categoryIcon)
     {
         $this->categoryIcon = $categoryIcon;
+    
         return $this;
     }
 
@@ -183,6 +160,7 @@ class Categories
     public function setCategoryPassword($categoryPassword)
     {
         $this->categoryPassword = $categoryPassword;
+    
         return $this;
     }
 
@@ -205,6 +183,7 @@ class Categories
     public function setContentCount($contentCount)
     {
         $this->contentCount = $contentCount;
+    
         return $this;
     }
 
@@ -227,6 +206,7 @@ class Categories
     public function setHideFormMenu($hideFormMenu)
     {
         $this->hideFormMenu = $hideFormMenu;
+    
         return $this;
     }
 
@@ -249,6 +229,7 @@ class Categories
     public function setSortOrder($sortOrder)
     {
         $this->sortOrder = $sortOrder;
+    
         return $this;
     }
 
@@ -271,6 +252,7 @@ class Categories
     public function setGeneralUrl($generalUrl)
     {
         $this->generalUrl = $generalUrl;
+    
         return $this;
     }
 
@@ -293,6 +275,7 @@ class Categories
     public function setCategoryLeft($categoryLeft)
     {
         $this->categoryLeft = $categoryLeft;
+    
         return $this;
     }
 
@@ -315,6 +298,7 @@ class Categories
     public function setCategoryRight($categoryRight)
     {
         $this->categoryRight = $categoryRight;
+    
         return $this;
     }
 
@@ -337,6 +321,7 @@ class Categories
     public function setMenu(\Menus $menu = null)
     {
         $this->menu = $menu;
+    
         return $this;
     }
 
