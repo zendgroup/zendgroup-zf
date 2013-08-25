@@ -1,23 +1,16 @@
 <?php
-    
-namespace ZG\Model\Repositories\Repositories;
-    
-use Doctrine\ORM\EntityRepository;
-    
 /**
- *
  * ZEND GROUP
  *
- * @name        Locale.php
- * @category    Model
- * @package 	Repositories
- * @subpackage  
+ * @name        TutorialNavigationFactory.php
+ * @category    ZG
+ * @package 	Navigation
+ * @subpackage  Navigation\Service
  * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
- * @link 		http://zendgroup.vn
- * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
+ * @copyright   Copyright (c)2008-2010 ZEND GROUP. All rights reserved
  * @license     http://zendgroup.vn/license/
- * @version     $0.1$
- * 3:52:05 AM - Apr 3, 2013
+ * @version     $1.0$
+ * Aug 25, 2013
  *
  * LICENSE
  *
@@ -27,7 +20,17 @@ use Doctrine\ORM\EntityRepository;
  * If you did not receive a copy of the license and are unable to
  * obtain it through the Internet, please send an email
  * to license@zendgroup.vn so we can send you a copy immediately.
+ *
  */
-class Locale extends EntityRepository
+
+namespace ZG\Navigation\Service;
+
+use Zend\Navigation\Service\DefaultNavigationFactory;
+
+class TutorialNavigationFactory extends DefaultNavigationFactory
 {
+	protected function getName()
+	{
+		return 'tutorial';
+	}
 }

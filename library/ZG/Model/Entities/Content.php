@@ -1,31 +1,6 @@
 <?php
 
-/**
- *
- * ZEND GROUP
- *
- * @name        Content.php
- * @category    Model
- * @package 	Entities
- * @subpackage  
- * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
- * @link 		http://zendgroup.vn
- * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
- * @license     http://zendgroup.vn/license/
- * @version     $0.1$
- * 3:52:05 AM - Apr 3, 2013
- *
- * LICENSE
- *
- * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
- * It is also available through the Internet at this URL:
- * http://zendgroup.vn/license/
- * If you did not receive a copy of the license and are unable to
- * obtain it through the Internet, please send an email
- * to license@zendgroup.vn so we can send you a copy immediately.
- */
-            
-
+namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -33,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Content
  *
  * @ORM\Table(name="content")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\ContentRepository")
  */
 class Content
 {
@@ -68,13 +43,6 @@ class Content
     private $hideFromMenu;
 
     /**
-     * @var integer $contentContentId
-     *
-     * @ORM\Column(name="content_content_id", type="integer", nullable=false)
-     */
-    private $contentContentId;
-
-    /**
      * @var integer $ordering
      *
      * @ORM\Column(name="ordering", type="integer", nullable=false)
@@ -82,7 +50,7 @@ class Content
     private $ordering;
 
     /**
-     * @var text $contentParams
+     * @var string $contentParams
      *
      * @ORM\Column(name="content_params", type="text", nullable=true)
      */
@@ -128,6 +96,7 @@ class Content
     public function setCreated($created)
     {
         $this->created = $created;
+    
         return $this;
     }
 
@@ -150,6 +119,7 @@ class Content
     public function setModified($modified)
     {
         $this->modified = $modified;
+    
         return $this;
     }
 
@@ -172,6 +142,7 @@ class Content
     public function setHideFromMenu($hideFromMenu)
     {
         $this->hideFromMenu = $hideFromMenu;
+    
         return $this;
     }
 
@@ -186,28 +157,6 @@ class Content
     }
 
     /**
-     * Set contentContentId
-     *
-     * @param integer $contentContentId
-     * @return Content
-     */
-    public function setContentContentId($contentContentId)
-    {
-        $this->contentContentId = $contentContentId;
-        return $this;
-    }
-
-    /**
-     * Get contentContentId
-     *
-     * @return integer 
-     */
-    public function getContentContentId()
-    {
-        return $this->contentContentId;
-    }
-
-    /**
      * Set ordering
      *
      * @param integer $ordering
@@ -216,6 +165,7 @@ class Content
     public function setOrdering($ordering)
     {
         $this->ordering = $ordering;
+    
         return $this;
     }
 
@@ -232,19 +182,20 @@ class Content
     /**
      * Set contentParams
      *
-     * @param text $contentParams
+     * @param string $contentParams
      * @return Content
      */
     public function setContentParams($contentParams)
     {
         $this->contentParams = $contentParams;
+    
         return $this;
     }
 
     /**
      * Get contentParams
      *
-     * @return text 
+     * @return string 
      */
     public function getContentParams()
     {
@@ -260,6 +211,7 @@ class Content
     public function setContentType(\ContentTypes $contentType = null)
     {
         $this->contentType = $contentType;
+    
         return $this;
     }
 
@@ -282,6 +234,7 @@ class Content
     public function setUser(\Users $user = null)
     {
         $this->user = $user;
+    
         return $this;
     }
 

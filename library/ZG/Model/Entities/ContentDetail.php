@@ -1,31 +1,6 @@
 <?php
 
-/**
- *
- * ZEND GROUP
- *
- * @name        ContentDetail.php
- * @category    Model
- * @package 	Entities
- * @subpackage  
- * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
- * @link 		http://zendgroup.vn
- * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
- * @license     http://zendgroup.vn/license/
- * @version     $0.1$
- * 3:52:05 AM - Apr 3, 2013
- *
- * LICENSE
- *
- * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
- * It is also available through the Internet at this URL:
- * http://zendgroup.vn/license/
- * If you did not receive a copy of the license and are unable to
- * obtain it through the Internet, please send an email
- * to license@zendgroup.vn so we can send you a copy immediately.
- */
-            
-
+namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -33,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ContentDetail
  *
  * @ORM\Table(name="content_detail")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\ContentDetailRepository")
  */
 class ContentDetail
 {
@@ -68,11 +43,11 @@ class ContentDetail
     private $summary;
 
     /**
-     * @var text $fullContent
+     * @var string $content
      *
-     * @ORM\Column(name="full_content", type="text", nullable=true)
+     * @ORM\Column(name="content", type="string", length=255, nullable=true)
      */
-    private $fullContent;
+    private $content;
 
     /**
      * @var string $metaTitle
@@ -96,16 +71,6 @@ class ContentDetail
     private $metaDescription;
 
     /**
-     * @var Locale
-     *
-     * @ORM\ManyToOne(targetEntity="Locale")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="locale_id", referencedColumnName="locale_id")
-     * })
-     */
-    private $locale;
-
-    /**
      * @var Content
      *
      * @ORM\ManyToOne(targetEntity="Content")
@@ -113,7 +78,17 @@ class ContentDetail
      *   @ORM\JoinColumn(name="content_id", referencedColumnName="content_id")
      * })
      */
-    private $content;
+    private $content2;
+
+    /**
+     * @var Languages
+     *
+     * @ORM\ManyToOne(targetEntity="Languages")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="language_id", referencedColumnName="language_id")
+     * })
+     */
+    private $language;
 
 
     /**
@@ -135,6 +110,7 @@ class ContentDetail
     public function setTitle($title)
     {
         $this->title = $title;
+    
         return $this;
     }
 
@@ -157,6 +133,7 @@ class ContentDetail
     public function setAlias($alias)
     {
         $this->alias = $alias;
+    
         return $this;
     }
 
@@ -179,6 +156,7 @@ class ContentDetail
     public function setSummary($summary)
     {
         $this->summary = $summary;
+    
         return $this;
     }
 
@@ -193,25 +171,26 @@ class ContentDetail
     }
 
     /**
-     * Set fullContent
+     * Set content
      *
-     * @param text $fullContent
+     * @param string $content
      * @return ContentDetail
      */
-    public function setFullContent($fullContent)
+    public function setContent($content)
     {
-        $this->fullContent = $fullContent;
+        $this->content = $content;
+    
         return $this;
     }
 
     /**
-     * Get fullContent
+     * Get content
      *
-     * @return text 
+     * @return string 
      */
-    public function getFullContent()
+    public function getContent()
     {
-        return $this->fullContent;
+        return $this->content;
     }
 
     /**
@@ -223,6 +202,7 @@ class ContentDetail
     public function setMetaTitle($metaTitle)
     {
         $this->metaTitle = $metaTitle;
+    
         return $this;
     }
 
@@ -245,6 +225,7 @@ class ContentDetail
     public function setMetaKeyword($metaKeyword)
     {
         $this->metaKeyword = $metaKeyword;
+    
         return $this;
     }
 
@@ -267,6 +248,7 @@ class ContentDetail
     public function setMetaDescription($metaDescription)
     {
         $this->metaDescription = $metaDescription;
+    
         return $this;
     }
 
@@ -281,46 +263,48 @@ class ContentDetail
     }
 
     /**
-     * Set locale
+     * Set content2
      *
-     * @param Locale $locale
+     * @param Content $content2
      * @return ContentDetail
      */
-    public function setLocale(\Locale $locale = null)
+    public function setContent2(\Content $content2 = null)
     {
-        $this->locale = $locale;
+        $this->content2 = $content2;
+    
         return $this;
     }
 
     /**
-     * Get locale
-     *
-     * @return Locale 
-     */
-    public function getLocale()
-    {
-        return $this->locale;
-    }
-
-    /**
-     * Set content
-     *
-     * @param Content $content
-     * @return ContentDetail
-     */
-    public function setContent(\Content $content = null)
-    {
-        $this->content = $content;
-        return $this;
-    }
-
-    /**
-     * Get content
+     * Get content2
      *
      * @return Content 
      */
-    public function getContent()
+    public function getContent2()
     {
-        return $this->content;
+        return $this->content2;
+    }
+
+    /**
+     * Set language
+     *
+     * @param Languages $language
+     * @return ContentDetail
+     */
+    public function setLanguage(\Languages $language = null)
+    {
+        $this->language = $language;
+    
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return Languages 
+     */
+    public function getLanguage()
+    {
+        return $this->language;
     }
 }

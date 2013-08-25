@@ -111,6 +111,7 @@ h1, h2, h3, h4, h5, h6, a.button-more, .mod-box.mod-box-color1 .wk-twitter-singl
 }
 #system .items .item{margin:20px 10px 0 10px; padding: 20px;}
 .grid-box{float:left}
+.grid-box-right{float:right}
 .system-transparent #content a:hover, .system-transparent #system .item .title a, .mod-box-transparent a:hover {
     color: #FFFFFF;
 }
