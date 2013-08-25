@@ -1,17 +1,17 @@
 <?php
-
 /**
  * ZEND GROUP
  *
- * @name        LicenseController.php
+ * @name        IndexController.php
  * @category    Module
  * @package 	Front
  * @subpackage  Controller
  * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
- * @copyright   Copyright (c)2008-2010 ZEND GROUP. All rights reserved
+ * @link 		http://www.thuydx.com
+ * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
  * @license     http://zendgroup.vn/license/
- * @version     $1.0$
- * Aug 12, 2013
+ * @version     $0.1$
+ * 3:52:05 AM - Apr 3, 2013
  *
  * LICENSE
  *
@@ -31,10 +31,11 @@ use ZG\Utilities\ModelGenerator;
 use Zend\View\Model\ViewModel;
 use ZG\Mvc\Controller\ActionController;
 
-class LicenseController extends ActionController
+class TutorialController extends ActionController
 {
     public function indexAction()
     {
-		return new ViewModel();
+    	$this->layout('layout/layout_1_column');
+    	return new ViewModel();
     }
 }

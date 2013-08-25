@@ -9,3 +9,4 @@ extras/documentation
 .settings
 .zfproject.xml
 /nbproject/private/
+/nbproject/*

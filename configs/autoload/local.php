@@ -12,26 +12,26 @@
  */
 
 return array(
-// 	'doctrine' => array(
-// 	    'connection' => array(
-// 	        'orm_default' => array(
-// 	            'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
-// 	            'params' => array(
-//                     'user'     => 'zg_cms',
-//                     'password' => 'DVMHpcMdABPPSUt3',
-// 	            )
-// 	        )
-// 	    )
-// 	),
+	'doctrine' => array(
+	    'connection' => array(
+	        'orm_default' => array(
+	            'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
+	            'params' => array(
+                    'user'     => 'customer',
+                    'password' => '123456',
+	            )
+	        )
+	    )
+	),
 
     // Whether or not to enable a configuration cache.
     // If enabled, the merged configuration will be cached and used in
     // subsequent requests.
-//     'config_cache_enabled' => false,
+    'config_cache_enabled' => false,
     // The key used to create the configuration cache file name.
 //     'config_cache_key' => 'module_config_cache',
     // The path in which to cache merged configuration.
-//     'cache_dir' =>  './datas/cache',
+    'cache_dir' =>  './datas/cache',
     // ...
 );
 

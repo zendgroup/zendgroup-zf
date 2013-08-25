@@ -2,11 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <?php echo $this->headTitle("ThuyDX's Blog". $this->translate(''))->setSeparator(' - ')->setAutoEscape(false) ?>
+    <?php echo $this->headTitle("Zend Group". $this->translate(''))->setSeparator(' - ')->setAutoEscape(false) ?>
 
     <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
-    <?php echo $this->headMeta()->appendName('description', 'Blog base in ZF2') ?>
-    <?php echo $this->headMeta()->appendName('author', 'ThuyDX - WDS GROUP') ?>
+    <?php echo $this->headMeta()->appendName('description', 'Zend Group') ?>
+    <?php echo $this->headMeta()->appendName('author', 'ThuyDX - ZEND GROUP') ?>
 
     <!-- Le styles -->
     <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => ASSETS_LINK . '/frontend/default/images/favicon.ico'))
@@ -33,7 +33,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('ThuyDX\'s Blog') ?></a>
+          <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('{ ZG }') ?></a>
           <div class="nav-collapse">
 
             <?php echo $this->navigation('Navigation')->menu()->setUlClass('nav'); ?>
@@ -67,7 +67,7 @@
                 <?php echo $this->content; ?>
         	</div>
         	<div class="span3">
-        		<?php echo $this->render('layout/sidebar_right');?>
+        		<?php echo $this->render('layout/block/sidebar_right');?>
         	</div>
         </div>
          <div class="clearfix"></div>

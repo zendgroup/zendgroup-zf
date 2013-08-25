@@ -37,53 +37,6 @@ return array(
                     ),
                 ),
             ),
-//             'about' => array(
-//                	'type' => 'Zend\Mvc\Router\Http\Literal',
-//                	'options' => array(
-//                		'route'    => '/about',
-//                		'defaults' => array(
-//                			'controller' => 'Front\Controller\About',
-//                			'action'     => 'index',
-//                		),
-//                		'may_terminate' => true,
-//                		'child_routes' => array(
-//                			'default' => array(
-//                				'type'    => 'Segment',
-//                				'options' => array(
-//                					'route'    => '/[:controller[/:action]]',
-//                					'constraints' => array(
-//                						'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-//                						'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-//                						'param1' => '[a-zA-Z][a-zA-Z0-9_-]*',
-//                						'param2' => '[a-zA-Z][a-zA-Z0-9_-]*',
-//                					),
-//                					'defaults' => array(
-//                						'controller' => 'Front\Controller\About',
-//                						'action'     => 'index',
-//                						'param1' => 'value1',
-//                						'param2' => 'value2',
-//                					),
-//                				),
-//                				'may_terminate' => true,
-//                				'child_routes' => array(
-//                					'wildcard' => array(
-//                						'type' => 'Wildcard',
-//                					),
-//                				),
-//                			),
-//                   		),
-//                	),
-//             ),
-//             'contact' => array(
-//                	'type' => 'Zend\Mvc\Router\Http\Literal',
-//                	'options' => array(
-//                		'route'    => '/contact',
-//                		'defaults' => array(
-//                		'controller' => 'Front\Controller\Contact',
-//             		'action'     => 'index',
-//             		),
-//             	),
-//             ),
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -91,10 +44,36 @@ return array(
             'home' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/home',
+                    'route'    => '/',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Front\Controller',
                         'controller'    => 'Index',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'tutorial' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/tutorial',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Front\Controller',
+                        'controller'    => 'Tutorial',
                         'action'        => 'index',
                     ),
                 ),
@@ -146,8 +125,8 @@ return array(
                     'route'    => '/license',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Front\Controller',
-                        'controller'    => 'License',
-                        'action'        => 'index',
+                        'controller'    => 'About',
+                        'action'        => 'license',
                     ),
                 ),
                 'may_terminate' => true,
@@ -166,14 +145,14 @@ return array(
                     ),
                 ),
             ),
-            'changelog' => array(
+            'changelogs' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/changelog',
+                    'route'    => '/changelogs',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Front\Controller',
-                        'controller'    => 'Changelog',
-                        'action'        => 'index',
+                        'controller'    => 'About',
+                        'action'        => 'changelogs',
                     ),
                 ),
                 'may_terminate' => true,
@@ -198,8 +177,138 @@ return array(
                     'route'    => '/contact',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Front\Controller',
-                        'controller'    => 'Contact',
-                        'action'        => 'index',
+                        'controller'    => 'About',
+                        'action'        => 'contact',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'ourteam' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/ourteam',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Front\Controller',
+                        'controller'    => 'About',
+                        'action'        => 'ourteam',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'contributors' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/contributors',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Front\Controller',
+                        'controller'    => 'About',
+                        'action'        => 'contributors',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'logos' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/logos',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Front\Controller',
+                        'controller'    => 'About',
+                        'action'        => 'logos',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'faq' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/faq',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Front\Controller',
+                        'controller'    => 'About',
+                        'action'        => 'faq',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'guide' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/guide',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Front\Controller',
+                        'controller'    => 'About',
+                        'action'        => 'guide',
                     ),
                 ),
                 'may_terminate' => true,
@@ -228,28 +337,60 @@ return array(
     			'label' => 'Home',
     			'route' => 'home',
     		),
+    		'tutorial' => array(
+    			'label' => 'Tutorial',
+    			'route' => 'tutorial',
+    		),
     		'about' => array(
     			'label' => 'About',
+    			'route' => 'about',
+    		),
+    	),
+    	'sidebar' => array(
+    		'about' => array(
+    			'label' => 'Overview',
     			'route' => 'about',
     		),
     		'license' => array(
     			'label' => 'License',
     			'route' => 'license',
     		),
-    		'changelog' => array(
-    			'label' => 'Changelog',
-    			'route' => 'changelog',
+    		'ourteam' => array(
+    			'label' => 'Our Team',
+    			'route' => 'ourteam',
+    		),
+    		'contributors' => array(
+    			'label' => 'Contributors',
+    			'route' => 'contributors',
+    		),
+    		'guide' => array(
+    			'label' => 'Contributor Guide',
+    			'route' => 'guide',
     		),
     		'contact' => array(
-    			'label' => 'Contact',
-    			'route' => 'contact'
+    				'label' => 'Contact',
+    				'route' => 'contact'
     		),
-    	),
+    		'changelogs' => array(
+    			'label' => 'Changelogs',
+    			'route' => 'changelogs',
+    		),
+    		'faq' => array(
+    			'label' => 'FAQ',
+    			'route' => 'faq',
+    		),
+    		'logos' => array(
+    			'label' => 'Logos',
+    			'route' => 'logos',
+    		),
+    		
+    	),    	
     ),
     'service_manager' => array(
         'factories' => array(
             'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
             'Navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+            'Sidebar' => 'ZG\Navigation\Service\SidebarNavigationFactory',
         ),
     ),
     'translator' => array(
@@ -265,10 +406,8 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'front\Controller\Index' => 'Front\Controller\IndexController',
-            'front\Controller\Changelog' => 'Front\Controller\ChangelogController',
-            'front\Controller\License' => 'Front\Controller\LicenseController',
+            'front\Controller\Tutorial' => 'Front\Controller\TutorialController',
             'front\Controller\About' => 'Front\Controller\AboutController',
-            'front\Controller\Contact' => 'Front\Controller\ContactController'
         ),
     ),
     'view_manager' => array(
@@ -277,27 +416,53 @@ return array(
         'doctype'                  => 'HTML5',
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
+        'sidebar_1'								=> 'front/about/sidebar',
         'template_map' => array(
-            'layout/layout'           		=> FRONT_TEMPLATES_PATH . 'layout/layout_2_column.phtml',
-            'layout/sidebar_right'          => FRONT_TEMPLATES_PATH . 'layout/sidebar_right.phtml',
-            'front/index/index' => __DIR__ . '/../view/front/index/index.phtml',
-            'error/404'               => __DIR__ . '/../view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../view/error/index.phtml',
+            'layout/layout'           				=> FRONT_TEMPLATES_PATH . 'layout/layout_1_column.phtml',
+            'layout/layout_1_column'           		=> FRONT_TEMPLATES_PATH . 'layout/layout_1_column.phtml',
+            'layout/layout_2_column'           		=> FRONT_TEMPLATES_PATH . 'layout/layout_2_column.phtml',
+            'layout/index'           				=> FRONT_TEMPLATES_PATH . 'layout/layout_1_column.phtml',
+            'layout/about'           				=> FRONT_TEMPLATES_PATH . 'layout/layout_2_column.phtml',
+            'About/index'           				=> FRONT_TEMPLATES_PATH . 'layout/about/index.phtml',
+            'About/ourteam'           				=> FRONT_TEMPLATES_PATH . 'layout/about/ourteam.phtml',
+            'About/faq'           					=> FRONT_TEMPLATES_PATH . 'layout/about/faq.phtml',
+            'layout/block/sidebar_right'          		=> FRONT_TEMPLATES_PATH . 'layout/block/sidebar_right.phtml',
+            'front/index/index' 					=> __DIR__ . '/../view/front/index/index.phtml',
+            'error/404'              				=> __DIR__ . '/../view/error/404.phtml',
+            'error/index'             				=> __DIR__ . '/../view/error/index.phtml',	
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
     ),
+    'layout' => array(
+    	'module_layouts' => array(
+    		'enable'=> true,
+    		'front' => 'layout/layout_2_column',
+    	),    	
+    	'controller_layouts' => array(
+//     		'enable'=> true,
+    		'Index' =>  'layout/layout_1_column',
+            'About' =>  'layout/layout_2_column',
+            
+    	),
+    	'action_layouts' => array(
+//     		'enable'=> true,    	
+    		'About/index' => 'about/index',
+    		'About/ourteam' => 'about/ourteam',
+    		'About/faq' => 'about/faq',
+    	),
+    ),
 //     'doctrine' => array (
 //     	'driver' => array (
-//     		'ZGlib_model_entities' => array (
+//     		'ZG_Model_Entities' => array (
 //     			'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
 //     			'cache' => 'array',
 //     			'paths' => array(LIBRARY_PATH . 'ZG' . DS . 'Model' . DS .'Entities')
 //     		),
 //     		'orm_default' => array(
 //     			'drivers' => array (
-//     				'ZGlib\Model\Entities' => 'ZG_model_entities'
+//     				'ZG\Model\Entities' => 'ZG_Model_Entities'
 //     			)
 //     		)
 //     	)
