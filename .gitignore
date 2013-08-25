@@ -10,3 +10,8 @@ extras/documentation
 .zfproject.xml
 /nbproject/private/
 /nbproject/*
+
+/data/db
+/data/logs
+
+/data/cache
