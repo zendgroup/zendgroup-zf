@@ -1,31 +1,6 @@
 <?php
 
-/**
- *
- * ZEND GROUP
- *
- * @name        Media.php
- * @category    Model
- * @package 	Entities
- * @subpackage  
- * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
- * @link 		http://zendgroup.vn
- * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
- * @license     http://zendgroup.vn/license/
- * @version     $0.1$
- * 3:52:05 AM - Apr 3, 2013
- *
- * LICENSE
- *
- * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
- * It is also available through the Internet at this URL:
- * http://zendgroup.vn/license/
- * If you did not receive a copy of the license and are unable to
- * obtain it through the Internet, please send an email
- * to license@zendgroup.vn so we can send you a copy immediately.
- */
-            
-
+namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -33,25 +8,18 @@ use Doctrine\ORM\Mapping as ORM;
  * Media
  *
  * @ORM\Table(name="media")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\MediaRepository")
  */
 class Media
 {
     /**
-     * @var integer $attachmentId
+     * @var integer $mediaId
      *
-     * @ORM\Column(name="attachment_id", type="integer", nullable=false)
+     * @ORM\Column(name="media_id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $attachmentId;
-
-    /**
-     * @var integer $fileTypeId
-     *
-     * @ORM\Column(name="file_type_id", type="integer", nullable=true)
-     */
-    private $fileTypeId;
+    private $mediaId;
 
     /**
      * @var string $mediaFileName
@@ -117,56 +85,24 @@ class Media
     private $mediaStatus;
 
     /**
-     * @var Users
+     * @var ContentDetail
      *
-     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\ManyToOne(targetEntity="ContentDetail")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
+     *   @ORM\JoinColumn(name="content_detail_id", referencedColumnName="content_detail_id")
      * })
      */
-    private $user;
-
-    /**
-     * @var Content
-     *
-     * @ORM\ManyToOne(targetEntity="Content")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="content_id", referencedColumnName="content_id")
-     * })
-     */
-    private $content;
+    private $contentDetail;
 
 
     /**
-     * Get attachmentId
+     * Get mediaId
      *
      * @return integer 
      */
-    public function getAttachmentId()
+    public function getMediaId()
     {
-        return $this->attachmentId;
-    }
-
-    /**
-     * Set fileTypeId
-     *
-     * @param integer $fileTypeId
-     * @return Media
-     */
-    public function setFileTypeId($fileTypeId)
-    {
-        $this->fileTypeId = $fileTypeId;
-        return $this;
-    }
-
-    /**
-     * Get fileTypeId
-     *
-     * @return integer 
-     */
-    public function getFileTypeId()
-    {
-        return $this->fileTypeId;
+        return $this->mediaId;
     }
 
     /**
@@ -178,6 +114,7 @@ class Media
     public function setMediaFileName($mediaFileName)
     {
         $this->mediaFileName = $mediaFileName;
+    
         return $this;
     }
 
@@ -200,6 +137,7 @@ class Media
     public function setMediaCaption($mediaCaption)
     {
         $this->mediaCaption = $mediaCaption;
+    
         return $this;
     }
 
@@ -222,6 +160,7 @@ class Media
     public function setMediaCounter($mediaCounter)
     {
         $this->mediaCounter = $mediaCounter;
+    
         return $this;
     }
 
@@ -244,6 +183,7 @@ class Media
     public function setMediaPath($mediaPath)
     {
         $this->mediaPath = $mediaPath;
+    
         return $this;
     }
 
@@ -266,6 +206,7 @@ class Media
     public function setMediaPathMd5($mediaPathMd5)
     {
         $this->mediaPathMd5 = $mediaPathMd5;
+    
         return $this;
     }
 
@@ -288,6 +229,7 @@ class Media
     public function setMediaSize($mediaSize)
     {
         $this->mediaSize = $mediaSize;
+    
         return $this;
     }
 
@@ -310,6 +252,7 @@ class Media
     public function setMediaInfo($mediaInfo)
     {
         $this->mediaInfo = $mediaInfo;
+    
         return $this;
     }
 
@@ -332,6 +275,7 @@ class Media
     public function setMediaTime($mediaTime)
     {
         $this->mediaTime = $mediaTime;
+    
         return $this;
     }
 
@@ -354,6 +298,7 @@ class Media
     public function setMediaStatus($mediaStatus)
     {
         $this->mediaStatus = $mediaStatus;
+    
         return $this;
     }
 
@@ -368,46 +313,25 @@ class Media
     }
 
     /**
-     * Set user
+     * Set contentDetail
      *
-     * @param Users $user
+     * @param ContentDetail $contentDetail
      * @return Media
      */
-    public function setUser(\Users $user = null)
+    public function setContentDetail(\ContentDetail $contentDetail = null)
     {
-        $this->user = $user;
+        $this->contentDetail = $contentDetail;
+    
         return $this;
     }
 
     /**
-     * Get user
+     * Get contentDetail
      *
-     * @return Users 
+     * @return ContentDetail 
      */
-    public function getUser()
+    public function getContentDetail()
     {
-        return $this->user;
-    }
-
-    /**
-     * Set content
-     *
-     * @param Content $content
-     * @return Media
-     */
-    public function setContent(\Content $content = null)
-    {
-        $this->content = $content;
-        return $this;
-    }
-
-    /**
-     * Get content
-     *
-     * @return Content 
-     */
-    public function getContent()
-    {
-        return $this->content;
+        return $this->contentDetail;
     }
 }

@@ -1,31 +1,6 @@
 <?php
 
-/**
- *
- * ZEND GROUP
- *
- * @name        Comments.php
- * @category    Model
- * @package 	Entities
- * @subpackage  
- * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
- * @link 		http://zendgroup.vn
- * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
- * @license     http://zendgroup.vn/license/
- * @version     $0.1$
- * 3:52:05 AM - Apr 3, 2013
- *
- * LICENSE
- *
- * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
- * It is also available through the Internet at this URL:
- * http://zendgroup.vn/license/
- * If you did not receive a copy of the license and are unable to
- * obtain it through the Internet, please send an email
- * to license@zendgroup.vn so we can send you a copy immediately.
- */
-            
-
+namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -33,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Comments
  *
  * @ORM\Table(name="comments")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\CommentsRepository")
  */
 class Comments
 {
@@ -45,13 +20,6 @@ class Comments
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $commentId;
-
-    /**
-     * @var integer $contentId
-     *
-     * @ORM\Column(name="content_id", type="integer", nullable=true)
-     */
-    private $contentId;
 
     /**
      * @var string $commentText
@@ -117,28 +85,6 @@ class Comments
     }
 
     /**
-     * Set contentId
-     *
-     * @param integer $contentId
-     * @return Comments
-     */
-    public function setContentId($contentId)
-    {
-        $this->contentId = $contentId;
-        return $this;
-    }
-
-    /**
-     * Get contentId
-     *
-     * @return integer 
-     */
-    public function getContentId()
-    {
-        return $this->contentId;
-    }
-
-    /**
      * Set commentText
      *
      * @param string $commentText
@@ -147,6 +93,7 @@ class Comments
     public function setCommentText($commentText)
     {
         $this->commentText = $commentText;
+    
         return $this;
     }
 
@@ -169,6 +116,7 @@ class Comments
     public function setCommentDate($commentDate)
     {
         $this->commentDate = $commentDate;
+    
         return $this;
     }
 
@@ -191,6 +139,7 @@ class Comments
     public function setCommentAuthor($commentAuthor)
     {
         $this->commentAuthor = $commentAuthor;
+    
         return $this;
     }
 
@@ -213,6 +162,7 @@ class Comments
     public function setCommentAuthorEmail($commentAuthorEmail)
     {
         $this->commentAuthorEmail = $commentAuthorEmail;
+    
         return $this;
     }
 
@@ -235,6 +185,7 @@ class Comments
     public function setCommentAuthorSite($commentAuthorSite)
     {
         $this->commentAuthorSite = $commentAuthorSite;
+    
         return $this;
     }
 
@@ -257,6 +208,7 @@ class Comments
     public function setCommentStatus($commentStatus)
     {
         $this->commentStatus = $commentStatus;
+    
         return $this;
     }
 
@@ -279,6 +231,7 @@ class Comments
     public function setContentDetail(\ContentDetail $contentDetail = null)
     {
         $this->contentDetail = $contentDetail;
+    
         return $this;
     }
 

@@ -1,31 +1,6 @@
 <?php
 
-/**
- *
- * ZEND GROUP
- *
- * @name        Users.php
- * @category    Model
- * @package 	Entities
- * @subpackage  
- * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
- * @link 		http://zendgroup.vn
- * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
- * @license     http://zendgroup.vn/license/
- * @version     $0.1$
- * 3:52:05 AM - Apr 3, 2013
- *
- * LICENSE
- *
- * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
- * It is also available through the Internet at this URL:
- * http://zendgroup.vn/license/
- * If you did not receive a copy of the license and are unable to
- * obtain it through the Internet, please send an email
- * to license@zendgroup.vn so we can send you a copy immediately.
- */
-            
-
+namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -33,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Users
  *
  * @ORM\Table(name="users")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\UsersRepository")
  */
 class Users
 {
@@ -271,7 +246,7 @@ class Users
     private $contactCountry;
 
     /**
-     * @var text $userParams
+     * @var string $userParams
      *
      * @ORM\Column(name="user_params", type="text", nullable=true)
      */
@@ -297,6 +272,7 @@ class Users
     public function setUserName($userName)
     {
         $this->userName = $userName;
+    
         return $this;
     }
 
@@ -319,6 +295,7 @@ class Users
     public function setUserPassword($userPassword)
     {
         $this->userPassword = $userPassword;
+    
         return $this;
     }
 
@@ -341,6 +318,7 @@ class Users
     public function setPasswordModifyDate($passwordModifyDate)
     {
         $this->passwordModifyDate = $passwordModifyDate;
+    
         return $this;
     }
 
@@ -363,6 +341,7 @@ class Users
     public function setUserEmail($userEmail)
     {
         $this->userEmail = $userEmail;
+    
         return $this;
     }
 
@@ -385,6 +364,7 @@ class Users
     public function setUserTitle($userTitle)
     {
         $this->userTitle = $userTitle;
+    
         return $this;
     }
 
@@ -407,6 +387,7 @@ class Users
     public function setUserLastVisit($userLastVisit)
     {
         $this->userLastVisit = $userLastVisit;
+    
         return $this;
     }
 
@@ -429,6 +410,7 @@ class Users
     public function setUserActivity($userActivity)
     {
         $this->userActivity = $userActivity;
+    
         return $this;
     }
 
@@ -451,6 +433,7 @@ class Users
     public function setUserPostCount($userPostCount)
     {
         $this->userPostCount = $userPostCount;
+    
         return $this;
     }
 
@@ -473,6 +456,7 @@ class Users
     public function setUserIpAddress($userIpAddress)
     {
         $this->userIpAddress = $userIpAddress;
+    
         return $this;
     }
 
@@ -495,6 +479,7 @@ class Users
     public function setUserLanguageId($userLanguageId)
     {
         $this->userLanguageId = $userLanguageId;
+    
         return $this;
     }
 
@@ -517,6 +502,7 @@ class Users
     public function setUserTemplateId($userTemplateId)
     {
         $this->userTemplateId = $userTemplateId;
+    
         return $this;
     }
 
@@ -539,6 +525,7 @@ class Users
     public function setUserSkinId($userSkinId)
     {
         $this->userSkinId = $userSkinId;
+    
         return $this;
     }
 
@@ -561,6 +548,7 @@ class Users
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
+    
         return $this;
     }
 
@@ -583,6 +571,7 @@ class Users
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+    
         return $this;
     }
 
@@ -605,6 +594,7 @@ class Users
     public function setDateOfBirth($dateOfBirth)
     {
         $this->dateOfBirth = $dateOfBirth;
+    
         return $this;
     }
 
@@ -627,6 +617,7 @@ class Users
     public function setCreated($created)
     {
         $this->created = $created;
+    
         return $this;
     }
 
@@ -649,6 +640,7 @@ class Users
     public function setModified($modified)
     {
         $this->modified = $modified;
+    
         return $this;
     }
 
@@ -671,6 +663,7 @@ class Users
     public function setWebsite($website)
     {
         $this->website = $website;
+    
         return $this;
     }
 
@@ -693,6 +686,7 @@ class Users
     public function setGender($gender)
     {
         $this->gender = $gender;
+    
         return $this;
     }
 
@@ -715,6 +709,7 @@ class Users
     public function setMaritalStatus($maritalStatus)
     {
         $this->maritalStatus = $maritalStatus;
+    
         return $this;
     }
 
@@ -737,6 +732,7 @@ class Users
     public function setTelephone($telephone)
     {
         $this->telephone = $telephone;
+    
         return $this;
     }
 
@@ -759,6 +755,7 @@ class Users
     public function setMobilePhone($mobilePhone)
     {
         $this->mobilePhone = $mobilePhone;
+    
         return $this;
     }
 
@@ -781,6 +778,7 @@ class Users
     public function setContactName($contactName)
     {
         $this->contactName = $contactName;
+    
         return $this;
     }
 
@@ -803,6 +801,7 @@ class Users
     public function setContactAddress($contactAddress)
     {
         $this->contactAddress = $contactAddress;
+    
         return $this;
     }
 
@@ -825,6 +824,7 @@ class Users
     public function setContactTelephone($contactTelephone)
     {
         $this->contactTelephone = $contactTelephone;
+    
         return $this;
     }
 
@@ -847,6 +847,7 @@ class Users
     public function setContactPhone($contactPhone)
     {
         $this->contactPhone = $contactPhone;
+    
         return $this;
     }
 
@@ -869,6 +870,7 @@ class Users
     public function setContactEmail($contactEmail)
     {
         $this->contactEmail = $contactEmail;
+    
         return $this;
     }
 
@@ -891,6 +893,7 @@ class Users
     public function setContactFax($contactFax)
     {
         $this->contactFax = $contactFax;
+    
         return $this;
     }
 
@@ -913,6 +916,7 @@ class Users
     public function setContactCity($contactCity)
     {
         $this->contactCity = $contactCity;
+    
         return $this;
     }
 
@@ -935,6 +939,7 @@ class Users
     public function setContactCounty($contactCounty)
     {
         $this->contactCounty = $contactCounty;
+    
         return $this;
     }
 
@@ -957,6 +962,7 @@ class Users
     public function setContactState($contactState)
     {
         $this->contactState = $contactState;
+    
         return $this;
     }
 
@@ -979,6 +985,7 @@ class Users
     public function setContactCountry($contactCountry)
     {
         $this->contactCountry = $contactCountry;
+    
         return $this;
     }
 
@@ -995,19 +1002,20 @@ class Users
     /**
      * Set userParams
      *
-     * @param text $userParams
+     * @param string $userParams
      * @return Users
      */
     public function setUserParams($userParams)
     {
         $this->userParams = $userParams;
+    
         return $this;
     }
 
     /**
      * Get userParams
      *
-     * @return text 
+     * @return string 
      */
     public function getUserParams()
     {
