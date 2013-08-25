@@ -1,6 +1,6 @@
 # Turn on rewrite engine
 RewriteEngine On
-
+RewriteBase /
 # Config Environtment
 SetEnv ZF2_PATH "C:\Program Files (x86)\Zend\ZendServer\share\ZendFramework2\library"
 SetEnv DT2_PATH "C:\Program Files (x86)\Zend\ZendServer\share\Doctrine2"
@@ -22,3 +22,4 @@ RewriteRule ^.*$ - [NC,L]
 RewriteCond %{REQUEST_URI}::$1 ^(/.+)(.+)::\2$
 RewriteRule ^(.*) - [E=BASE:%1]
 RewriteRule ^(.*)$ %{ENV:BASE}index.php [NC,L]
+
