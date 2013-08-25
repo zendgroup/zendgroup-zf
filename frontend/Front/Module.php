@@ -107,8 +107,10 @@ class Module
         $route = $e->getRouteMatch();
         $viewModel = $e->getViewModel();
         $variables = $viewModel->getVariables();
-        if (false === isset($variables['controller'])) {
-            $viewModel->setVariable('controller', $route->getParam('controller'));
+        if (false === isset($variables['controller'])) {;
+            $controllerName = strtolower(str_replace('Controller', '', array_pop(explode('\\', $route->getParam('controller')))));
+            $viewModel->setVariable('controller', $controllerName);
+            
         }
         if (false === isset($variables['action'])) {
             $viewModel->setVariable('action', $route->getParam('action'));

@@ -35,7 +35,6 @@ class TutorialController extends ActionController
 {
     public function indexAction()
     {
-    	$this->layout('layout/layout_1_column');
     	return new ViewModel();
     }
 }

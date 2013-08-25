@@ -36,11 +36,14 @@ class Albums
     private $albumCreateDate;
 
     /**
-     * @var integer $galleryId
+     * @var Gallery
      *
-     * @ORM\Column(name="gallery_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Gallery")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="gallery_id", referencedColumnName="gallery_id")
+     * })
      */
-    private $galleryId;
+    private $gallery;
 
 
     /**
@@ -100,25 +103,25 @@ class Albums
     }
 
     /**
-     * Set galleryId
+     * Set gallery
      *
-     * @param integer $galleryId
+     * @param Gallery $gallery
      * @return Albums
      */
-    public function setGalleryId($galleryId)
+    public function setGallery(\Gallery $gallery = null)
     {
-        $this->galleryId = $galleryId;
+        $this->gallery = $gallery;
     
         return $this;
     }
 
     /**
-     * Get galleryId
+     * Get gallery
      *
-     * @return integer 
+     * @return Gallery 
      */
-    public function getGalleryId()
+    public function getGallery()
     {
-        return $this->galleryId;
+        return $this->gallery;
     }
 }

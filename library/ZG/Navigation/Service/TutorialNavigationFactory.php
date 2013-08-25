@@ -2,7 +2,7 @@
 /**
  * ZEND GROUP
  *
- * @name        SidebarNavigationFactory.php
+ * @name        TutorialNavigationFactory.php
  * @category    ZG
  * @package 	Navigation
  * @subpackage  Navigation\Service
@@ -27,30 +27,10 @@ namespace ZG\Navigation\Service;
 
 use Zend\Navigation\Service\DefaultNavigationFactory;
 
-class SidebarNavigationFactory extends DefaultNavigationFactory
+class TutorialNavigationFactory extends DefaultNavigationFactory
 {
 	protected function getName()
 	{
-		return 'sidebar';
+		return 'tutorial';
 	}
-	
-// 	protected function getPages(ServiceLocatorInterface $serviceLocator)
-// 	{
-// 		$navigation = $config['navigation'][$this->getName()] = array();
-	
-		
-// 		$mvcEvent = $serviceLocator->get('Application')->getMvcEvent();
-
-// 		$routeMatch = $mvcEvent->getRouteMatch();
-// 		$router     = $mvcEvent->getRouter();
-// 		$pages      = $this->getPagesFromConfig($navigation);
-
-// 		$this->pages = $this->injectComponents(
-// 				$pages,
-// 				$routeMatch,
-// 				$router
-// 		);
-	
-// 		return $this->pages;
-// 	}	
 }

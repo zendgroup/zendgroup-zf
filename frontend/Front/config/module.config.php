@@ -340,10 +340,54 @@ return array(
     		'tutorial' => array(
     			'label' => 'Tutorial',
     			'route' => 'tutorial',
+    			'pages' => array (
+	    			'tutorial' => array(
+	    				'label' => 'Overview',
+	    				'route' => 'tutorial',
+	    			),
+    			),
     		),
     		'about' => array(
     			'label' => 'About',
     			'route' => 'about',
+    			'pages' => array ( 
+	    			'about' => array(
+	    			        'label' => 'Overview',
+	    			        'route' => 'about',
+	    			),
+	    			'license' => array(
+	    			        'label' => 'License',
+	    			        'route' => 'license',
+	    			),
+	    			'ourteam' => array(
+	    			        'label' => 'Our Team',
+	    			        'route' => 'ourteam',
+	    			),
+	    			'contributors' => array(
+	    			        'label' => 'Contributors',
+	    			        'route' => 'contributors',
+	    			),
+	    			'guide' => array(
+	    			        'label' => 'Contributor Guide',
+	    			        'route' => 'guide',
+	    			),
+	    			'contact' => array(
+	    			    				'label' => 'Contact',
+	    			    				'route' => 'contact'
+	    			),
+	    			'changelogs' => array(
+	    			        'label' => 'Changelogs',
+	    			        'route' => 'changelogs',
+	    			),
+	    			'faq' => array(
+	    			        'label' => 'FAQ',
+	    			        'route' => 'faq',
+	    			),
+	    			'logos' => array(
+	    			        'label' => 'Logos',
+	    			        'route' => 'logos',
+	    			),
+    			),
     		),
     	),
     	'sidebar' => array(
@@ -383,14 +427,20 @@ return array(
     			'label' => 'Logos',
     			'route' => 'logos',
     		),
-    		
-    	),    	
+    	),    
+    	'tutorial' => array(
+    		'tutorial' => array(
+    			'label' => 'Overview',
+    			'route' => 'tutorial'
+    		),
+    	),	
     ),
     'service_manager' => array(
         'factories' => array(
             'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
             'Navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
             'Sidebar' => 'ZG\Navigation\Service\SidebarNavigationFactory',
+            'Tutorial' => 'ZG\Navigation\Service\TutorialNavigationFactory',
         ),
     ),
     'translator' => array(
@@ -438,7 +488,7 @@ return array(
     'layout' => array(
     	'module_layouts' => array(
     		'enable'=> true,
-    		'front' => 'layout/layout_2_column',
+    		'front' => 'layout/layout',
     	),    	
     	'controller_layouts' => array(
 //     		'enable'=> true,
@@ -453,19 +503,19 @@ return array(
     		'About/faq' => 'about/faq',
     	),
     ),
-//     'doctrine' => array (
-//     	'driver' => array (
-//     		'ZG_Model_Entities' => array (
-//     			'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-//     			'cache' => 'array',
-//     			'paths' => array(LIBRARY_PATH . 'ZG' . DS . 'Model' . DS .'Entities')
-//     		),
-//     		'orm_default' => array(
-//     			'drivers' => array (
-//     				'ZG\Model\Entities' => 'ZG_Model_Entities'
-//     			)
-//     		)
-//     	)
-//     )
+    'doctrine' => array (
+    	'driver' => array (
+    		'ZG_Model_Entities' => array (
+    			'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+    			'cache' => 'array',
+    			'paths' => array(LIBRARY_PATH . 'ZG' . DS . 'Model' . DS .'Entities')
+    		),
+    		'orm_default' => array(
+    			'drivers' => array (
+    				'ZG\Model\Entities' => 'ZG_Model_Entities'
+    			)
+    		)
+    	)
+    )
 );
 

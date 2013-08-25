@@ -22,13 +22,6 @@ class VoteOptions
     private $voteOptionId;
 
     /**
-     * @var integer $voteId
-     *
-     * @ORM\Column(name="vote_id", type="integer", nullable=true)
-     */
-    private $voteId;
-
-    /**
      * @var string $voteOptionTitle
      *
      * @ORM\Column(name="vote_option_title", type="string", length=255, nullable=false)
@@ -49,6 +42,16 @@ class VoteOptions
      */
     private $voteOptionPercent;
 
+    /**
+     * @var Votes
+     *
+     * @ORM\ManyToOne(targetEntity="Votes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="vote_id", referencedColumnName="vote_id")
+     * })
+     */
+    private $vote;
+
 
     /**
      * Get voteOptionId
@@ -58,29 +61,6 @@ class VoteOptions
     public function getVoteOptionId()
     {
         return $this->voteOptionId;
-    }
-
-    /**
-     * Set voteId
-     *
-     * @param integer $voteId
-     * @return VoteOptions
-     */
-    public function setVoteId($voteId)
-    {
-        $this->voteId = $voteId;
-    
-        return $this;
-    }
-
-    /**
-     * Get voteId
-     *
-     * @return integer 
-     */
-    public function getVoteId()
-    {
-        return $this->voteId;
     }
 
     /**
@@ -150,5 +130,28 @@ class VoteOptions
     public function getVoteOptionPercent()
     {
         return $this->voteOptionPercent;
+    }
+
+    /**
+     * Set vote
+     *
+     * @param Votes $vote
+     * @return VoteOptions
+     */
+    public function setVote(\Votes $vote = null)
+    {
+        $this->vote = $vote;
+    
+        return $this;
+    }
+
+    /**
+     * Get vote
+     *
+     * @return Votes 
+     */
+    public function getVote()
+    {
+        return $this->vote;
     }
 }

@@ -25,5 +25,15 @@
  */
 
 ?>
-<!--  load block data has captured -->
-<?php echo $this->placeholder('sidebar'); ?>
+
+<?php 
+	// <!--  load block data has captured -->
+	switch ($this->controller) {
+		case 'about':
+		    echo $this->placeholder('about-sidebar');
+		    break;
+		case 'tutorial':
+		    echo $this->placeholder('tutorial-sidebar');
+		    break;
+	}
+?>

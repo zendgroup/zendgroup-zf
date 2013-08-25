@@ -39,13 +39,13 @@ class IndexController extends ActionController
 //         ModelGenerator::setNamespace('ZG\Model\Repositories');
 //         ModelGenerator::general();
     	
-    	$serviceLocator = $this->getServiceLocator()->get('Application');
-    	$routeMatch  = $serviceLocator->getMvcEvent()->getRouteMatch();
-    	$router      = $serviceLocator->getMvcEvent()->getRouter();
-    	// retrieve param from route match
-    	$routeMatch = $this->getEvent()->getRouteMatch();
-    	$paramValue = $routeMatch->getParam('a_param');
-    	$this->layout('layout/layout_1_column');
+//     	$serviceLocator = $this->getServiceLocator()->get('Application');
+//     	$routeMatch  = $serviceLocator->getMvcEvent()->getRouteMatch();
+//     	$router      = $serviceLocator->getMvcEvent()->getRouter();
+//     	// retrieve param from route match
+//     	$routeMatch = $this->getEvent()->getRouteMatch();
+//     	$paramValue = $routeMatch->getParam('a_param');
+//     	$this->layout('layout/layout_1_column');
     	// retrieve param from request
 //     	$request = $this->getEvent()->getRequest();
 //     	$paramValue = $request->query()->get('a_param');
@@ -53,98 +53,20 @@ class IndexController extends ActionController
 //     	$result = new ViewModel(array('a_param' => $paramValue));
 //     	return $result;
     	
-    	
-    	
-//     	echo '<pre>';
-//     	print_r($router);
-//     	die();
-        return new ViewModel();
-        //$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+        $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
-		//echo $this->search_largest_prime(50);
 
-		//$this->show_fibonacci(7);
-
-     //   $this->count_word('122 is larger than 11 but smaller than 199 and 1a3 is not a number');
-//die;
-// $a = new \ZG\Model\Entities\Albums();
-// echo '<pre>'; var_dump($a); die();
-//        echo '<pre>'; var_dump($album1); die();
 //         $user = new \ZG\Model\Entities\Users();
 //         $user->setUserName('thuydx');
+//         $user->setUserPassword('1234567');
 //         $objectManager->persist($user);
 //         $objectManager->flush();
-
+		//$objectManager->getEntity($user);
 //         echo '<pre>'; var_dump($user->getUserName()); die();
 
+// $user =  $objectManager->find('ZG\Model\Entities\Users',1);
+// echo $user->getUserName();
+
+			return new ViewModel();
     }
-    /*
-    public function check_prime($n) {
-        if ($n == 2 || $n == 3) {
-            return true;
-        }
-        if ($n == 1 || $n % 2 == 0 || $n % 3 == 0) {
-            return false;
-        }
-
-        $j = sqrt($n);
-        for ($i = 5; $i <= $j; $i += 6){
-			if ($n % $i == 0 || $n % ($i + 2) == 0)
-				return false;
-				// in the end, n is a prime
-				return true;
-        }
-    }
-
-    public function search_largest_prime($n) {
-		for($n; $n>=0;$n--)
-		{
-		    $checked = $this->check_prime($n);
-		    if ($checked == true) {
-		        return $n;
-		    }
-		}
-    }
-
-    public function show_fibonacci($n) {
-        $f0 = 0;
-        $f1 = 1;
-
-        for ($i =0; $i <= $n; $i++ ) {
-            if ($i <= 1){
-                $next = $i;
-            } else {
-                $next = $f0 + $f1;
-                $f0 = $f1;
-                $f1 = $next;
-            }
-            echo $next . ' ';
-        }
-    }
-
-
-    public function count_word($str) {
-        $str2 = '';
-        $num_count = 0;
-        $word_count = 0;
-        for ($i = 0; $i <= strlen($str); $i++) {
-            $temp = substr($str, $i, 1);
-			if ($temp !== ' ' && $i != strlen($str)) {
-                $str2 .= $temp;
-            } else {
-                echo $str2 . ' - ' . (string)$str2 / 2 .'<br>';
-
-
-
-                if (is_numeric($str2)) {
-                    $num_count++;
-                } else {
-                    $word_count++;
-                }
-                $str2 = '';
-            }
-        }
-//        echo 'word count: '. $word_count . '<br> number count: ' . $num_count;
-    }
-	*/
 }

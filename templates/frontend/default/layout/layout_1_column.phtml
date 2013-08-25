@@ -36,7 +36,12 @@
           <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('{ ZG }') ?></a>
           <div class="nav-collapse">
 
-            <?php echo $this->navigation('Navigation')->menu()->setUlClass('nav'); ?>
+            <?php 
+            	echo $this->navigation('Navigation')->menu()
+            			->setMaxDepth(0)
+            			->setUlClass('nav');
+            	; 
+            ?>
 <!--             <ul class="nav"> -->
 <!--                <li class="active"><a href="<?php //echo $this->url('home') ?>"><?php //echo $this->translate('Home') ?></a></li> -->
 <!--                <li class=""><a href="<?php //echo $this->url('home') ?>"><?php //echo $this->translate('About') ?></a></li> -->
@@ -58,18 +63,30 @@
         </div>
         <div class="row show-grid">
         	<div class="span12">
-        	    <?php echo $this->navigation('Navigation')->breadcrumbs(); ?>
+			<?php
+				echo $this->navigation('navigation')
+							->breadcrumbs()
+							->setIndent(8)
+							->setMinDepth(0)
+							->setMaxDepth(1)
+							->setLinkLast(true)
+							//->setSeparator(' ▶' . PHP_EOL)
+							->setPartial(array('partial/breadcrumbs.phtml', 'Front'));
+			 ?>
+        	    <?php //echo $this->navigation('navigation')->breadcrumbs()->setMinDepth(0); ?>
         	</div>
         </div>
         <div class="clearfix"></div>
         <div class="row show-grid">
-        	<div class="span9">
+        	<div class="<?= ($this->controller == 'index')?'span12':'span9' ?>">
                 <?php echo $this->content; ?>
         	</div>
+        	<?php if($this->controller != 'index'): ?>
         	<div class="span3">
         		<!-- load block -->
         		<?php echo $this->render('layout/block/sidebar_right');?>
-        	</div>
+        	</div>      	
+        	<?php endif; ?>
         </div>
          <div class="clearfix"></div>
 

@@ -13,27 +13,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Media
 {
     /**
-     * @var integer $meidaId
+     * @var integer $mediaId
      *
-     * @ORM\Column(name="meida_id", type="integer", nullable=false)
+     * @ORM\Column(name="media_id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $meidaId;
-
-    /**
-     * @var integer $contentId
-     *
-     * @ORM\Column(name="content_id", type="integer", nullable=true)
-     */
-    private $contentId;
-
-    /**
-     * @var integer $userId
-     *
-     * @ORM\Column(name="user_id", type="integer", nullable=true)
-     */
-    private $userId;
+    private $mediaId;
 
     /**
      * @var string $mediaFileName
@@ -98,61 +84,25 @@ class Media
      */
     private $mediaStatus;
 
+    /**
+     * @var ContentDetail
+     *
+     * @ORM\ManyToOne(targetEntity="ContentDetail")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="content_detail_id", referencedColumnName="content_detail_id")
+     * })
+     */
+    private $contentDetail;
+
 
     /**
-     * Get meidaId
+     * Get mediaId
      *
      * @return integer 
      */
-    public function getMeidaId()
+    public function getMediaId()
     {
-        return $this->meidaId;
-    }
-
-    /**
-     * Set contentId
-     *
-     * @param integer $contentId
-     * @return Media
-     */
-    public function setContentId($contentId)
-    {
-        $this->contentId = $contentId;
-    
-        return $this;
-    }
-
-    /**
-     * Get contentId
-     *
-     * @return integer 
-     */
-    public function getContentId()
-    {
-        return $this->contentId;
-    }
-
-    /**
-     * Set userId
-     *
-     * @param integer $userId
-     * @return Media
-     */
-    public function setUserId($userId)
-    {
-        $this->userId = $userId;
-    
-        return $this;
-    }
-
-    /**
-     * Get userId
-     *
-     * @return integer 
-     */
-    public function getUserId()
-    {
-        return $this->userId;
+        return $this->mediaId;
     }
 
     /**
@@ -360,5 +310,28 @@ class Media
     public function getMediaStatus()
     {
         return $this->mediaStatus;
+    }
+
+    /**
+     * Set contentDetail
+     *
+     * @param ContentDetail $contentDetail
+     * @return Media
+     */
+    public function setContentDetail(\ContentDetail $contentDetail = null)
+    {
+        $this->contentDetail = $contentDetail;
+    
+        return $this;
+    }
+
+    /**
+     * Get contentDetail
+     *
+     * @return ContentDetail 
+     */
+    public function getContentDetail()
+    {
+        return $this->contentDetail;
     }
 }
