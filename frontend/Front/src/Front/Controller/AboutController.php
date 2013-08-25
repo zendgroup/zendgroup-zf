@@ -27,9 +27,11 @@
 namespace Front\Controller;
 
 use ZG\Utilities\ModelGenerator;
-
+use Zend\Mvc\MvcEvent;
 use Zend\View\Model\ViewModel;
 use ZG\Mvc\Controller\ActionController;
+use Zend\View\Resolver\ResolverInterface;
+
 
 class AboutController extends ActionController
 {
@@ -37,4 +39,68 @@ class AboutController extends ActionController
 	{
 		return new ViewModel();
 	}
+	
+	public function contactAction()
+	{
+		return new ViewModel();
+	}
+	
+	public function ourteamAction()
+	{
+		return new ViewModel();
+	}
+	
+	public function contributorsAction()
+	{
+		return new ViewModel();
+	}
+	
+	public function licenseAction()
+	{
+		return new ViewModel();
+	}
+	
+	public function changelogsAction()
+	{
+		return new ViewModel();
+	}
+	
+	public function logosAction()
+	{
+		return new ViewModel();
+	}
+	
+	public function guideAction()
+	{
+		return new ViewModel();
+	}
+	
+	public function faqAction()
+	{
+		return new ViewModel();
+	}
+
+	public function onDispatch(MvcEvent $e)
+	{
+// 	    $model   = new ViewModel();
+// 	    $matches = $e->getRouteMatch();
+	    //$page    = $matches->getParam('page', false);
+// 	    $action = strtolower($matches->getParam('action', 'not-found'));
+// 	    $controller = array_pop(explode('\\', $matches->getParam('controller')));
+// 	    echo '<pre>';
+// 	    print_r($controller);
+// 	    die();
+// 	    if (!$page) {
+// 	        return $this->return404Page($model, $e->getResponse());
+// 	    }
+	
+	    //$page = 'page-controller/' . $page;
+	    //if (!$this->resolver->resolve($page)) {
+	        //return $this->return404Page($model, $e->getResponse());
+	    //}
+	
+// 	    $model->setTemplate($page);
+// 	    $e->setResult($model);
+// 	    return $model;
+	}	
 }

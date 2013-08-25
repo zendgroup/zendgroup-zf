@@ -187,6 +187,13 @@ article {
     text-decoration: none;
 /*    width: 290px;*/
 }
+.widget ul li a:hover {
+	color: #0088CC;
+    text-decoration: none;
+}
+.widget ul li.active a {
+	color: #cccccc;
+}
 .widget ul li:last-child {
     border-bottom: none;
 }

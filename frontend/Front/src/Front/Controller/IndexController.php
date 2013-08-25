@@ -35,10 +35,30 @@ class IndexController extends ActionController
 {
     public function indexAction()
     {
-        ModelGenerator::setModelPath(LIBRARY_PATH . 'ZG' . DS . 'Model' . DS . '');
-        ModelGenerator::setNamespace('ZG\Model\Repositories');
-        ModelGenerator::general();
-//         return new ViewModel();
+//         ModelGenerator::setModelPath(LIBRARY_PATH . 'ZG' . DS . 'Model' . DS . '');
+//         ModelGenerator::setNamespace('ZG\Model\Repositories');
+//         ModelGenerator::general();
+    	
+    	$serviceLocator = $this->getServiceLocator()->get('Application');
+    	$routeMatch  = $serviceLocator->getMvcEvent()->getRouteMatch();
+    	$router      = $serviceLocator->getMvcEvent()->getRouter();
+    	// retrieve param from route match
+    	$routeMatch = $this->getEvent()->getRouteMatch();
+    	$paramValue = $routeMatch->getParam('a_param');
+    	$this->layout('layout/layout_1_column');
+    	// retrieve param from request
+//     	$request = $this->getEvent()->getRequest();
+//     	$paramValue = $request->query()->get('a_param');
+    	
+//     	$result = new ViewModel(array('a_param' => $paramValue));
+//     	return $result;
+    	
+    	
+    	
+//     	echo '<pre>';
+//     	print_r($router);
+//     	die();
+        return new ViewModel();
         //$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
 		//echo $this->search_largest_prime(50);
