@@ -192,15 +192,14 @@ pre .tex .formula {
                     <li><a href="#modules-one-6">Service Manager</a></li>
                 </ul>
             </li>
-            <li>MODULES TWO
+            <li><a href="#modules-two">MODULES TWO</a>
                 <ul>
-                    <li>Zend Module</li>
-                    <li>Zend Module Autoloader</li>
-                    <li>Zend Module Manager</li>
-                    <li>Zend Module Manager Events</li>
-                    <li>Zend Module Classes</li>
-                    <li>MVC ‘bootstrap’ Event</li>
-                    <li>Zend Module Best Practices</li>
+                    <li><a href="#modules-two-1">Zend Module</a></li>
+                    <li><a href="#modules-two-2">Zend Module Autoloader</a></li>
+                    <li><a href="#modules-two-3">Zend Module Manager</a></li>
+                    <li><a href="#modules-two-4">Zend Module Manager Events</a></li>
+                    <li><a href="#modules-two-5">Zend Module Classes</a></li>
+                    <li><a href="#modules-two-6">MVC ‘bootstrap’ Event</a></li>
                 </ul>
             </li>
             <li>MODULES THREE
@@ -502,17 +501,705 @@ return array(
         <p>
             All the central idea behind them is code reusability and separation of concerns<br/>
             Everything are event. <br/><br/>
-            HTTP Request --> bootstrap (give request to listeners) <br/>
-            bootstrap -->route (RouteListener progress)<br/>
-            route --> dispatch (DispatchListener progress) --> HTTP Response<br/>
+            <img src="images/zf2-mvc-event.jpg" />
         </p>
 
         <h3 id="modules-one-4">Event Manager</h3>
+        Terminology
         <ul>
             <li>An Event Manager is an object that agreegates listener for one or more named events and which triggers events</li>
-            <li>A Listener is a callback that can react to an event/</li>
-            <li>An event is an action.</li>
+            <li>A Listener is a callback  ( closure, static method, typical array callback ) that can react to an event/</li>
+            <li>An event is an action that is triggered by an EventManager.</li>
         </ul>
+        Example:
+        <pre><code>
+use Zend\EventManager\EventManager;
+
+$events = new EventManager;
+$events->attach('do', function($e) {
+    $event  = $e->getName();
+    $params = $e->getParams();
+
+    printf(
+        'Handled event "%s" with parameter "%s"',
+        $event,
+        json_encode($params)
+    );
+});
+
+$params = array('foo' => 'bar','baz' => 'bat');
+$events->trigger('do', null, $params); //event, target, parameter
+//print : Handled event "do" with parameter "{"foo":"bar","baz":"bat"}"
+
+</code></pre>
+        <p>
+With that example we know how to write an event and how to using that.
+That example are full detail of single event we called "do". When "do" event are trigged
+that will be callback to a function closure. We can replace the function closure with array callback, function or something can work when "do" called
+        </p>
+We can separator the example about:
+<pre><code>use Zend\EventManager\EventManager;
+
+$events = new EventManager;
+$events->attach('do', array($this,'doCallback');
+
+public function doCallback ($e)
+{
+    $event  = $e->getName();
+    $params = $e->getParams();
+
+    printf(
+        'Handled event "%s" with parameter "%s"',
+        $event,
+        json_encode($params)
+    );
+}
+</code></pre>
+<b>Wildcard Attachment</b><br />
+We can attach to many events at once.<br />
+for example :
+<pre><code>$events = new EventManager();
+$events->attach(array('these', 'are', 'event', 'names'), $callback);
+</code></pre>
+or using ‘*’ to make $callback available in all events.
+<pre><code>$events = new EventManager();
+$events->attach('*', $callback);
+</code></pre>
+
+<h3 id="modules-one-5">Shared Event Manager</h3>
+<p>
+    Likely the Event Manager but when you has more event in other module, other place.
+    How to attack them to your module? <br />
+    Share Event Manager will help you to do that. <br />
+    This is to allow attaching to events when you don’t have access to the object. <br />
+    You should implements <b>Zend\EventManager\EventManagerAwareInterface</b> to make it run.
+</p>
+For example, we create a class like the following :
+<pre><code>use Zend\EventManager\EventManager;
+use Zend\EventManager\EventManagerAwareInterface;
+use Zend\EventManager\EventManagerInterface;
+
+class Foo implements EventManagerAwareInterface
+{
+    protected $events;
+
+    public function setEventManager(EventManagerInterface $events)
+    {
+        $this->events = $events;
+        return $this;
+    }
+
+    public function getEventManager()
+    {
+        if (!$this->events) {
+             $this->setEventManager(new EventManager(__CLASS__));
+        }
+        return $this->events;
+    }
+
+    public function bar($baz, $bat = null) {
+        $params = compact('baz', 'bat');
+        $this->getEventManager()->trigger(__FUNCTION__, $this, $params);
+    }
+}
+</code></pre>
+and you can attach to it by :
+<pre><code>use Zend\EventManager\SharedEventManager;
+
+$sharedEvent = new SharedEventManager;
+$sharedEvent->attach('Foo', 'bar', function($e) {
+    $event  = $e->getName();
+    $target = get_class($e->getTarget());
+    $params = json_encode($e->getParams());
+
+    printf(
+        '%s called on %s, using params %s',
+        $event,
+        $target,
+        $params
+    );
+});
+
+$foo = new Foo();
+$foo->getEventManager()->setSharedManager($sharedEvent);
+$foo->bar('bazvalue', 'batvalue');
+//print : bar called on Foo, using params {"baz":"bazvalue","bat":"batvalue"}
+</code></pre>
+
+for more information about Event Manager please go to <br />
+<a href="http://framework.zend.com/manual/2.2/en/modules/zend.event-manager.event-manager.html" >http://framework.zend.com/manual/2.2/en/modules/zend.event-manager.event-manager.html</a> <br />
+<a href="http://www.mwop.net/blog/266-Using-the-ZF2-EventManager.html#toc_1.4">http://www.mwop.net/blog/266-Using-the-ZF2-EventManager.html#toc_1.4</a>
+<h3 id="modules-one-6">Service Manager</h3>
+<ul>
+    <li>The ServiceManager is a Service Locator implementation</li>
+    <li>A Service Locator is a well-known object in which you may register objects (more in general services) and later retrieve them</li>
+    <li>Driven by configuration</li>
+</ul>
+<p>
+    Cover in this section are how to get Service Manager (SM) and Type of SM
+</p>
+<h4>How to get SM</h4>
+<b>Inside controller</b>
+<pre><code>$serviceLocator = $this->getServiceLocator();</code></pre>
+
+<b>Inside Module.php</b>
+<pre><code>namespace YourModule\Service;
+
+use Zend\Mvc\MvcEvent;
+
+class Module
+{
+    public function onBootstrap(MvcEvent $e)
+    {
+        $sm = $e->getApplication()->getServiceManager();
+    }
+}</code></pre>
+
+<b>Inside Controller Plugin</b>
+<pre><code>$serviceLocator = $this->getController()->getServiceLocator();</code></pre>
+
+
+<h4>Type of Service Manager</h4>
+We have some type of SM:
+<ul>
+    <li>Explicit & Invokables (name => object pairs / class to instantiate)</li>
+    <li>Abstract Factories (unknown services)</li>
+    <li>Factories (name => callable returning object)</li>
+    <li>Aliases (name => some other name)</li>
+    <li>Shared (or not; you decide)</li>
+    <li>Service (name => service name/object pairs)</li>
+    <li>Initializers</li>
+    <li>allow_overwrite</li>
+<!--    <li>Scoped Containers (limit what can be created)</li>-->
+
+</ul>
+<br />
+
+
+<b>Explicit & Invokables</b> : an array of service name/class name pairs. The class name should be class that may be directly instantiated without any constructor arguments
+for ex :
+<pre><code>//YourModule/config/module.config.php
+return array(
+    'controllers'=>array(
+        'invokables' => array(
+            'Demo\Controller\User' => 'Demo\Controller\UserController'
+        ),
+    ),
+)
+</code></pre>
+
+<b>Abstract Factories (unknown services)</b> <br />
+Create an factory extends from AbstractFactoryInterface
+<pre><code>namespace YourModule\Service;
+
+use Zend\ServiceManager\AbstractFactoryInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
+
+class CommonModelTableAbstractFactory implements AbstractFactoryInterface
+{
+    public function canCreateServiceWithName(ServiceLocatorInterface $locator, $name, $requestedName)
+    {
+        return (substr($requestedName, -5) === 'Table');
+    }
+
+    public function createServiceWithName(ServiceLocatorInterface $locator, $name, $requestedName)
+    {
+        $db = $locator->get('Zend\Db\Adapter\Adapter');
+        $tablemodel = new $requestedName;
+        $tablemodel->setDbAdapter($db);
+
+        return $tablemodel;
+    }
+}
+</code></pre>
+Register that factory to SM
+<pre><code>//YourModule/config/module.config.php
+return array(
+    'service_manager'=> array(
+        'abstract_factories' => array(
+        'YourModule\Service\CommonModelTableAbstractFactory',
+        ),
+    );
+    ),
+);</code></pre>
+As you see, I want to make a table of Db come to a service. But I don't want to listing all table when I register.
+I make an abstractFactiory to automaticaly create service.
+The first: SM will call my table name as a service. If SM not found them in the pool. That will be go to CommonModelTableAbstractFactory
+and create new service with named are TableName from request.
+<br />
+<br />
+<b>Factories</b> <br />
+
+Using function closure <br />
+<pre><code>//YourModule/config/module.config.php
+return array(
+    'service_manager'=>array(
+        'factories' => array(
+            'MyTable' => function ($sm) {
+                $db = $sm->get('Zend\Db\Adapter\DbAdapter');
+                $table = new \YourModule\Model\MyTableModel();
+                $table->setDbAdapter($db);
+            },
+        ),
+    ),
+);
+</code></pre>
+
+Separator to other file by implementing Zend\ServiceManager\FactoryInterface <br />
+create a factory first : <br />
+<pre><code>namespace YourModule\Service;
+
+use Zend\ServiceManager\FactoryInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
+
+class MyTableFactory implements FactoryInterface
+{
+    public function createService(ServiceLocatorInterface $serviceLocator)
+    {
+        $db = $serviceLocator->get('Zend\Db\Adapter\DbAdapter');
+        $table = new \YourModule\Model\MyTableModel();
+        $table->setDbAdapter($db);
+
+        return $table;
+    }
+}
+</code></pre>
+And the factories registered just like the following :
+
+<pre><code>//YourModule/config/module.config.php
+return array(
+    'service_manager'=>array(
+        'factories' => array(
+            'MyTable' => 'YourModule\Service\MyTableFactory'
+        ),
+    ),
+);
+</code></pre>
+
+
+<b>Aliases</b> : <br />Which should be an associative array of alias name/target name pairs (where the target name may also be an alias).
+<pre><code>//YourModule/config/module.config.php
+return array(
+    'service_manager'=>array(
+        'factories' => array(
+            'MyTable' => 'YourModule\Service\MyTableFactory'
+        ),
+        'aliases' => array(
+            'YourModule\Model\MyTable' => 'MyTable',
+        ),
+    ),
+);
+</code></pre>
+<b>Shared</b> :<br />An array of service name/boolean pairs, indicating whether or not a service should be shared. By default, the ServiceManager assumes all services are shared, but you may specify a boolean false value here to indicate a new instance should be returned.
+<pre><code>//YourModule/config/module.config.php
+return array(
+    'service_manager'=>array(
+        'factories' => array(
+            'MyTable' => 'YourModule\Service\MyTableFactory'
+        ),
+        'shared' => array(
+            // Usually, you'll only indicate services that should _NOT_ be
+            // shared -- i.e., ones where you want a different instance
+            // every time.
+            'MyTable' => false,
+        ),
+    ),
+);
+</code></pre>
+<b>Services</b> : <br />An array of service name/object pairs. Clearly, this will only work with PHP configuration.
+<pre><code>//YourModule/config/module.config.php
+return array(
+    'service_manager'=>array(
+        'services' => array(
+            // Keys are the service names
+            // Values are objects
+            'Auth' => new YourModule\Authentication\AuthenticationService(),
+        ),
+    ),
+);
+</code></pre>
+
+
+
+
+<b>initializers</b> <br />
+It initialize the service whenever service created. It can reduce the redundance the injections to services.
+<pre><code>//YourModule/config/module.config.php
+return array(
+    'service_manager'=>array(
+        'initializers' => array(
+        function ($instance, $sm) {
+        if ($instance instanceof \Zend\Db\Adapter\AdapterAwareInterface) {
+            $instance->setDbAdapter($sm->get('Zend\Db\Adapter\Adapter'));
+        }
+        }
+    ),
+    ),
+);
+</code></pre>
+And you should not to inject Adapter manually in the Table Class :
+
+<pre><code>namespace YourModule\Model;
+
+use Zend\Db\TableGateway\AbstractTableGateway;
+use Zend\Db\Adapter\AdapterAwareInterface;
+use Zend\Db\Adapter\Adapter;
+
+class UserTable extends AbstractTableGateway
+    implements AdapterAwareInterface
+{
+    protected $table = 'zf2_users';
+
+    public function setDbAdapter(Adapter $adapter)
+    {
+        $this->adapter = $adapter;
+        $this->initialize();
+    }
+}
+</code></pre>
+Just invoke at service_manager :
+<pre><code>//YourModule/config/module.config.php
+return array(
+    'service_manager'=>array(
+        'initializers' => array(
+        function ($instance, $sm) {
+        if ($instance instanceof \Zend\Db\Adapter\AdapterAwareInterface) {
+            $instance->setDbAdapter($sm->get('Zend\Db\Adapter\Adapter'));
+        }
+        }
+    ),
+        'invokables' => array(
+            'YourModule\Model\UserTable' => 'YourModule\Model\UserTable'
+        )
+    ),
+);
+</code></pre>
+<b>allow_override</b> <br />
+Override your existing Services.
+<pre><code>//YourModule/config/module.config.php
+return array(
+    'service_manager'=>array(
+        'factories' => array(
+            'MyService' => 'YourModule\Service\MyServiceFactory'
+        ),
+        'allow_override' => array(
+            'MyService' => true,
+        ),
+    ),
+);
+</code></pre>
+
+
+<h2 id="modules-two">MODULES TWO</h2>
+
+In this module we will be research all key point in the list below
+<ul>
+<li>Zend Module</li>
+<li>Zend Module Autoloader</li>
+<li>Zend Module Manager</li>
+<li>Zend Module Manager Events</li>
+<li>Zend Module Classes</li>
+<li>MVC ‘bootstrap’ Event</li>
+</ul>
+
+<h3 id="modules-two-1">Zend Module</h3>
+<p>
+    The basic unit in ZF2 application is a module. Module are "Plug & play" technology <br />
+    Module are simple:
+<ul>
+    <li>A namespace</li>
+    <li>Containing a single file Module.php</li>
+</ul>
+<br />
+    Module contain all your code such as: Controller, Entities, Plugin, View, Etc...<br />
+    Almost time you working with ZF2 are module. 99% working time to write modules :P <br />
+
+    <b>Module overview</b> <br />
+    In the "Modules One" above. We was researched Event, EventManager, ShareEvent, ServiceManager
+    When you understand all of them, we research Module.
+    Want to working with module we must understand ZF2. I had said, Everything are Event and Module are same.
+    We should understand Module.php and module.config.php. <br />
+    If you have working with ZF1 so you know bootstrap file and module.config.ini or configs/application.ini <br />
+    In the ZF2 Module.php likely Boostrap.php and module.config.php likely module.config.ini in the ZF1.
+    The main idea of Module.php are init all service, instance, event, variable....
+    and module.config.php to make configuration all of them.
+</p>
+Module.php
+<pre><code>namespace Front;
+
+use Zend\Mvc\ModuleRouteListener;
+use Zend\Mvc\MvcEvent;
+use Zend\ModuleManager\ModuleManager;
+use ZG\View\Helper\Editor;
+
+class Module
+{
+    public function onBootstrap(MvcEvent $e)
+    {
+        $e->getApplication()->getServiceManager()->get('translator');
+        $eventManager        = $e->getApplication()->getEventManager();
+        $moduleRouteListener = new ModuleRouteListener();
+        $moduleRouteListener->attach($eventManager);
+    }
+
+    public function init(ModuleManager $moduleManager)
+    {
+        $sharedEvents = $moduleManager->getEventManager()->getSharedManager();
+        $sharedEvents->attach(__NAMESPACE__, 'dispatch', array($this, 'getLayoutConfig'), 100);
+        $sharedEvents->attach(__NAMESPACE__, 'dispatch', array($this, 'addViewVariables'), 201);
+    }
+
+    public function getConfig()
+    {
+        return include __DIR__ . '/config/module.config.php';
+    }
+
+    public function getAutoloaderConfig()
+    {
+        return array(
+            'Zend\Loader\StandardAutoloader' => array(
+                'namespaces' => array(
+                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
+                ),
+            ),
+        );
+    }
+
+    public function getViewHelperConfig()
+    {
+    	return array(
+            'factories' => array(
+                // the array key here is the name you will call the view helper by in your view scripts
+    		'editor' => function($sm) {
+                    //$locator = $sm->getServiceLocator(); // $sm is the view helper manager, so we need to fetch the main service manager
+                    return new Editor();
+    		},
+            ),
+            'invokables' => array(
+                'editor'        => 'ZG\View\Helper\Editor',
+    		//'tablist'        => 'ZG\View\Helper\TabList',
+            ),
+    	);
+    }
+
+    /**
+     * pass variables to layout
+     *
+     * @param \Zend\EventManager\EventInterface $e
+     */
+    public function addViewVariables($e)
+    {
+        $route = $e->getRouteMatch();
+        $viewModel = $e->getViewModel();
+        $variables = $viewModel->getVariables();
+        if (false === isset($variables['controller'])) {;
+            $controllerName = strtolower(str_replace('Controller', '', array_pop(explode('\\', $route->getParam('controller')))));
+            $viewModel->setVariable('controller', $controllerName);
+
+        }
+        if (false === isset($variables['action'])) {
+            $viewModel->setVariable('action', $route->getParam('action'));
+        }
+
+        $viewModel->setVariable('module', strtolower(__NAMESPACE__));
+    }
+
+    /**
+     * get Layout Configuration
+     * @param \Zend\EventManager\EventInterface $e
+     */
+    public function getLayoutConfig($e) {
+        // This event will only be fired when an ActionController under the MyModule namespace is dispatched.
+        $config = $e->getApplication()->getServiceManager()->get('config');
+        $controller = $e->getTarget();
+        $controllerClass = get_class($controller);
+
+        $arrTemporary = explode('\\', $controllerClass);
+        $moduleNamespace = strtolower(array_shift($arrTemporary));
+        $controllerName = strtolower(str_replace('Controller', '', array_pop($arrTemporary)));
+
+        $routeMatch = $e->getRouteMatch();
+        $actionName = strtolower($routeMatch->getParam('action', 'not-found')); // get the action name
+
+        if (isset($config['layout']) && $config['layout']['module_layouts']['enable'] == true) {
+            $controller->layout($config['layout']['module_layouts'][$moduleNamespace]);
+        } elseif (isset($config['layout']) && $config['layout']['controller_layouts']['enable'] == true) {
+            $controller->layout('layout/'.$controllerName);
+        } else {
+            $controller->layout($controllerName.'/'.$actionName);
+        }
+    }
+}
+</code></pre>
+<h3 id="modules-two-2">Zend Module Autoloader</h3>
+Module are plug & play so how to enable a module?
+Open configs/application.config.php
+<pre><code>
+return array(
+    // This should be an array of module namespaces used in the application.
+    'modules' => array(
+        'AdminCP',
+        'Content',
+        'Front',
+    ),
+
+    // These are various options for the listeners attached to the ModuleManager
+    'module_listener_options' => array(
+        // This should be an array of paths in which modules reside.
+        // If a string key is provided, the listener will consider that a module
+        // namespace, the value of that key the specific path to that module's
+        // Module class.
+        'module_paths' => array(
+            './backend',
+            './frontend',
+            './modules',
+            './vendors',
+        ),
+    ),
+);
+</code></pre>
+<p>
+    In Array config have 2 keys modules and module_listener_options <br />
+    modules key are listing of your modules<br />
+    module_listener_options have module_paths. That are listing of path where your module stay <br />
+
+    After loaded, Where modules go? What file first call?
+    That is Module.php
+</p>
+<pre><code>    public function getConfig()
+    {
+        return include __DIR__ . '/config/module.config.php';
+    }
+
+    public function getAutoloaderConfig()
+    {
+        return array(
+            'Zend\Loader\StandardAutoloader' => array(
+                'namespaces' => array(
+                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
+                ),
+            ),
+        );
+    }</code></pre>
+<p>
+    You can see the function <b>getAutoloaderConfig()</b>. That function will help us to autoload all class in this module
+    Such as: Controller, Entities, Plugin.... <br />
+    That all, your module can work from now. <br />
+    That is a config only. If you want to control them or do something crazy. Go to reference
+    <a href="http://framework.zend.com/manual/2.0/en/modules/zend.loader.module-autoloader.html#zend-loader-module-autoloader">
+        http://framework.zend.com/manual/2.0/en/modules/zend.loader.module-autoloader.html#zend-loader-module-autoloader
+    </a>
+</p>
+
+<h3 id="modules-two-3">Zend Module Manager</h3>
+<p>The Module Manager - Zend\ModuleManager\ModuleManager simply takes an array of module names
+    and fires a sequence of events for each one,
+    allowing the behavior of the module system to be defined entirely by the listeners which are attached to the module manager.</p>
+
+<h3 id="modules-two-4">Zend Module Manager Events</h3>
+<p>Events triggered by Zend\ModuleManager\ModuleManager</p>
+<p><b>loadModules</b>
+    This event is primarily used internally to help encapsulate the work of loading modules in event listeners, and allow the loadModules.post event to be more user-friendly. Internal listeners will attach to this event with a negative priority instead of loadModules.post so that users can safely assume things like config merging have been done once loadModules.post is triggered, without having to worry about priorities at all.
+</p>
+<p><b>loadModule.resolve</b>
+
+    Triggered for each module that is to be loaded. The listener(s) to this event are responsible for taking a module name and resolving it to an instance of some class. The default module resolver shipped with ZF2 simply looks for the class {modulename}\Module, instantiating and returning it if it exists.
+
+    The name of the module may be retrieved by listeners using the getModuleName() method of the Event object; a listener should then take that name and resolve it to an object instance representing the given module. Multiple listeners can be attached to this event, and the module manager will trigger them in order of their priority until one returns an object. This allows you to attach additional listeners which have alternative methods of resolving modules from a given module name.
+</p>
+<p><b>loadModule</b>
+    Once a module resolver listener has resolved the module name to an object, the module manager then triggers this event, passing the newly created object to all listeners.
+</p>
+<p><b>loadModules.post</b>
+    This event is triggered by the module manager to allow any listeners to perform work after every module has finished loading. For example, the default configuration listener, Zend\ModuleManager\Listener\ConfigListener (covered later), attaches to this event to merge additional user-supplied configuration which is meant to override the default supplied configurations of installed modules.
+</p>
+<h3 id="modules-two-5">Zend Module Classes</h3>
+<p>
+    By default, the Zend Framework 2 module system simply expects each module name to be capable of resolving to an object instance. The default module resolver, Zend\ModuleManager\Listener\ModuleResolverListener, simply instantiates an instance of {moduleName}\Module for each enabled module.
+    <br />
+    A Typical Module Class
+The following example shows a more typical usage of the Module class:
+</p>
+
+<pre><code>namespace MyModule;
+
+class Module
+{
+    public function getAutoloaderConfig()
+    {
+        return array(
+            'Zend\Loader\ClassMapAutoloader' => array(
+                __DIR__ . '/autoload_classmap.php',
+            ),
+            'Zend\Loader\StandardAutoloader' => array(
+                'namespaces' => array(
+                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
+                ),
+            ),
+        );
+    }
+
+    public function getConfig()
+    {
+        return include __DIR__ . '/config/module.config.php';
+    }
+}
+</code></pre>
+
+<h3 id="modules-two-6">MVC ‘bootstrap’ Event</h3>
+<p>
+    If you are writing an MVC-oriented module for Zend Framework 2, you may need access to additional parts of the application in your Module class such as the instance of Zend\Mvc\Application or its registered ServiceManager instance. For this, you may utilize the MVC “bootstrap” event.
+    The bootstrap event is triggered after the “loadModule.post” event, once $application->bootstrap() is called.
+</p>
+Simple Module.php
+<pre>
+<code>use Zend\EventManager\EventInterface as Event;
+
+class Module
+{
+    public function onBootstrap(Event $e)
+    {
+        // This method is called once the MVC bootstrapping is complete
+        $application = $e->getApplication();
+        $services    = $application->getServiceManager();
+    }
+}
+</code>
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
