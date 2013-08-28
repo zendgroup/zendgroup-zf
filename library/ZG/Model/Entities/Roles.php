@@ -22,6 +22,13 @@ class Roles
     private $roleId;
 
     /**
+     * @var integer $parentId
+     *
+     * @ORM\Column(name="parent_id", type="integer", nullable=true)
+     */
+    private $parentId;
+
+    /**
      * @var string $roleTitle
      *
      * @ORM\Column(name="role_title", type="string", length=45, nullable=false)
@@ -35,6 +42,27 @@ class Roles
      */
     private $roleDescription;
 
+    /**
+     * @var integer $lft
+     *
+     * @ORM\Column(name="lft", type="integer", nullable=true)
+     */
+    private $lft;
+
+    /**
+     * @var integer $rgt
+     *
+     * @ORM\Column(name="rgt", type="integer", nullable=true)
+     */
+    private $rgt;
+
+    /**
+     * @var integer $depth
+     *
+     * @ORM\Column(name="depth", type="integer", nullable=true)
+     */
+    private $depth;
+
 
     /**
      * Get roleId
@@ -44,6 +72,29 @@ class Roles
     public function getRoleId()
     {
         return $this->roleId;
+    }
+
+    /**
+     * Set parentId
+     *
+     * @param integer $parentId
+     * @return Roles
+     */
+    public function setParentId($parentId)
+    {
+        $this->parentId = $parentId;
+    
+        return $this;
+    }
+
+    /**
+     * Get parentId
+     *
+     * @return integer 
+     */
+    public function getParentId()
+    {
+        return $this->parentId;
     }
 
     /**
@@ -90,5 +141,74 @@ class Roles
     public function getRoleDescription()
     {
         return $this->roleDescription;
+    }
+
+    /**
+     * Set lft
+     *
+     * @param integer $lft
+     * @return Roles
+     */
+    public function setLft($lft)
+    {
+        $this->lft = $lft;
+    
+        return $this;
+    }
+
+    /**
+     * Get lft
+     *
+     * @return integer 
+     */
+    public function getLft()
+    {
+        return $this->lft;
+    }
+
+    /**
+     * Set rgt
+     *
+     * @param integer $rgt
+     * @return Roles
+     */
+    public function setRgt($rgt)
+    {
+        $this->rgt = $rgt;
+    
+        return $this;
+    }
+
+    /**
+     * Get rgt
+     *
+     * @return integer 
+     */
+    public function getRgt()
+    {
+        return $this->rgt;
+    }
+
+    /**
+     * Set depth
+     *
+     * @param integer $depth
+     * @return Roles
+     */
+    public function setDepth($depth)
+    {
+        $this->depth = $depth;
+    
+        return $this;
+    }
+
+    /**
+     * Get depth
+     *
+     * @return integer 
+     */
+    public function getDepth()
+    {
+        return $this->depth;
     }
 }

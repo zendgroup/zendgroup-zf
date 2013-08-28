@@ -22,11 +22,39 @@ class Menus
     private $menuId;
 
     /**
-     * @var string $menuName
+     * @var integer $parentId
      *
-     * @ORM\Column(name="menu_name", type="string", length=45, nullable=true)
+     * @ORM\Column(name="parent_id", type="integer", nullable=true)
      */
-    private $menuName;
+    private $parentId;
+
+    /**
+     * @var integer $languageId
+     *
+     * @ORM\Column(name="language_id", type="integer", nullable=true)
+     */
+    private $languageId;
+
+    /**
+     * @var string $menuTitle
+     *
+     * @ORM\Column(name="menu_title", type="string", length=255, nullable=true)
+     */
+    private $menuTitle;
+
+    /**
+     * @var string $menuSlug
+     *
+     * @ORM\Column(name="menu_slug", type="string", length=255, nullable=true)
+     */
+    private $menuSlug;
+
+    /**
+     * @var string $menuPath
+     *
+     * @ORM\Column(name="menu_path", type="string", length=1024, nullable=true)
+     */
+    private $menuPath;
 
     /**
      * @var string $menuType
@@ -38,7 +66,7 @@ class Menus
     /**
      * @var string $menuLink
      *
-     * @ORM\Column(name="menu_link", type="string", length=255, nullable=true)
+     * @ORM\Column(name="menu_link", type="string", length=1024, nullable=true)
      */
     private $menuLink;
 
@@ -48,6 +76,41 @@ class Menus
      * @ORM\Column(name="menu_target", type="string", length=255, nullable=true)
      */
     private $menuTarget;
+
+    /**
+     * @var string $note
+     *
+     * @ORM\Column(name="note", type="string", length=45, nullable=true)
+     */
+    private $note;
+
+    /**
+     * @var boolean $published
+     *
+     * @ORM\Column(name="published", type="boolean", nullable=true)
+     */
+    private $published;
+
+    /**
+     * @var string $menuIcon
+     *
+     * @ORM\Column(name="menu_icon", type="string", length=255, nullable=true)
+     */
+    private $menuIcon;
+
+    /**
+     * @var string $params
+     *
+     * @ORM\Column(name="params", type="text", nullable=true)
+     */
+    private $params;
+
+    /**
+     * @var boolean $home
+     *
+     * @ORM\Column(name="home", type="boolean", nullable=true)
+     */
+    private $home;
 
     /**
      * @var integer $lft
@@ -63,6 +126,13 @@ class Menus
      */
     private $rgt;
 
+    /**
+     * @var integer $depth
+     *
+     * @ORM\Column(name="depth", type="integer", nullable=true)
+     */
+    private $depth;
+
 
     /**
      * Get menuId
@@ -75,26 +145,118 @@ class Menus
     }
 
     /**
-     * Set menuName
+     * Set parentId
      *
-     * @param string $menuName
+     * @param integer $parentId
      * @return Menus
      */
-    public function setMenuName($menuName)
+    public function setParentId($parentId)
     {
-        $this->menuName = $menuName;
+        $this->parentId = $parentId;
     
         return $this;
     }
 
     /**
-     * Get menuName
+     * Get parentId
+     *
+     * @return integer 
+     */
+    public function getParentId()
+    {
+        return $this->parentId;
+    }
+
+    /**
+     * Set languageId
+     *
+     * @param integer $languageId
+     * @return Menus
+     */
+    public function setLanguageId($languageId)
+    {
+        $this->languageId = $languageId;
+    
+        return $this;
+    }
+
+    /**
+     * Get languageId
+     *
+     * @return integer 
+     */
+    public function getLanguageId()
+    {
+        return $this->languageId;
+    }
+
+    /**
+     * Set menuTitle
+     *
+     * @param string $menuTitle
+     * @return Menus
+     */
+    public function setMenuTitle($menuTitle)
+    {
+        $this->menuTitle = $menuTitle;
+    
+        return $this;
+    }
+
+    /**
+     * Get menuTitle
      *
      * @return string 
      */
-    public function getMenuName()
+    public function getMenuTitle()
     {
-        return $this->menuName;
+        return $this->menuTitle;
+    }
+
+    /**
+     * Set menuSlug
+     *
+     * @param string $menuSlug
+     * @return Menus
+     */
+    public function setMenuSlug($menuSlug)
+    {
+        $this->menuSlug = $menuSlug;
+    
+        return $this;
+    }
+
+    /**
+     * Get menuSlug
+     *
+     * @return string 
+     */
+    public function getMenuSlug()
+    {
+        return $this->menuSlug;
+    }
+
+    /**
+     * Set menuPath
+     *
+     * @param string $menuPath
+     * @return Menus
+     */
+    public function setMenuPath($menuPath)
+    {
+        $this->menuPath = $menuPath;
+    
+        return $this;
+    }
+
+    /**
+     * Get menuPath
+     *
+     * @return string 
+     */
+    public function getMenuPath()
+    {
+        return $this->menuPath;
     }
 
     /**
@@ -167,6 +329,121 @@ class Menus
     }
 
     /**
+     * Set note
+     *
+     * @param string $note
+     * @return Menus
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+    
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return string 
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     * @return Menus
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+    
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean 
+     */
+    public function getPublished()
+    {
+        return $this->published;
+    }
+
+    /**
+     * Set menuIcon
+     *
+     * @param string $menuIcon
+     * @return Menus
+     */
+    public function setMenuIcon($menuIcon)
+    {
+        $this->menuIcon = $menuIcon;
+    
+        return $this;
+    }
+
+    /**
+     * Get menuIcon
+     *
+     * @return string 
+     */
+    public function getMenuIcon()
+    {
+        return $this->menuIcon;
+    }
+
+    /**
+     * Set params
+     *
+     * @param string $params
+     * @return Menus
+     */
+    public function setParams($params)
+    {
+        $this->params = $params;
+    
+        return $this;
+    }
+
+    /**
+     * Get params
+     *
+     * @return string 
+     */
+    public function getParams()
+    {
+        return $this->params;
+    }
+
+    /**
+     * Set home
+     *
+     * @param boolean $home
+     * @return Menus
+     */
+    public function setHome($home)
+    {
+        $this->home = $home;
+    
+        return $this;
+    }
+
+    /**
+     * Get home
+     *
+     * @return boolean 
+     */
+    public function getHome()
+    {
+        return $this->home;
+    }
+
+    /**
      * Set lft
      *
      * @param integer $lft
@@ -210,5 +487,28 @@ class Menus
     public function getRgt()
     {
         return $this->rgt;
+    }
+
+    /**
+     * Set depth
+     *
+     * @param integer $depth
+     * @return Menus
+     */
+    public function setDepth($depth)
+    {
+        $this->depth = $depth;
+    
+        return $this;
+    }
+
+    /**
+     * Get depth
+     *
+     * @return integer 
+     */
+    public function getDepth()
+    {
+        return $this->depth;
     }
 }

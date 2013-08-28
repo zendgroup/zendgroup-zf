@@ -5,21 +5,28 @@ namespace ZG\Model\Entities;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * GroupPermisions
+ * Permissions
  *
- * @ORM\Table(name="group_permisions")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\GroupPermisionsRepository")
+ * @ORM\Table(name="permissions")
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\PermissionsRepository")
  */
-class GroupPermisions
+class Permissions
 {
     /**
-     * @var integer $groupPermisionId
+     * @var integer $privilegeId
      *
-     * @ORM\Column(name="group_permision_id", type="integer", nullable=false)
+     * @ORM\Column(name="privilege_id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $groupPermisionId;
+    private $privilegeId;
+
+    /**
+     * @var integer $assignmentDate
+     *
+     * @ORM\Column(name="assignment_date", type="integer", nullable=false)
+     */
+    private $assignmentDate;
 
     /**
      * @var Groups
@@ -43,20 +50,43 @@ class GroupPermisions
 
 
     /**
-     * Get groupPermisionId
+     * Get privilegeId
      *
      * @return integer 
      */
-    public function getGroupPermisionId()
+    public function getPrivilegeId()
     {
-        return $this->groupPermisionId;
+        return $this->privilegeId;
+    }
+
+    /**
+     * Set assignmentDate
+     *
+     * @param integer $assignmentDate
+     * @return Permissions
+     */
+    public function setAssignmentDate($assignmentDate)
+    {
+        $this->assignmentDate = $assignmentDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get assignmentDate
+     *
+     * @return integer 
+     */
+    public function getAssignmentDate()
+    {
+        return $this->assignmentDate;
     }
 
     /**
      * Set group
      *
      * @param Groups $group
-     * @return GroupPermisions
+     * @return Permissions
      */
     public function setGroup(\Groups $group = null)
     {
@@ -79,7 +109,7 @@ class GroupPermisions
      * Set role
      *
      * @param Roles $role
-     * @return GroupPermisions
+     * @return Permissions
      */
     public function setRole(\Roles $role = null)
     {
