@@ -84,16 +84,6 @@ class Categories
      */
     private $categoryRight;
 
-    /**
-     * @var Menus
-     *
-     * @ORM\ManyToOne(targetEntity="Menus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="menu_id", referencedColumnName="menu_id")
-     * })
-     */
-    private $menu;
-
 
     /**
      * Get categoryId
@@ -310,28 +300,5 @@ class Categories
     public function getCategoryRight()
     {
         return $this->categoryRight;
-    }
-
-    /**
-     * Set menu
-     *
-     * @param Menus $menu
-     * @return Categories
-     */
-    public function setMenu(\Menus $menu = null)
-    {
-        $this->menu = $menu;
-    
-        return $this;
-    }
-
-    /**
-     * Get menu
-     *
-     * @return Menus 
-     */
-    public function getMenu()
-    {
-        return $this->menu;
     }
 }

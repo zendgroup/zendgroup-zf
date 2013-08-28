@@ -5,21 +5,28 @@ namespace ZG\Model\Entities;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * GroupAssociations
+ * Privileges
  *
- * @ORM\Table(name="group_associations")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\GroupAssociationsRepository")
+ * @ORM\Table(name="privileges")
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\PrivilegesRepository")
  */
-class GroupAssociations
+class Privileges
 {
     /**
-     * @var integer $groupAssociationId
+     * @var integer $permissionId
      *
-     * @ORM\Column(name="group_association_id", type="integer", nullable=false)
+     * @ORM\Column(name="permission_id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $groupAssociationId;
+    private $permissionId;
+
+    /**
+     * @var integer $assignmentDate
+     *
+     * @ORM\Column(name="assignment_date", type="integer", nullable=false)
+     */
+    private $assignmentDate;
 
     /**
      * @var Groups
@@ -43,20 +50,43 @@ class GroupAssociations
 
 
     /**
-     * Get groupAssociationId
+     * Get permissionId
      *
      * @return integer 
      */
-    public function getGroupAssociationId()
+    public function getPermissionId()
     {
-        return $this->groupAssociationId;
+        return $this->permissionId;
+    }
+
+    /**
+     * Set assignmentDate
+     *
+     * @param integer $assignmentDate
+     * @return Privileges
+     */
+    public function setAssignmentDate($assignmentDate)
+    {
+        $this->assignmentDate = $assignmentDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get assignmentDate
+     *
+     * @return integer 
+     */
+    public function getAssignmentDate()
+    {
+        return $this->assignmentDate;
     }
 
     /**
      * Set group
      *
      * @param Groups $group
-     * @return GroupAssociations
+     * @return Privileges
      */
     public function setGroup(\Groups $group = null)
     {
@@ -79,7 +109,7 @@ class GroupAssociations
      * Set user
      *
      * @param Users $user
-     * @return GroupAssociations
+     * @return Privileges
      */
     public function setUser(\Users $user = null)
     {
