@@ -1,5 +1,28 @@
 <?php
 
+/**
+ * ZEND GROUP
+ *
+ * @name        VoteOptions.php
+ * @category    ZG
+ * @package 	Model
+ * @subpackage  Model\Entities
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @copyright   Copyright (c)2008-2010 ZEND GROUP. All rights reserved
+ * @license     http://zendgroup.vn/license/
+ * @version     $1.0$
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ *
+ */
+
 namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,13 +30,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * VoteOptions
  *
- * @ORM\Table(name="vote_options")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\VoteOptionsRepository")
+ * @ORM\Table(name="vote_options", indexes={@ORM\Index(name="fk_option_vote_idx", columns={"vote_id"})})
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\VoteOptions")
  */
 class VoteOptions
 {
     /**
-     * @var integer $voteOptionId
+     * @var integer
      *
      * @ORM\Column(name="vote_option_id", type="integer", nullable=false)
      * @ORM\Id
@@ -22,30 +45,30 @@ class VoteOptions
     private $voteOptionId;
 
     /**
-     * @var string $voteOptionTitle
+     * @var string
      *
      * @ORM\Column(name="vote_option_title", type="string", length=255, nullable=false)
      */
     private $voteOptionTitle;
 
     /**
-     * @var integer $voteOptionCount
+     * @var integer
      *
      * @ORM\Column(name="vote_option_count", type="integer", nullable=true)
      */
-    private $voteOptionCount;
+    private $voteOptionCount = '0';
 
     /**
-     * @var integer $voteOptionPercent
+     * @var integer
      *
      * @ORM\Column(name="vote_option_percent", type="integer", nullable=true)
      */
-    private $voteOptionPercent;
+    private $voteOptionPercent = '0';
 
     /**
-     * @var Votes
+     * @var \ZG\Model\Entities\Votes
      *
-     * @ORM\ManyToOne(targetEntity="Votes")
+     * @ORM\ManyToOne(targetEntity="ZG\Model\Entities\Votes")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="vote_id", referencedColumnName="vote_id")
      * })
@@ -67,6 +90,7 @@ class VoteOptions
      * Set voteOptionTitle
      *
      * @param string $voteOptionTitle
+     *
      * @return VoteOptions
      */
     public function setVoteOptionTitle($voteOptionTitle)
@@ -90,6 +114,7 @@ class VoteOptions
      * Set voteOptionCount
      *
      * @param integer $voteOptionCount
+     *
      * @return VoteOptions
      */
     public function setVoteOptionCount($voteOptionCount)
@@ -113,6 +138,7 @@ class VoteOptions
      * Set voteOptionPercent
      *
      * @param integer $voteOptionPercent
+     *
      * @return VoteOptions
      */
     public function setVoteOptionPercent($voteOptionPercent)
@@ -135,10 +161,11 @@ class VoteOptions
     /**
      * Set vote
      *
-     * @param Votes $vote
+     * @param \ZG\Model\Entities\Votes $vote
+     *
      * @return VoteOptions
      */
-    public function setVote(\Votes $vote = null)
+    public function setVote(\ZG\Model\Entities\Votes $vote = null)
     {
         $this->vote = $vote;
     
@@ -148,7 +175,7 @@ class VoteOptions
     /**
      * Get vote
      *
-     * @return Votes 
+     * @return \ZG\Model\Entities\Votes 
      */
     public function getVote()
     {

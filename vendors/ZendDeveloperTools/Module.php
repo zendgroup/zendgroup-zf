@@ -2,9 +2,9 @@
 /**
  * Zend Developer Tools for Zend Framework (http://framework.zend.com/)
  *
- * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @link      http://github.com/zendframework/ZendDeveloperTools for the canonical source repository
+ * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
- * @package   ZendDeveloperTools
  */
 
 namespace ZendDeveloperTools;
@@ -20,10 +20,6 @@ use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 use DbProfiler\Db\Adapter\ProfilingAdapter;
 
-/**
- * @category   Zend
- * @package    ZendDeveloperTools
- */
 class Module implements
     InitProviderInterface,
     ConfigProviderInterface,
@@ -40,6 +36,7 @@ class Module implements
     public function init(ModuleManagerInterface $manager)
     {
         defined('REQUEST_MICROTIME') || define('REQUEST_MICROTIME', microtime(true));
+
         if (PHP_SAPI === 'cli') {
             return;
         }
@@ -120,9 +117,6 @@ class Module implements
     public function getAutoloaderConfig()
     {
         return array(
-            'Zend\Loader\ClassMapAutoloader' => array(
-                __DIR__ . '/autoload_classmap.php',
-            ),
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
@@ -165,6 +159,7 @@ class Module implements
                 'ZendDeveloperTools\ExceptionCollector' => 'ZendDeveloperTools\Collector\ExceptionCollector',
                 'ZendDeveloperTools\RouteCollector'     => 'ZendDeveloperTools\Collector\RouteCollector',
                 'ZendDeveloperTools\RequestCollector'   => 'ZendDeveloperTools\Collector\RequestCollector',
+                'ZendDeveloperTools\ConfigCollector'    => 'ZendDeveloperTools\Collector\ConfigCollector',
                 'ZendDeveloperTools\MailCollector'      => 'ZendDeveloperTools\Collector\MailCollector',
                 'ZendDeveloperTools\MemoryCollector'    => 'ZendDeveloperTools\Collector\MemoryCollector',
                 'ZendDeveloperTools\TimeCollector'      => 'ZendDeveloperTools\Collector\TimeCollector',

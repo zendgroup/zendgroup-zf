@@ -5,6 +5,7 @@ return array(
         'AdminCP',
         'Content',
         'Front',
+        'Users',
         'DbProfiler',
         'DoctrineModule',
         'DoctrineORMModule',

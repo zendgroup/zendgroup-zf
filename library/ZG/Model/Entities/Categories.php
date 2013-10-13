@@ -1,5 +1,28 @@
 <?php
 
+/**
+ * ZEND GROUP
+ *
+ * @name        Categories.php
+ * @category    ZG
+ * @package 	Model
+ * @subpackage  Model\Entities
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @copyright   Copyright (c)2008-2010 ZEND GROUP. All rights reserved
+ * @license     http://zendgroup.vn/license/
+ * @version     $1.0$
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ *
+ */
+
 namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -8,12 +31,12 @@ use Doctrine\ORM\Mapping as ORM;
  * Categories
  *
  * @ORM\Table(name="categories")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\CategoriesRepository")
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\Categories")
  */
 class Categories
 {
     /**
-     * @var integer $categoryId
+     * @var integer
      *
      * @ORM\Column(name="category_id", type="integer", nullable=false)
      * @ORM\Id
@@ -22,63 +45,63 @@ class Categories
     private $categoryId;
 
     /**
-     * @var integer $categoryVisit
+     * @var integer
      *
      * @ORM\Column(name="category_visit", type="integer", nullable=true)
      */
     private $categoryVisit;
 
     /**
-     * @var string $categoryIcon
+     * @var string
      *
      * @ORM\Column(name="category_icon", type="string", length=45, nullable=true)
      */
     private $categoryIcon;
 
     /**
-     * @var string $categoryPassword
+     * @var string
      *
      * @ORM\Column(name="category_password", type="string", length=45, nullable=true)
      */
     private $categoryPassword;
 
     /**
-     * @var integer $contentCount
+     * @var integer
      *
      * @ORM\Column(name="content_count", type="integer", nullable=true)
      */
     private $contentCount;
 
     /**
-     * @var boolean $hideFormMenu
+     * @var boolean
      *
      * @ORM\Column(name="hide_form_menu", type="boolean", nullable=true)
      */
     private $hideFormMenu;
 
     /**
-     * @var integer $sortOrder
+     * @var integer
      *
      * @ORM\Column(name="sort_order", type="integer", nullable=true)
      */
     private $sortOrder;
 
     /**
-     * @var string $generalUrl
+     * @var string
      *
      * @ORM\Column(name="general_url", type="string", length=255, nullable=true)
      */
     private $generalUrl;
 
     /**
-     * @var integer $categoryLeft
+     * @var integer
      *
      * @ORM\Column(name="category_left", type="integer", nullable=true)
      */
     private $categoryLeft;
 
     /**
-     * @var integer $categoryRight
+     * @var integer
      *
      * @ORM\Column(name="category_right", type="integer", nullable=true)
      */
@@ -99,6 +122,7 @@ class Categories
      * Set categoryVisit
      *
      * @param integer $categoryVisit
+     *
      * @return Categories
      */
     public function setCategoryVisit($categoryVisit)
@@ -122,6 +146,7 @@ class Categories
      * Set categoryIcon
      *
      * @param string $categoryIcon
+     *
      * @return Categories
      */
     public function setCategoryIcon($categoryIcon)
@@ -145,6 +170,7 @@ class Categories
      * Set categoryPassword
      *
      * @param string $categoryPassword
+     *
      * @return Categories
      */
     public function setCategoryPassword($categoryPassword)
@@ -168,6 +194,7 @@ class Categories
      * Set contentCount
      *
      * @param integer $contentCount
+     *
      * @return Categories
      */
     public function setContentCount($contentCount)
@@ -191,6 +218,7 @@ class Categories
      * Set hideFormMenu
      *
      * @param boolean $hideFormMenu
+     *
      * @return Categories
      */
     public function setHideFormMenu($hideFormMenu)
@@ -214,6 +242,7 @@ class Categories
      * Set sortOrder
      *
      * @param integer $sortOrder
+     *
      * @return Categories
      */
     public function setSortOrder($sortOrder)
@@ -237,6 +266,7 @@ class Categories
      * Set generalUrl
      *
      * @param string $generalUrl
+     *
      * @return Categories
      */
     public function setGeneralUrl($generalUrl)
@@ -260,6 +290,7 @@ class Categories
      * Set categoryLeft
      *
      * @param integer $categoryLeft
+     *
      * @return Categories
      */
     public function setCategoryLeft($categoryLeft)
@@ -283,6 +314,7 @@ class Categories
      * Set categoryRight
      *
      * @param integer $categoryRight
+     *
      * @return Categories
      */
     public function setCategoryRight($categoryRight)

@@ -1,5 +1,28 @@
 <?php
 
+/**
+ * ZEND GROUP
+ *
+ * @name        UserResume.php
+ * @category    ZG
+ * @package 	Model
+ * @subpackage  Model\Entities
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @copyright   Copyright (c)2008-2010 ZEND GROUP. All rights reserved
+ * @license     http://zendgroup.vn/license/
+ * @version     $1.0$
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ *
+ */
+
 namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,13 +30,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UserResume
  *
- * @ORM\Table(name="user_resume")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\UserResumeRepository")
+ * @ORM\Table(name="user_resume", indexes={@ORM\Index(name="fk_user_resume_idx", columns={"user_id"})})
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\UserResume")
  */
 class UserResume
 {
     /**
-     * @var integer $resumeId
+     * @var integer
      *
      * @ORM\Column(name="resume_id", type="integer", nullable=false)
      * @ORM\Id
@@ -22,156 +45,156 @@ class UserResume
     private $resumeId;
 
     /**
-     * @var string $currentPosition
+     * @var string
      *
      * @ORM\Column(name="current_position", type="string", length=255, nullable=true)
      */
     private $currentPosition;
 
     /**
-     * @var string $positionExpectation
+     * @var string
      *
      * @ORM\Column(name="position_expectation", type="string", length=255, nullable=true)
      */
     private $positionExpectation;
 
     /**
-     * @var string $jobDescription
+     * @var string
      *
      * @ORM\Column(name="job_description", type="string", length=255, nullable=true)
      */
     private $jobDescription;
 
     /**
-     * @var string $resumeLanguage
+     * @var string
      *
      * @ORM\Column(name="resume_language", type="string", length=255, nullable=true)
      */
     private $resumeLanguage;
 
     /**
-     * @var string $education
+     * @var string
      *
      * @ORM\Column(name="education", type="string", length=255, nullable=true)
      */
     private $education;
 
     /**
-     * @var string $certificate
+     * @var string
      *
      * @ORM\Column(name="certificate", type="string", length=255, nullable=true)
      */
     private $certificate;
 
     /**
-     * @var string $programmingSkill
+     * @var string
      *
      * @ORM\Column(name="programming_skill", type="string", length=255, nullable=true)
      */
     private $programmingSkill;
 
     /**
-     * @var string $analysisSkill
+     * @var string
      *
      * @ORM\Column(name="analysis_skill", type="string", length=255, nullable=true)
      */
     private $analysisSkill;
 
     /**
-     * @var string $sdmk
+     * @var string
      *
      * @ORM\Column(name="sdmk", type="string", length=255, nullable=true)
      */
     private $sdmk;
 
     /**
-     * @var string $sdpk
+     * @var string
      *
      * @ORM\Column(name="sdpk", type="string", length=255, nullable=true)
      */
     private $sdpk;
 
     /**
-     * @var string $engineeringSkill
+     * @var string
      *
      * @ORM\Column(name="engineering_skill", type="string", length=255, nullable=true)
      */
     private $engineeringSkill;
 
     /**
-     * @var string $communicationSkill
+     * @var string
      *
      * @ORM\Column(name="communication_skill", type="string", length=255, nullable=true)
      */
     private $communicationSkill;
 
     /**
-     * @var string $problemSolving
+     * @var string
      *
      * @ORM\Column(name="problem_solving", type="string", length=255, nullable=true)
      */
     private $problemSolving;
 
     /**
-     * @var string $teamwork
+     * @var string
      *
      * @ORM\Column(name="teamwork", type="string", length=255, nullable=true)
      */
     private $teamwork;
 
     /**
-     * @var string $practicalExperience
+     * @var string
      *
      * @ORM\Column(name="practical_experience", type="string", length=255, nullable=true)
      */
     private $practicalExperience;
 
     /**
-     * @var string $hardwarePlatforms
+     * @var string
      *
      * @ORM\Column(name="hardware_platforms", type="string", length=255, nullable=true)
      */
     private $hardwarePlatforms;
 
     /**
-     * @var string $programmingLanguage
+     * @var string
      *
      * @ORM\Column(name="programming_language", type="string", length=255, nullable=true)
      */
     private $programmingLanguage;
 
     /**
-     * @var string $softwareTools
+     * @var string
      *
      * @ORM\Column(name="software_tools", type="string", length=255, nullable=true)
      */
     private $softwareTools;
 
     /**
-     * @var string $methodlogics
+     * @var string
      *
      * @ORM\Column(name="methodlogics", type="string", length=255, nullable=true)
      */
     private $methodlogics;
 
     /**
-     * @var string $programmingLanguageDetail
+     * @var string
      *
      * @ORM\Column(name="programming_language_detail", type="string", length=255, nullable=true)
      */
     private $programmingLanguageDetail;
 
     /**
-     * @var string $reference
+     * @var string
      *
      * @ORM\Column(name="reference", type="string", length=45, nullable=true)
      */
     private $reference;
 
     /**
-     * @var Users
+     * @var \ZG\Model\Entities\Users
      *
-     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\ManyToOne(targetEntity="ZG\Model\Entities\Users")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
      * })
@@ -193,6 +216,7 @@ class UserResume
      * Set currentPosition
      *
      * @param string $currentPosition
+     *
      * @return UserResume
      */
     public function setCurrentPosition($currentPosition)
@@ -216,6 +240,7 @@ class UserResume
      * Set positionExpectation
      *
      * @param string $positionExpectation
+     *
      * @return UserResume
      */
     public function setPositionExpectation($positionExpectation)
@@ -239,6 +264,7 @@ class UserResume
      * Set jobDescription
      *
      * @param string $jobDescription
+     *
      * @return UserResume
      */
     public function setJobDescription($jobDescription)
@@ -262,6 +288,7 @@ class UserResume
      * Set resumeLanguage
      *
      * @param string $resumeLanguage
+     *
      * @return UserResume
      */
     public function setResumeLanguage($resumeLanguage)
@@ -285,6 +312,7 @@ class UserResume
      * Set education
      *
      * @param string $education
+     *
      * @return UserResume
      */
     public function setEducation($education)
@@ -308,6 +336,7 @@ class UserResume
      * Set certificate
      *
      * @param string $certificate
+     *
      * @return UserResume
      */
     public function setCertificate($certificate)
@@ -331,6 +360,7 @@ class UserResume
      * Set programmingSkill
      *
      * @param string $programmingSkill
+     *
      * @return UserResume
      */
     public function setProgrammingSkill($programmingSkill)
@@ -354,6 +384,7 @@ class UserResume
      * Set analysisSkill
      *
      * @param string $analysisSkill
+     *
      * @return UserResume
      */
     public function setAnalysisSkill($analysisSkill)
@@ -377,6 +408,7 @@ class UserResume
      * Set sdmk
      *
      * @param string $sdmk
+     *
      * @return UserResume
      */
     public function setSdmk($sdmk)
@@ -400,6 +432,7 @@ class UserResume
      * Set sdpk
      *
      * @param string $sdpk
+     *
      * @return UserResume
      */
     public function setSdpk($sdpk)
@@ -423,6 +456,7 @@ class UserResume
      * Set engineeringSkill
      *
      * @param string $engineeringSkill
+     *
      * @return UserResume
      */
     public function setEngineeringSkill($engineeringSkill)
@@ -446,6 +480,7 @@ class UserResume
      * Set communicationSkill
      *
      * @param string $communicationSkill
+     *
      * @return UserResume
      */
     public function setCommunicationSkill($communicationSkill)
@@ -469,6 +504,7 @@ class UserResume
      * Set problemSolving
      *
      * @param string $problemSolving
+     *
      * @return UserResume
      */
     public function setProblemSolving($problemSolving)
@@ -492,6 +528,7 @@ class UserResume
      * Set teamwork
      *
      * @param string $teamwork
+     *
      * @return UserResume
      */
     public function setTeamwork($teamwork)
@@ -515,6 +552,7 @@ class UserResume
      * Set practicalExperience
      *
      * @param string $practicalExperience
+     *
      * @return UserResume
      */
     public function setPracticalExperience($practicalExperience)
@@ -538,6 +576,7 @@ class UserResume
      * Set hardwarePlatforms
      *
      * @param string $hardwarePlatforms
+     *
      * @return UserResume
      */
     public function setHardwarePlatforms($hardwarePlatforms)
@@ -561,6 +600,7 @@ class UserResume
      * Set programmingLanguage
      *
      * @param string $programmingLanguage
+     *
      * @return UserResume
      */
     public function setProgrammingLanguage($programmingLanguage)
@@ -584,6 +624,7 @@ class UserResume
      * Set softwareTools
      *
      * @param string $softwareTools
+     *
      * @return UserResume
      */
     public function setSoftwareTools($softwareTools)
@@ -607,6 +648,7 @@ class UserResume
      * Set methodlogics
      *
      * @param string $methodlogics
+     *
      * @return UserResume
      */
     public function setMethodlogics($methodlogics)
@@ -630,6 +672,7 @@ class UserResume
      * Set programmingLanguageDetail
      *
      * @param string $programmingLanguageDetail
+     *
      * @return UserResume
      */
     public function setProgrammingLanguageDetail($programmingLanguageDetail)
@@ -653,6 +696,7 @@ class UserResume
      * Set reference
      *
      * @param string $reference
+     *
      * @return UserResume
      */
     public function setReference($reference)
@@ -675,10 +719,11 @@ class UserResume
     /**
      * Set user
      *
-     * @param Users $user
+     * @param \ZG\Model\Entities\Users $user
+     *
      * @return UserResume
      */
-    public function setUser(\Users $user = null)
+    public function setUser(\ZG\Model\Entities\Users $user = null)
     {
         $this->user = $user;
     
@@ -688,7 +733,7 @@ class UserResume
     /**
      * Get user
      *
-     * @return Users 
+     * @return \ZG\Model\Entities\Users 
      */
     public function getUser()
     {

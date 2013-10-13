@@ -1,5 +1,28 @@
 <?php
 
+/**
+ * ZEND GROUP
+ *
+ * @name        Menus.php
+ * @category    ZG
+ * @package 	Model
+ * @subpackage  Model\Entities
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @copyright   Copyright (c)2008-2010 ZEND GROUP. All rights reserved
+ * @license     http://zendgroup.vn/license/
+ * @version     $1.0$
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ *
+ */
+
 namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,13 +30,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Menus
  *
- * @ORM\Table(name="menus")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\MenusRepository")
+ * @ORM\Table(name="menus", uniqueConstraints={@ORM\UniqueConstraint(name="idx_menu_unique", columns={"parent_id", "language_id", "menu_slug"})}, indexes={@ORM\Index(name="idx_menu_left_right", columns={"lft", "rgt"}), @ORM\Index(name="idx_slug", columns={"menu_slug"}), @ORM\Index(name="idx_path", columns={"menu_path"}), @ORM\Index(name="idx_language", columns={"language_id"}), @ORM\Index(name="idx_menutype", columns={"menu_type"}), @ORM\Index(name="idx_parent", columns={"parent_id"})})
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\Menus")
  */
 class Menus
 {
     /**
-     * @var integer $menuId
+     * @var integer
      *
      * @ORM\Column(name="menu_id", type="integer", nullable=false)
      * @ORM\Id
@@ -22,112 +45,112 @@ class Menus
     private $menuId;
 
     /**
-     * @var integer $parentId
+     * @var integer
      *
      * @ORM\Column(name="parent_id", type="integer", nullable=true)
      */
     private $parentId;
 
     /**
-     * @var integer $languageId
+     * @var integer
      *
      * @ORM\Column(name="language_id", type="integer", nullable=true)
      */
     private $languageId;
 
     /**
-     * @var string $menuTitle
+     * @var string
      *
      * @ORM\Column(name="menu_title", type="string", length=255, nullable=true)
      */
     private $menuTitle;
 
     /**
-     * @var string $menuSlug
+     * @var string
      *
      * @ORM\Column(name="menu_slug", type="string", length=255, nullable=true)
      */
     private $menuSlug;
 
     /**
-     * @var string $menuPath
+     * @var string
      *
      * @ORM\Column(name="menu_path", type="string", length=1024, nullable=true)
      */
     private $menuPath;
 
     /**
-     * @var string $menuType
+     * @var string
      *
      * @ORM\Column(name="menu_type", type="string", length=255, nullable=true)
      */
     private $menuType;
 
     /**
-     * @var string $menuLink
+     * @var string
      *
      * @ORM\Column(name="menu_link", type="string", length=1024, nullable=true)
      */
     private $menuLink;
 
     /**
-     * @var string $menuTarget
+     * @var string
      *
      * @ORM\Column(name="menu_target", type="string", length=255, nullable=true)
      */
     private $menuTarget;
 
     /**
-     * @var string $note
+     * @var string
      *
      * @ORM\Column(name="note", type="string", length=45, nullable=true)
      */
     private $note;
 
     /**
-     * @var boolean $published
+     * @var boolean
      *
      * @ORM\Column(name="published", type="boolean", nullable=true)
      */
     private $published;
 
     /**
-     * @var string $menuIcon
+     * @var string
      *
      * @ORM\Column(name="menu_icon", type="string", length=255, nullable=true)
      */
     private $menuIcon;
 
     /**
-     * @var string $params
+     * @var string
      *
      * @ORM\Column(name="params", type="text", nullable=true)
      */
     private $params;
 
     /**
-     * @var boolean $home
+     * @var boolean
      *
      * @ORM\Column(name="home", type="boolean", nullable=true)
      */
-    private $home;
+    private $home = '0';
 
     /**
-     * @var integer $lft
+     * @var integer
      *
      * @ORM\Column(name="lft", type="integer", nullable=true)
      */
     private $lft;
 
     /**
-     * @var integer $rgt
+     * @var integer
      *
      * @ORM\Column(name="rgt", type="integer", nullable=true)
      */
     private $rgt;
 
     /**
-     * @var integer $depth
+     * @var integer
      *
      * @ORM\Column(name="depth", type="integer", nullable=true)
      */
@@ -148,6 +171,7 @@ class Menus
      * Set parentId
      *
      * @param integer $parentId
+     *
      * @return Menus
      */
     public function setParentId($parentId)
@@ -171,6 +195,7 @@ class Menus
      * Set languageId
      *
      * @param integer $languageId
+     *
      * @return Menus
      */
     public function setLanguageId($languageId)
@@ -194,6 +219,7 @@ class Menus
      * Set menuTitle
      *
      * @param string $menuTitle
+     *
      * @return Menus
      */
     public function setMenuTitle($menuTitle)
@@ -217,6 +243,7 @@ class Menus
      * Set menuSlug
      *
      * @param string $menuSlug
+     *
      * @return Menus
      */
     public function setMenuSlug($menuSlug)
@@ -240,6 +267,7 @@ class Menus
      * Set menuPath
      *
      * @param string $menuPath
+     *
      * @return Menus
      */
     public function setMenuPath($menuPath)
@@ -263,6 +291,7 @@ class Menus
      * Set menuType
      *
      * @param string $menuType
+     *
      * @return Menus
      */
     public function setMenuType($menuType)
@@ -286,6 +315,7 @@ class Menus
      * Set menuLink
      *
      * @param string $menuLink
+     *
      * @return Menus
      */
     public function setMenuLink($menuLink)
@@ -309,6 +339,7 @@ class Menus
      * Set menuTarget
      *
      * @param string $menuTarget
+     *
      * @return Menus
      */
     public function setMenuTarget($menuTarget)
@@ -332,6 +363,7 @@ class Menus
      * Set note
      *
      * @param string $note
+     *
      * @return Menus
      */
     public function setNote($note)
@@ -355,6 +387,7 @@ class Menus
      * Set published
      *
      * @param boolean $published
+     *
      * @return Menus
      */
     public function setPublished($published)
@@ -378,6 +411,7 @@ class Menus
      * Set menuIcon
      *
      * @param string $menuIcon
+     *
      * @return Menus
      */
     public function setMenuIcon($menuIcon)
@@ -401,6 +435,7 @@ class Menus
      * Set params
      *
      * @param string $params
+     *
      * @return Menus
      */
     public function setParams($params)
@@ -424,6 +459,7 @@ class Menus
      * Set home
      *
      * @param boolean $home
+     *
      * @return Menus
      */
     public function setHome($home)
@@ -447,6 +483,7 @@ class Menus
      * Set lft
      *
      * @param integer $lft
+     *
      * @return Menus
      */
     public function setLft($lft)
@@ -470,6 +507,7 @@ class Menus
      * Set rgt
      *
      * @param integer $rgt
+     *
      * @return Menus
      */
     public function setRgt($rgt)
@@ -493,6 +531,7 @@ class Menus
      * Set depth
      *
      * @param integer $depth
+     *
      * @return Menus
      */
     public function setDepth($depth)

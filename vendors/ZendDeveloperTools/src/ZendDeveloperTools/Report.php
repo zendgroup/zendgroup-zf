@@ -2,17 +2,13 @@
 /**
  * Zend Developer Tools for Zend Framework (http://framework.zend.com/)
  *
- * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @link      http://github.com/zendframework/ZendDeveloperTools for the canonical source repository
+ * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
- * @package   ZendDeveloperTools
  */
 
 namespace ZendDeveloperTools;
 
-/**
- * @category   Zend
- * @package    ZendDeveloperTools
- */
 class Report implements ReportInterface
 {
     /**
@@ -83,7 +79,7 @@ class Report implements ReportInterface
      */
     public function getUri()
     {
-        return $this->url;
+        return $this->uri;
     }
 
     /**
@@ -149,7 +145,7 @@ class Report implements ReportInterface
      */
     public function hasErrors()
     {
-        return !empty($this->errors);;
+        return !empty($this->errors);
     }
 
     /**

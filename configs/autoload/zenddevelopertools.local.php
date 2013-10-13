@@ -8,7 +8,7 @@ return array(
             /**
              * Enables or disables the profiler.
              *
-             * Expects: boolean
+             * Expects: bool
              * Default: false
              */
             'enabled' => true,
@@ -18,22 +18,10 @@ return array(
              * enabled, any error will throw an exception, otherwise all
              * errors will be added to the report (and shown in the toolbar).
              *
-             * Expects: boolean
+             * Expects: bool
              * Default: true
              */
             'strict' => true,
-
-            /**
-             * Enables or disables verbose profiling. If enabled, the profiler
-             * will collect data before the MvcEvent::EVENT_FINISH event.
-             * This adds some overhead during the execution but adds more details
-             * to the report.
-             *
-             * See:     verbose_listeners
-             * Expects: boolean
-             * Default: false
-             */
-            'verbose' => true,
 
             /**
              * If enabled, the profiler tries to flush the content before the it
@@ -44,7 +32,7 @@ return array(
              *       with a priority of -9400. You have to disbale this function if
              *       you wish to modify the output with a lower priority.
              *
-             * Expects: boolean
+             * Expects: bool
              * Default: false
              */
             'flush_early' => false,
@@ -71,7 +59,7 @@ return array(
              *
              * Note: The matcher is not implemented yet!
              */
-            'matcher' => array(),
+            'matcher' => array('ip'=>'127.0.0.1'),
 
             /**
              * Contains a list with all collector the profiler should run.
@@ -83,21 +71,7 @@ return array(
              *
              * Expects: array
              */
-            'collectors' => array('db'=> null),
-
-            /**
-             * Contains a list with all verbose listeners. The array key is used
-             * as event identifier and the array key inside that array is the
-             * service name. If you wish to disable a listerner, simply set the
-             * value to false.
-             *
-             * Default: 'application' => array(
-             *              'ZDT_TimeCollectorListener'   => true,
-             *              'ZDT_MemoryCollectorListener' => true,
-             *          )
-             * Expects: array
-             */
-            'verbose_listeners' => array(),
+            'collectors' => array(),
         ),
          /**
           * General Toolbar settings
@@ -106,7 +80,7 @@ return array(
             /**
              * Enables or disables the Toolbar.
              *
-             * Expects: boolean
+             * Expects: bool
              * Default: false
              */
             'enabled' => true,
@@ -114,10 +88,10 @@ return array(
             /**
              * If enabled, every empty collector will be hidden.
              *
-             * Expects: boolean
+             * Expects: bool
              * Default: false
              */
-            'auto_hide' => false,
+            'auto_hide' => true,
 
             /**
              * The Toolbar position.
@@ -133,7 +107,7 @@ return array(
              *
              * Note: The check will only occur once every hour.
              *
-             * Expects: boolean
+             * Expects: bool
              * Default: false
              */
             'version_check' => true,

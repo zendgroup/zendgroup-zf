@@ -12,10 +12,7 @@
  * obtain it through the world-wide-web, please send an email
  * to license@zend.com so we can send you a copy immediately.
  *
- * @category   Zend
- * @package    ZendDeveloperTools_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
@@ -24,10 +21,7 @@ namespace ZendDeveloperTools\View\Helper;
 use Zend\View\Helper\AbstractHelper;
 
 /**
- * @category   Zend
- * @package    ZendDeveloperTools_View
- * @subpackage Helper
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class DetailArray extends AbstractHelper
@@ -37,7 +31,7 @@ class DetailArray extends AbstractHelper
      *
      * @param  string  $label Label name
      * @param  array   $details Value array (list)
-     * @param  boolean $redundant Marks this detail as redundant.
+     * @param  bool $redundant Marks this detail as redundant.
      * @return string
      */
     public function __invoke($label, array $details, $redundant = false)

@@ -17,34 +17,32 @@
  * <http://www.doctrine-project.org>.
  */
 
-use Zend\ServiceManager\ServiceManager;
-use Zend\Mvc\Application;
+namespace DoctrineORMModule\Service;
 
-ini_set('display_errors', true);
-chdir(__DIR__);
+use DoctrineModule\Form\Element\ObjectMultiCheckbox;
+use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\FactoryInterface;
 
-$previousDir = '.';
+/**
+ * Factory for {@see ObjectMultiCheckbox}
+ *
+ * @license MIT
+ * @link    http://www.doctrine-project.org/
+ * @author  Daniel Gimenes <daniel@danielgimenes.com.br>
+ */
+class ObjectMultiCheckboxFactory implements FactoryInterface
+{
+    /**
+     * {@inheritDoc}
+     */
+    public function createService(ServiceLocatorInterface $pluginManager)
+    {
+        $services      = $pluginManager->getServiceLocator();
+        $entityManager = $services->get('Doctrine\ORM\EntityManager');
+        $element       = new ObjectMultiCheckbox;
 
-while (!file_exists('config/application.config.php')) {
-    $dir = dirname(getcwd());
+        $element->getProxy()->setObjectManager($entityManager);
 
-    if ($previousDir === $dir) {
-        throw new RuntimeException(
-            'Unable to locate "config/application.config.php": ' .
-            'is DoctrineModule in a subdir of your application skeleton?'
-        );
+        return $element;
     }
-
-    $previousDir = $dir;
-    chdir($dir);
 }
-
-if (!(@include_once __DIR__ . '/../vendor/autoload.php') && !(@include_once __DIR__ . '/../../../autoload.php')) {
-    throw new RuntimeException('Error: vendor/autoload.php could not be found. Did you run php composer.phar install?');
-}
-
-$application = Application::init(include 'config/application.config.php');
-
-/* @var $cli \Symfony\Component\Console\Application */
-$cli = $application->getServiceManager()->get('doctrine.cli');
-$cli->run();

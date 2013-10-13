@@ -2,10 +2,9 @@
 /**
  * Zend Developer Tools for Zend Framework (http://framework.zend.com/)
  *
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @link       http://github.com/zendframework/ZendDeveloperTools for the canonical source repository
+ * @copyright  Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd New BSD License
- * @package    ZendDeveloperTools
- * @subpackage Collector
  */
 
 namespace ZendDeveloperTools\Collector;
@@ -16,9 +15,6 @@ use Zend\EventManager\Event;
 /**
  * Time Data Collector.
  *
- * @category   Zend
- * @package    ZendDeveloperTools
- * @subpackage Collector
  */
 class TimeCollector extends AbstractCollector implements EventCollectorInterface
 {
@@ -43,7 +39,9 @@ class TimeCollector extends AbstractCollector implements EventCollectorInterface
      */
     public function collect(MvcEvent $mvcEvent)
     {
-        if (defined('REQUEST_MICROTIME')) {
+        if (PHP_VERSION_ID >= 50400) {
+            $start = $mvcEvent->getRequest()->getServer()->get('REQUEST_TIME_FLOAT');
+        } elseif (defined('REQUEST_MICROTIME')) {
             $start = REQUEST_MICROTIME;
         } else {
             $start = $mvcEvent->getRequest()->getServer()->get('REQUEST_TIME');
@@ -101,7 +99,7 @@ class TimeCollector extends AbstractCollector implements EventCollectorInterface
     /**
      * Event times collected?
      *
-     * @return boolean
+     * @return bool
      */
     public function hasEventTimes()
     {

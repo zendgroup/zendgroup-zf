@@ -2,19 +2,15 @@
 /**
  * Zend Developer Tools for Zend Framework (http://framework.zend.com/)
  *
- * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @link      http://github.com/zendframework/ZendDeveloperTools for the canonical source repository
+ * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
- * @package   ZendDeveloperTools
  */
 
 namespace ZendDeveloperTools;
 
 use Zend\Stdlib\AbstractOptions;
 
-/**
- * @category   Zend
- * @package    ZendDeveloperTools
- */
 class Options extends AbstractOptions
 {
     /**
@@ -35,6 +31,7 @@ class Options extends AbstractOptions
             'db'        => 'ZendDeveloperTools\DbCollector',
             'exception' => 'ZendDeveloperTools\ExceptionCollector',
             'request'   => 'ZendDeveloperTools\RequestCollector',
+            'config'    => 'ZendDeveloperTools\ConfigCollector',
             'memory'    => 'ZendDeveloperTools\MemoryCollector',
             'time'      => 'ZendDeveloperTools\TimeCollector',
         ),
@@ -52,6 +49,7 @@ class Options extends AbstractOptions
             'request' => 'zend-developer-tools/toolbar/request',
             'time'    => 'zend-developer-tools/toolbar/time',
             'memory'  => 'zend-developer-tools/toolbar/memory',
+            'config'  => 'zend-developer-tools/toolbar/config',
             'db'      => 'zend-developer-tools/toolbar/db',
         ),
     );
@@ -78,13 +76,13 @@ class Options extends AbstractOptions
     public function setProfiler(array $options)
     {
         if (isset($options['enabled'])) {
-            $this->profiler['enabled'] = (boolean) $options['enabled'];
+            $this->profiler['enabled'] = (bool) $options['enabled'];
         }
         if (isset($options['strict'])) {
-            $this->profiler['strict'] = (boolean) $options['strict'];
+            $this->profiler['strict'] = (bool) $options['strict'];
         }
         if (isset($options['flush_early'])) {
-            $this->profiler['flush_early'] = (boolean) $options['flush_early'];
+            $this->profiler['flush_early'] = (bool) $options['flush_early'];
         }
         if (isset($options['cache_dir'])) {
             $this->profiler['cache_dir'] = (string) $options['cache_dir'];
@@ -144,7 +142,7 @@ class Options extends AbstractOptions
     /**
      * Is the Profiler enabled?
      *
-     * @return boolean
+     * @return bool
      */
     public function isEnabled()
     {
@@ -154,7 +152,7 @@ class Options extends AbstractOptions
     /**
      * Is strict mode enabled?
      *
-     * @return boolean
+     * @return bool
      */
     public function isStrict()
     {
@@ -167,7 +165,7 @@ class Options extends AbstractOptions
      * Note: Only possible if the toolbar, firephp and the strict mode is
      *       disabled.
      *
-     * @return boolean
+     * @return bool
      */
     public function canFlushEarly()
     {
@@ -209,11 +207,11 @@ class Options extends AbstractOptions
     public function setToolbar(array $options)
     {
         if (isset($options['enabled'])) {
-            $this->toolbar['enabled'] = (boolean) $options['enabled'];
+            $this->toolbar['enabled'] = (bool) $options['enabled'];
         }
 
         if (isset($options['version_check'])) {
-            $this->toolbar['version_check'] = (boolean) $options['version_check'];
+            $this->toolbar['version_check'] = (bool) $options['version_check'];
         }
         if (isset($options['position'])) {
             if ($options['position'] !== 'bottom' && $options['position'] !== 'top') {
@@ -246,7 +244,7 @@ class Options extends AbstractOptions
     /**
      * Is the Toolbar enabled?
      *
-     * @return boolean
+     * @return bool
      */
     public function isToolbarEnabled()
     {
@@ -256,7 +254,7 @@ class Options extends AbstractOptions
     /**
      * Is the Zend Framework version check enabled?
      *
-     * @return boolean
+     * @return bool
      */
     public function isVersionCheckEnabled()
     {
@@ -266,7 +264,7 @@ class Options extends AbstractOptions
     /**
      * Can hide Toolbar entries?
      *
-     * @return boolean
+     * @return bool
      */
     public function getToolbarAutoHide()
     {

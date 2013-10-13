@@ -2,10 +2,9 @@
 /**
  * Zend Developer Tools for Zend Framework (http://framework.zend.com/)
  *
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @link       http://github.com/zendframework/ZendDeveloperTools for the canonical source repository
+ * @copyright  Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd New BSD License
- * @package    ZendDeveloperTools
- * @subpackage Collector
  */
 
 namespace ZendDeveloperTools\Collector;
@@ -15,9 +14,6 @@ use Zend\Mvc\MvcEvent;
 /**
  * Request Data Collector.
  *
- * @category   Zend
- * @package    ZendDeveloperTools
- * @subpackage Collector
  */
 class RequestCollector extends AbstractCollector
 {
@@ -47,7 +43,7 @@ class RequestCollector extends AbstractCollector
 
         $templates[] = $mvcEvent->getViewModel()->getTemplate();
         if ($mvcEvent->getViewModel()->hasChildren()) {
-            foreach ($mvcEvent->getViewModel()->getChildren() as $i => $child) {
+            foreach ($mvcEvent->getViewModel()->getChildren() as $child) {
                 $templates[] = $child->getTemplate();
             }
         }
@@ -119,7 +115,7 @@ class RequestCollector extends AbstractCollector
     /**
      * Returns the controller and action name if possible, otherwise N/A.
      *
-     * @param  boolean $short Removes the namespace.
+     * @param  bool $short Removes the namespace.
      * @return string
      */
     public function getFullControllerName($short = true)
