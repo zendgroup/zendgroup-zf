@@ -1,5 +1,28 @@
 <?php
 
+/**
+ * ZEND GROUP
+ *
+ * @name        Users.php
+ * @category    ZG
+ * @package 	Model
+ * @subpackage  Model\Entities
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @copyright   Copyright (c)2008-2010 ZEND GROUP. All rights reserved
+ * @license     http://zendgroup.vn/license/
+ * @version     $1.0$
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ *
+ */
+
 namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -8,12 +31,12 @@ use Doctrine\ORM\Mapping as ORM;
  * Users
  *
  * @ORM\Table(name="users")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\UsersRepository")
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\Users")
  */
 class Users
 {
     /**
-     * @var integer $userId
+     * @var integer
      *
      * @ORM\Column(name="user_id", type="integer", nullable=false)
      * @ORM\Id
@@ -22,231 +45,231 @@ class Users
     private $userId;
 
     /**
-     * @var string $userName
+     * @var string
      *
      * @ORM\Column(name="user_name", type="string", length=45, nullable=false)
      */
     private $userName;
 
     /**
-     * @var string $userPassword
+     * @var string
      *
      * @ORM\Column(name="user_password", type="string", length=45, nullable=false)
      */
     private $userPassword;
 
     /**
-     * @var integer $passwordModifyDate
+     * @var integer
      *
      * @ORM\Column(name="password_modify_date", type="integer", nullable=true)
      */
     private $passwordModifyDate;
 
     /**
-     * @var string $userEmail
+     * @var string
      *
      * @ORM\Column(name="user_email", type="string", length=125, nullable=true)
      */
     private $userEmail;
 
     /**
-     * @var string $userTitle
+     * @var string
      *
      * @ORM\Column(name="user_title", type="string", length=45, nullable=true)
      */
     private $userTitle;
 
     /**
-     * @var integer $userLastVisit
+     * @var integer
      *
      * @ORM\Column(name="user_last_visit", type="integer", nullable=true)
      */
     private $userLastVisit;
 
     /**
-     * @var boolean $userActivity
+     * @var boolean
      *
      * @ORM\Column(name="user_activity", type="boolean", nullable=true)
      */
     private $userActivity;
 
     /**
-     * @var integer $userPostCount
+     * @var integer
      *
      * @ORM\Column(name="user_post_count", type="integer", nullable=true)
      */
     private $userPostCount;
 
     /**
-     * @var string $userIpAddress
+     * @var string
      *
      * @ORM\Column(name="user_ip_address", type="string", length=45, nullable=true)
      */
     private $userIpAddress;
 
     /**
-     * @var integer $userLanguageId
+     * @var integer
      *
      * @ORM\Column(name="user_language_id", type="integer", nullable=true)
      */
     private $userLanguageId;
 
     /**
-     * @var integer $userTemplateId
+     * @var integer
      *
      * @ORM\Column(name="user_template_id", type="integer", nullable=true)
      */
     private $userTemplateId;
 
     /**
-     * @var integer $userSkinId
+     * @var integer
      *
      * @ORM\Column(name="user_skin_id", type="integer", nullable=true)
      */
     private $userSkinId;
 
     /**
-     * @var string $firstName
+     * @var string
      *
      * @ORM\Column(name="first_name", type="string", length=45, nullable=true)
      */
     private $firstName;
 
     /**
-     * @var string $lastName
+     * @var string
      *
      * @ORM\Column(name="last_name", type="string", length=45, nullable=true)
      */
     private $lastName;
 
     /**
-     * @var integer $dateOfBirth
+     * @var integer
      *
      * @ORM\Column(name="date_of_birth", type="integer", nullable=true)
      */
     private $dateOfBirth;
 
     /**
-     * @var integer $created
+     * @var integer
      *
      * @ORM\Column(name="created", type="integer", nullable=true)
      */
     private $created;
 
     /**
-     * @var integer $modified
+     * @var integer
      *
      * @ORM\Column(name="modified", type="integer", nullable=true)
      */
     private $modified;
 
     /**
-     * @var string $website
+     * @var string
      *
      * @ORM\Column(name="website", type="string", length=255, nullable=true)
      */
     private $website;
 
     /**
-     * @var string $gender
+     * @var string
      *
      * @ORM\Column(name="gender", type="string", nullable=true)
      */
     private $gender;
 
     /**
-     * @var string $maritalStatus
+     * @var string
      *
      * @ORM\Column(name="marital_status", type="string", nullable=true)
      */
     private $maritalStatus;
 
     /**
-     * @var string $telephone
+     * @var string
      *
      * @ORM\Column(name="telephone", type="string", length=45, nullable=true)
      */
     private $telephone;
 
     /**
-     * @var string $mobilePhone
+     * @var string
      *
      * @ORM\Column(name="mobile_phone", type="string", length=45, nullable=true)
      */
     private $mobilePhone;
 
     /**
-     * @var string $contactName
+     * @var string
      *
      * @ORM\Column(name="contact_name", type="string", length=45, nullable=true)
      */
     private $contactName;
 
     /**
-     * @var string $contactAddress
+     * @var string
      *
      * @ORM\Column(name="contact_address", type="string", length=255, nullable=true)
      */
     private $contactAddress;
 
     /**
-     * @var string $contactTelephone
+     * @var string
      *
      * @ORM\Column(name="contact_telephone", type="string", length=45, nullable=true)
      */
     private $contactTelephone;
 
     /**
-     * @var string $contactPhone
+     * @var string
      *
      * @ORM\Column(name="contact_phone", type="string", length=255, nullable=true)
      */
     private $contactPhone;
 
     /**
-     * @var string $contactEmail
+     * @var string
      *
      * @ORM\Column(name="contact_email", type="string", length=125, nullable=true)
      */
     private $contactEmail;
 
     /**
-     * @var string $contactFax
+     * @var string
      *
      * @ORM\Column(name="contact_fax", type="string", length=45, nullable=true)
      */
     private $contactFax;
 
     /**
-     * @var string $contactCity
+     * @var string
      *
      * @ORM\Column(name="contact_city", type="string", length=125, nullable=true)
      */
     private $contactCity;
 
     /**
-     * @var string $contactCounty
+     * @var string
      *
      * @ORM\Column(name="contact_county", type="string", length=125, nullable=true)
      */
     private $contactCounty;
 
     /**
-     * @var string $contactState
+     * @var string
      *
      * @ORM\Column(name="contact_state", type="string", length=125, nullable=true)
      */
     private $contactState;
 
     /**
-     * @var string $contactCountry
+     * @var string
      *
      * @ORM\Column(name="contact_country", type="string", length=125, nullable=true)
      */
     private $contactCountry;
 
     /**
-     * @var string $userParams
+     * @var string
      *
      * @ORM\Column(name="user_params", type="text", nullable=true)
      */
@@ -267,6 +290,7 @@ class Users
      * Set userName
      *
      * @param string $userName
+     *
      * @return Users
      */
     public function setUserName($userName)
@@ -290,6 +314,7 @@ class Users
      * Set userPassword
      *
      * @param string $userPassword
+     *
      * @return Users
      */
     public function setUserPassword($userPassword)
@@ -313,6 +338,7 @@ class Users
      * Set passwordModifyDate
      *
      * @param integer $passwordModifyDate
+     *
      * @return Users
      */
     public function setPasswordModifyDate($passwordModifyDate)
@@ -336,6 +362,7 @@ class Users
      * Set userEmail
      *
      * @param string $userEmail
+     *
      * @return Users
      */
     public function setUserEmail($userEmail)
@@ -359,6 +386,7 @@ class Users
      * Set userTitle
      *
      * @param string $userTitle
+     *
      * @return Users
      */
     public function setUserTitle($userTitle)
@@ -382,6 +410,7 @@ class Users
      * Set userLastVisit
      *
      * @param integer $userLastVisit
+     *
      * @return Users
      */
     public function setUserLastVisit($userLastVisit)
@@ -405,6 +434,7 @@ class Users
      * Set userActivity
      *
      * @param boolean $userActivity
+     *
      * @return Users
      */
     public function setUserActivity($userActivity)
@@ -428,6 +458,7 @@ class Users
      * Set userPostCount
      *
      * @param integer $userPostCount
+     *
      * @return Users
      */
     public function setUserPostCount($userPostCount)
@@ -451,6 +482,7 @@ class Users
      * Set userIpAddress
      *
      * @param string $userIpAddress
+     *
      * @return Users
      */
     public function setUserIpAddress($userIpAddress)
@@ -474,6 +506,7 @@ class Users
      * Set userLanguageId
      *
      * @param integer $userLanguageId
+     *
      * @return Users
      */
     public function setUserLanguageId($userLanguageId)
@@ -497,6 +530,7 @@ class Users
      * Set userTemplateId
      *
      * @param integer $userTemplateId
+     *
      * @return Users
      */
     public function setUserTemplateId($userTemplateId)
@@ -520,6 +554,7 @@ class Users
      * Set userSkinId
      *
      * @param integer $userSkinId
+     *
      * @return Users
      */
     public function setUserSkinId($userSkinId)
@@ -543,6 +578,7 @@ class Users
      * Set firstName
      *
      * @param string $firstName
+     *
      * @return Users
      */
     public function setFirstName($firstName)
@@ -566,6 +602,7 @@ class Users
      * Set lastName
      *
      * @param string $lastName
+     *
      * @return Users
      */
     public function setLastName($lastName)
@@ -589,6 +626,7 @@ class Users
      * Set dateOfBirth
      *
      * @param integer $dateOfBirth
+     *
      * @return Users
      */
     public function setDateOfBirth($dateOfBirth)
@@ -612,6 +650,7 @@ class Users
      * Set created
      *
      * @param integer $created
+     *
      * @return Users
      */
     public function setCreated($created)
@@ -635,6 +674,7 @@ class Users
      * Set modified
      *
      * @param integer $modified
+     *
      * @return Users
      */
     public function setModified($modified)
@@ -658,6 +698,7 @@ class Users
      * Set website
      *
      * @param string $website
+     *
      * @return Users
      */
     public function setWebsite($website)
@@ -681,6 +722,7 @@ class Users
      * Set gender
      *
      * @param string $gender
+     *
      * @return Users
      */
     public function setGender($gender)
@@ -704,6 +746,7 @@ class Users
      * Set maritalStatus
      *
      * @param string $maritalStatus
+     *
      * @return Users
      */
     public function setMaritalStatus($maritalStatus)
@@ -727,6 +770,7 @@ class Users
      * Set telephone
      *
      * @param string $telephone
+     *
      * @return Users
      */
     public function setTelephone($telephone)
@@ -750,6 +794,7 @@ class Users
      * Set mobilePhone
      *
      * @param string $mobilePhone
+     *
      * @return Users
      */
     public function setMobilePhone($mobilePhone)
@@ -773,6 +818,7 @@ class Users
      * Set contactName
      *
      * @param string $contactName
+     *
      * @return Users
      */
     public function setContactName($contactName)
@@ -796,6 +842,7 @@ class Users
      * Set contactAddress
      *
      * @param string $contactAddress
+     *
      * @return Users
      */
     public function setContactAddress($contactAddress)
@@ -819,6 +866,7 @@ class Users
      * Set contactTelephone
      *
      * @param string $contactTelephone
+     *
      * @return Users
      */
     public function setContactTelephone($contactTelephone)
@@ -842,6 +890,7 @@ class Users
      * Set contactPhone
      *
      * @param string $contactPhone
+     *
      * @return Users
      */
     public function setContactPhone($contactPhone)
@@ -865,6 +914,7 @@ class Users
      * Set contactEmail
      *
      * @param string $contactEmail
+     *
      * @return Users
      */
     public function setContactEmail($contactEmail)
@@ -888,6 +938,7 @@ class Users
      * Set contactFax
      *
      * @param string $contactFax
+     *
      * @return Users
      */
     public function setContactFax($contactFax)
@@ -911,6 +962,7 @@ class Users
      * Set contactCity
      *
      * @param string $contactCity
+     *
      * @return Users
      */
     public function setContactCity($contactCity)
@@ -934,6 +986,7 @@ class Users
      * Set contactCounty
      *
      * @param string $contactCounty
+     *
      * @return Users
      */
     public function setContactCounty($contactCounty)
@@ -957,6 +1010,7 @@ class Users
      * Set contactState
      *
      * @param string $contactState
+     *
      * @return Users
      */
     public function setContactState($contactState)
@@ -980,6 +1034,7 @@ class Users
      * Set contactCountry
      *
      * @param string $contactCountry
+     *
      * @return Users
      */
     public function setContactCountry($contactCountry)
@@ -1003,6 +1058,7 @@ class Users
      * Set userParams
      *
      * @param string $userParams
+     *
      * @return Users
      */
     public function setUserParams($userParams)

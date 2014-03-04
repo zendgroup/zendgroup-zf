@@ -1,5 +1,28 @@
 <?php
 
+/**
+ * ZEND GROUP
+ *
+ * @name        ContentDetail.php
+ * @category    ZG
+ * @package 	Model
+ * @subpackage  Model\Entities
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @copyright   Copyright (c)2008-2010 ZEND GROUP. All rights reserved
+ * @license     http://zendgroup.vn/license/
+ * @version     $1.0$
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ *
+ */
+
 namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,13 +30,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ContentDetail
  *
- * @ORM\Table(name="content_detail")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\ContentDetailRepository")
+ * @ORM\Table(name="content_detail", indexes={@ORM\Index(name="fk_content_detail_idx", columns={"content_id"}), @ORM\Index(name="fk_content_language_idx", columns={"language_id"})})
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\ContentDetail")
  */
 class ContentDetail
 {
     /**
-     * @var integer $contentDetailId
+     * @var integer
      *
      * @ORM\Column(name="content_detail_id", type="integer", nullable=false)
      * @ORM\Id
@@ -22,68 +45,68 @@ class ContentDetail
     private $contentDetailId;
 
     /**
-     * @var string $title
+     * @var string
      *
      * @ORM\Column(name="title", type="string", length=125, nullable=true)
      */
     private $title;
 
     /**
-     * @var string $alias
+     * @var string
      *
      * @ORM\Column(name="alias", type="string", length=125, nullable=true)
      */
     private $alias;
 
     /**
-     * @var string $summary
+     * @var string
      *
      * @ORM\Column(name="summary", type="string", length=255, nullable=true)
      */
     private $summary;
 
     /**
-     * @var string $content
+     * @var string
      *
-     * @ORM\Column(name="content", type="string", length=255, nullable=true)
+     * @ORM\Column(name="content_text", type="text", nullable=true)
      */
-    private $content;
+    private $contentText;
 
     /**
-     * @var string $metaTitle
+     * @var string
      *
      * @ORM\Column(name="meta_title", type="string", length=255, nullable=true)
      */
     private $metaTitle;
 
     /**
-     * @var string $metaKeyword
+     * @var string
      *
      * @ORM\Column(name="meta_keyword", type="string", length=255, nullable=true)
      */
     private $metaKeyword;
 
     /**
-     * @var string $metaDescription
+     * @var string
      *
      * @ORM\Column(name="meta_description", type="string", length=255, nullable=true)
      */
     private $metaDescription;
 
     /**
-     * @var Content
+     * @var \ZG\Model\Entities\Content
      *
-     * @ORM\ManyToOne(targetEntity="Content")
+     * @ORM\ManyToOne(targetEntity="ZG\Model\Entities\Content")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="content_id", referencedColumnName="content_id")
      * })
      */
-    private $content2;
+    private $content;
 
     /**
-     * @var Languages
+     * @var \ZG\Model\Entities\Languages
      *
-     * @ORM\ManyToOne(targetEntity="Languages")
+     * @ORM\ManyToOne(targetEntity="ZG\Model\Entities\Languages")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="language_id", referencedColumnName="language_id")
      * })
@@ -105,6 +128,7 @@ class ContentDetail
      * Set title
      *
      * @param string $title
+     *
      * @return ContentDetail
      */
     public function setTitle($title)
@@ -128,6 +152,7 @@ class ContentDetail
      * Set alias
      *
      * @param string $alias
+     *
      * @return ContentDetail
      */
     public function setAlias($alias)
@@ -151,6 +176,7 @@ class ContentDetail
      * Set summary
      *
      * @param string $summary
+     *
      * @return ContentDetail
      */
     public function setSummary($summary)
@@ -171,32 +197,34 @@ class ContentDetail
     }
 
     /**
-     * Set content
+     * Set contentText
      *
-     * @param string $content
+     * @param string $contentText
+     *
      * @return ContentDetail
      */
-    public function setContent($content)
+    public function setContentText($contentText)
     {
-        $this->content = $content;
+        $this->contentText = $contentText;
     
         return $this;
     }
 
     /**
-     * Get content
+     * Get contentText
      *
      * @return string 
      */
-    public function getContent()
+    public function getContentText()
     {
-        return $this->content;
+        return $this->contentText;
     }
 
     /**
      * Set metaTitle
      *
      * @param string $metaTitle
+     *
      * @return ContentDetail
      */
     public function setMetaTitle($metaTitle)
@@ -220,6 +248,7 @@ class ContentDetail
      * Set metaKeyword
      *
      * @param string $metaKeyword
+     *
      * @return ContentDetail
      */
     public function setMetaKeyword($metaKeyword)
@@ -243,6 +272,7 @@ class ContentDetail
      * Set metaDescription
      *
      * @param string $metaDescription
+     *
      * @return ContentDetail
      */
     public function setMetaDescription($metaDescription)
@@ -263,35 +293,37 @@ class ContentDetail
     }
 
     /**
-     * Set content2
+     * Set content
      *
-     * @param Content $content2
+     * @param \ZG\Model\Entities\Content $content
+     *
      * @return ContentDetail
      */
-    public function setContent2(\Content $content2 = null)
+    public function setContent(\ZG\Model\Entities\Content $content = null)
     {
-        $this->content2 = $content2;
+        $this->content = $content;
     
         return $this;
     }
 
     /**
-     * Get content2
+     * Get content
      *
-     * @return Content 
+     * @return \ZG\Model\Entities\Content 
      */
-    public function getContent2()
+    public function getContent()
     {
-        return $this->content2;
+        return $this->content;
     }
 
     /**
      * Set language
      *
-     * @param Languages $language
+     * @param \ZG\Model\Entities\Languages $language
+     *
      * @return ContentDetail
      */
-    public function setLanguage(\Languages $language = null)
+    public function setLanguage(\ZG\Model\Entities\Languages $language = null)
     {
         $this->language = $language;
     
@@ -301,7 +333,7 @@ class ContentDetail
     /**
      * Get language
      *
-     * @return Languages 
+     * @return \ZG\Model\Entities\Languages 
      */
     public function getLanguage()
     {

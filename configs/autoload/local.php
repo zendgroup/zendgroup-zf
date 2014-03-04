@@ -17,8 +17,8 @@ return array(
 	        'orm_default' => array(
 	            'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
 	            'params' => array(
-                    'user'     => 'customer',
-                    'password' => '123456',
+                    'user'     => 'root',
+                    'password' => '#xuan@thuy85',
 	            )
 	        )
 	    )

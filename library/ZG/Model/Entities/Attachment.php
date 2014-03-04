@@ -1,5 +1,28 @@
 <?php
 
+/**
+ * ZEND GROUP
+ *
+ * @name        Attachment.php
+ * @category    ZG
+ * @package 	Model
+ * @subpackage  Model\Entities
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @copyright   Copyright (c)2008-2010 ZEND GROUP. All rights reserved
+ * @license     http://zendgroup.vn/license/
+ * @version     $1.0$
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ *
+ */
+
 namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,13 +30,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Attachment
  *
- * @ORM\Table(name="attachment")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\AttachmentRepository")
+ * @ORM\Table(name="attachment", indexes={@ORM\Index(name="fk_content_detail_attachment_idx", columns={"content_detail_id"})})
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\Attachment")
  */
 class Attachment
 {
     /**
-     * @var integer $attachmentId
+     * @var integer
      *
      * @ORM\Column(name="attachment_id", type="integer", nullable=false)
      * @ORM\Id
@@ -22,72 +45,72 @@ class Attachment
     private $attachmentId;
 
     /**
-     * @var string $fileName
+     * @var string
      *
      * @ORM\Column(name="file_name", type="string", length=45, nullable=true)
      */
     private $fileName;
 
     /**
-     * @var string $fileCaption
+     * @var string
      *
      * @ORM\Column(name="file_caption", type="string", length=45, nullable=true)
      */
     private $fileCaption;
 
     /**
-     * @var integer $fileCounter
+     * @var integer
      *
      * @ORM\Column(name="file_counter", type="integer", nullable=true)
      */
     private $fileCounter;
 
     /**
-     * @var string $filePath
+     * @var string
      *
      * @ORM\Column(name="file_path", type="string", length=255, nullable=true)
      */
     private $filePath;
 
     /**
-     * @var string $filePathMd5
+     * @var string
      *
      * @ORM\Column(name="file_path_md5", type="string", length=255, nullable=true)
      */
     private $filePathMd5;
 
     /**
-     * @var integer $fileSize
+     * @var integer
      *
      * @ORM\Column(name="file_size", type="integer", nullable=true)
      */
     private $fileSize;
 
     /**
-     * @var string $fileInfo
+     * @var string
      *
      * @ORM\Column(name="file_info", type="string", length=255, nullable=true)
      */
     private $fileInfo;
 
     /**
-     * @var integer $fileTime
+     * @var integer
      *
      * @ORM\Column(name="file_time", type="integer", nullable=true)
      */
     private $fileTime;
 
     /**
-     * @var integer $fileStatus
+     * @var integer
      *
      * @ORM\Column(name="file_status", type="integer", nullable=true)
      */
     private $fileStatus;
 
     /**
-     * @var ContentDetail
+     * @var \ZG\Model\Entities\ContentDetail
      *
-     * @ORM\ManyToOne(targetEntity="ContentDetail")
+     * @ORM\ManyToOne(targetEntity="ZG\Model\Entities\ContentDetail")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="content_detail_id", referencedColumnName="content_detail_id")
      * })
@@ -109,6 +132,7 @@ class Attachment
      * Set fileName
      *
      * @param string $fileName
+     *
      * @return Attachment
      */
     public function setFileName($fileName)
@@ -132,6 +156,7 @@ class Attachment
      * Set fileCaption
      *
      * @param string $fileCaption
+     *
      * @return Attachment
      */
     public function setFileCaption($fileCaption)
@@ -155,6 +180,7 @@ class Attachment
      * Set fileCounter
      *
      * @param integer $fileCounter
+     *
      * @return Attachment
      */
     public function setFileCounter($fileCounter)
@@ -178,6 +204,7 @@ class Attachment
      * Set filePath
      *
      * @param string $filePath
+     *
      * @return Attachment
      */
     public function setFilePath($filePath)
@@ -201,6 +228,7 @@ class Attachment
      * Set filePathMd5
      *
      * @param string $filePathMd5
+     *
      * @return Attachment
      */
     public function setFilePathMd5($filePathMd5)
@@ -224,6 +252,7 @@ class Attachment
      * Set fileSize
      *
      * @param integer $fileSize
+     *
      * @return Attachment
      */
     public function setFileSize($fileSize)
@@ -247,6 +276,7 @@ class Attachment
      * Set fileInfo
      *
      * @param string $fileInfo
+     *
      * @return Attachment
      */
     public function setFileInfo($fileInfo)
@@ -270,6 +300,7 @@ class Attachment
      * Set fileTime
      *
      * @param integer $fileTime
+     *
      * @return Attachment
      */
     public function setFileTime($fileTime)
@@ -293,6 +324,7 @@ class Attachment
      * Set fileStatus
      *
      * @param integer $fileStatus
+     *
      * @return Attachment
      */
     public function setFileStatus($fileStatus)
@@ -315,10 +347,11 @@ class Attachment
     /**
      * Set contentDetail
      *
-     * @param ContentDetail $contentDetail
+     * @param \ZG\Model\Entities\ContentDetail $contentDetail
+     *
      * @return Attachment
      */
-    public function setContentDetail(\ContentDetail $contentDetail = null)
+    public function setContentDetail(\ZG\Model\Entities\ContentDetail $contentDetail = null)
     {
         $this->contentDetail = $contentDetail;
     
@@ -328,7 +361,7 @@ class Attachment
     /**
      * Get contentDetail
      *
-     * @return ContentDetail 
+     * @return \ZG\Model\Entities\ContentDetail 
      */
     public function getContentDetail()
     {

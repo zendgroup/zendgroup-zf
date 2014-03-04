@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+namespace ZG\Services\Google;
 // Check for the json extension, the Google APIs PHP Client won't function
 // without it.
 if (! function_exists('json_decode')) {
@@ -40,7 +40,7 @@ if (file_exists(dirname(__FILE__)  . '/local_config.php')) {
   $apiConfig = array_merge($defaultConfig, $apiConfig);
 }
 
-namespace ZG\Services\Google;
+
 // Include the top level classes, they each include their own dependencies
 use ZG\Services\Google\Model;
 use ZG\Services\Google\Service;

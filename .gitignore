@@ -13,5 +13,6 @@ extras/documentation
 
 /data/db
 /data/logs
-
 /data/cache
+
+/configs/

@@ -1,5 +1,28 @@
 <?php
 
+/**
+ * ZEND GROUP
+ *
+ * @name        Tags.php
+ * @category    ZG
+ * @package 	Model
+ * @subpackage  Model\Entities
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @copyright   Copyright (c)2008-2010 ZEND GROUP. All rights reserved
+ * @license     http://zendgroup.vn/license/
+ * @version     $1.0$
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ *
+ */
+
 namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,13 +30,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Tags
  *
- * @ORM\Table(name="tags")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\TagsRepository")
+ * @ORM\Table(name="tags", indexes={@ORM\Index(name="fk_group_tag_idx", columns={"tag_group_id"})})
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\Tags")
  */
 class Tags
 {
     /**
-     * @var integer $tagId
+     * @var integer
      *
      * @ORM\Column(name="tag_id", type="integer", nullable=false)
      * @ORM\Id
@@ -22,16 +45,16 @@ class Tags
     private $tagId;
 
     /**
-     * @var string $tagText
+     * @var string
      *
      * @ORM\Column(name="tag_text", type="string", length=45, nullable=true)
      */
     private $tagText;
 
     /**
-     * @var TagGroup
+     * @var \ZG\Model\Entities\TagGroup
      *
-     * @ORM\ManyToOne(targetEntity="TagGroup")
+     * @ORM\ManyToOne(targetEntity="ZG\Model\Entities\TagGroup")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="tag_group_id", referencedColumnName="tag_group_id")
      * })
@@ -53,6 +76,7 @@ class Tags
      * Set tagText
      *
      * @param string $tagText
+     *
      * @return Tags
      */
     public function setTagText($tagText)
@@ -75,10 +99,11 @@ class Tags
     /**
      * Set tagGroup
      *
-     * @param TagGroup $tagGroup
+     * @param \ZG\Model\Entities\TagGroup $tagGroup
+     *
      * @return Tags
      */
-    public function setTagGroup(\TagGroup $tagGroup = null)
+    public function setTagGroup(\ZG\Model\Entities\TagGroup $tagGroup = null)
     {
         $this->tagGroup = $tagGroup;
     
@@ -88,7 +113,7 @@ class Tags
     /**
      * Get tagGroup
      *
-     * @return TagGroup 
+     * @return \ZG\Model\Entities\TagGroup 
      */
     public function getTagGroup()
     {

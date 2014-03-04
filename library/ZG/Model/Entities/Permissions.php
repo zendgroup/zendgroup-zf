@@ -1,5 +1,28 @@
 <?php
 
+/**
+ * ZEND GROUP
+ *
+ * @name        Permissions.php
+ * @category    ZG
+ * @package 	Model
+ * @subpackage  Model\Entities
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @copyright   Copyright (c)2008-2010 ZEND GROUP. All rights reserved
+ * @license     http://zendgroup.vn/license/
+ * @version     $1.0$
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ *
+ */
+
 namespace ZG\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,13 +30,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Permissions
  *
- * @ORM\Table(name="permissions")
- * @ORM\Entity(repositoryClass="ZG\Model\Repositories\PermissionsRepository")
+ * @ORM\Table(name="permissions", indexes={@ORM\Index(name="fk_group_role_idx", columns={"group_id"}), @ORM\Index(name="fk_role_group_idx", columns={"role_id"})})
+ * @ORM\Entity(repositoryClass="ZG\Model\Repositories\Permissions")
  */
 class Permissions
 {
     /**
-     * @var integer $privilegeId
+     * @var integer
      *
      * @ORM\Column(name="privilege_id", type="integer", nullable=false)
      * @ORM\Id
@@ -22,16 +45,16 @@ class Permissions
     private $privilegeId;
 
     /**
-     * @var integer $assignmentDate
+     * @var integer
      *
      * @ORM\Column(name="assignment_date", type="integer", nullable=false)
      */
     private $assignmentDate;
 
     /**
-     * @var Groups
+     * @var \ZG\Model\Entities\Groups
      *
-     * @ORM\ManyToOne(targetEntity="Groups")
+     * @ORM\ManyToOne(targetEntity="ZG\Model\Entities\Groups")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="group_id", referencedColumnName="group_id")
      * })
@@ -39,9 +62,9 @@ class Permissions
     private $group;
 
     /**
-     * @var Roles
+     * @var \ZG\Model\Entities\Roles
      *
-     * @ORM\ManyToOne(targetEntity="Roles")
+     * @ORM\ManyToOne(targetEntity="ZG\Model\Entities\Roles")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="role_id", referencedColumnName="role_id")
      * })
@@ -63,6 +86,7 @@ class Permissions
      * Set assignmentDate
      *
      * @param integer $assignmentDate
+     *
      * @return Permissions
      */
     public function setAssignmentDate($assignmentDate)
@@ -85,10 +109,11 @@ class Permissions
     /**
      * Set group
      *
-     * @param Groups $group
+     * @param \ZG\Model\Entities\Groups $group
+     *
      * @return Permissions
      */
-    public function setGroup(\Groups $group = null)
+    public function setGroup(\ZG\Model\Entities\Groups $group = null)
     {
         $this->group = $group;
     
@@ -98,7 +123,7 @@ class Permissions
     /**
      * Get group
      *
-     * @return Groups 
+     * @return \ZG\Model\Entities\Groups 
      */
     public function getGroup()
     {
@@ -108,10 +133,11 @@ class Permissions
     /**
      * Set role
      *
-     * @param Roles $role
+     * @param \ZG\Model\Entities\Roles $role
+     *
      * @return Permissions
      */
-    public function setRole(\Roles $role = null)
+    public function setRole(\ZG\Model\Entities\Roles $role = null)
     {
         $this->role = $role;
     
@@ -121,7 +147,7 @@ class Permissions
     /**
      * Get role
      *
-     * @return Roles 
+     * @return \ZG\Model\Entities\Roles 
      */
     public function getRole()
     {
