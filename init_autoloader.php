@@ -2,7 +2,8 @@
 /**
  * Zend Framework (http://framework.zend.com/)
  *
- * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
+ * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
@@ -16,14 +17,14 @@
  */
 
 // Composer autoloading
-if (file_exists('vendors/autoload.php')) {
-    $loader = include 'vendors/autoload.php';
+if (file_exists('vendor/autoload.php')) {
+    $loader = include 'vendor/autoload.php';
 }
 
 $zf2Path = false;
 
-if (is_dir('vendors/ZF2/library')) {
-    $zf2Path = 'vendors/ZF2/library';
+if (is_dir('vendor/ZF2/library')) {
+    $zf2Path = 'vendor/ZF2/library';
 } elseif (getenv('ZF2_PATH')) {      // Support for ZF2_PATH environment variable or git submodule
     $zf2Path = getenv('ZF2_PATH');
 } elseif (get_cfg_var('zf2_path')) { // Support for zf2_path directive value
@@ -37,7 +38,7 @@ if ($zf2Path) {
         include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
         Zend\Loader\AutoloaderFactory::factory(array(
             'Zend\Loader\StandardAutoloader' => array(
-                'autoregister_zf' => true
+                'autoregister_zf' => true,
             )
         ));
     }

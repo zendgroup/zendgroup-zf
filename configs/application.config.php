@@ -10,6 +10,7 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         'ZendDeveloperTools',
+        'SyntaxHightlight',
     ),
 
     // These are various options for the listeners attached to the ModuleManager
@@ -22,7 +23,7 @@ return array(
             './backend',
             './frontend',
             './modules',
-            './vendors',
+            './vendor',
         ),
 
         // An array of paths from which to glob configuration files after
