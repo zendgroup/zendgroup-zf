@@ -1,3 +1,10 @@
 <?php
 $this->render('front/about/sidebar', array('active' => $this->action));
+
+$source = '$foo = 45;
+for ( $i = 1; $i < $foo; $i++ ){
+  echo "$foo\n";  --$foo;
+}';
+$language = 'php';
+echo $this->highlight($source, $language);
 ?>

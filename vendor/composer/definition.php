@@ -16,11 +16,11 @@ defined('PUBLIC_PATH')
 || define('PUBLIC_PATH', WEB_ROOT . DS . 'public' . DS);
 
 defined('ZF2_LIBRARY')
-|| define('ZF2_LIBRARY', realpath((getenv('ZF2_PATH')?getenv('ZF2_PATH'):'vendors\ZendFramework\library')));
+|| define('ZF2_LIBRARY', realpath((getenv('ZF2_PATH')?getenv('ZF2_PATH'):'vendor\ZF2\library')));
 
 defined('DT2_LIBRARY')
-|| define('DT2_LIBRARY', realpath((getenv('DT2_PATH')?getenv('DT2_PATH'):'vendors\Doctrine')));
-
+|| define('DT2_LIBRARY', realpath((getenv('DT2_PATH')?getenv('DT2_PATH'):'vendor\Doctrine2')));
+echo '<pre>'; print_r(LIBRARY_PATH); die(' debug: ');
 defined('APPLICATION_ENV')
 || define('APPLICATION_ENV', getenv('APPLICATION_ENV'));
 

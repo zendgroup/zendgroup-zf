@@ -589,6 +589,7 @@ class GeShi {
      * @since 1.0.0
      */
     public function GeShi($source = '', $language = '', $path = '') {
+        echo '<pre>'; print_r($source); die(' debug: ');
         if (!empty($source)) {
             $this->set_source($source);
         }

@@ -35,7 +35,7 @@ class IndexController extends ActionController
 {
     public function indexAction()
     {
-   	
+
 //     	$serviceLocator = $this->getServiceLocator()->get('Application');
 //     	$routeMatch  = $serviceLocator->getMvcEvent()->getRouteMatch();
 //     	$router      = $serviceLocator->getMvcEvent()->getRouter();
@@ -46,10 +46,10 @@ class IndexController extends ActionController
     	// retrieve param from request
 //     	$request = $this->getEvent()->getRequest();
 //     	$paramValue = $request->query()->get('a_param');
-    	
+
 //     	$result = new ViewModel(array('a_param' => $paramValue));
 //     	return $result;
-    	
+
         $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 //         $user = new \ZG\Model\Entities\Users();
 //         $user->setUserName('thuydx');
@@ -64,14 +64,14 @@ class IndexController extends ActionController
 
 			return new ViewModel();
     }
-    
+
     public function generateDoctrineAction() {
         $generate = new ModelGenerator();
         $generate->general()
         ->generateEntity()
         ->generateMapping()
         ->generateRepository();
-        
+
         $response = $this->getResponse();
         $response->setStatusCode(200);
         $response->setContent("Completed!");

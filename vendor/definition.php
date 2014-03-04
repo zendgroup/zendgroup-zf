@@ -7,7 +7,7 @@ define('REQUEST_MICROTIME', microtime(true))
 || define('REQUEST_MICROTIME', microtime(true));
 
 defined('WEB_ROOT')
-|| define('WEB_ROOT', realpath(dirname(dirname(dirname(__FILE__)))));
+|| define('WEB_ROOT', realpath(dirname(dirname(__FILE__))));
 
 defined('LIBRARY_PATH')
 || define('LIBRARY_PATH', WEB_ROOT . DS . 'library' . DS);

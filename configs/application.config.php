@@ -10,7 +10,8 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         'ZendDeveloperTools',
-        'SyntaxHightlight',
+        'SyntaxHighlight',
+//         'Test'
     ),
 
     // These are various options for the listeners attached to the ModuleManager

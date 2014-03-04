@@ -26,5 +26,11 @@
 
 return array(
 
+	'controllers' => array(
+		'invokables' => array(
+			'front\Controller\Index' => 'Front\Controller\IndexController',
+		),
+	),
+
 );
 
