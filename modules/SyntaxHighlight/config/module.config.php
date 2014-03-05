@@ -2,16 +2,16 @@
 /**
  * ZEND GROUP
  *
- * @name		module.config.php
- * @category	frontend
- * @package 	Front
- * @subpackage  Controller
- * @author	  	Thuy Dinh Xuan <thuydx@zendgroup.vn>
- * @link 		http://www.thuydx.com
+ * @name        module.config.php
+ * @category
+ * @package     SyntaxHighlight
+ * @subpackage
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @link        http://zendgroup.vn
  * @copyright   Copyright (c) 2012-2013 ZEND GROUP. All rights reserved (http://www.zendgroup.vn)
- * @license	 http://zendgroup.vn/license/
- * @version	 $$
- * 4:09:38 AM - Apr 3, 2013
+ * @license     http://zendgroup.vn/license/
+ * @version     $0.0.1$
+ * Mar 6, 2014
  *
  * LICENSE
  *
@@ -25,12 +25,6 @@
  */
 
 return array(
-
-	'controllers' => array(
-		'invokables' => array(
-			'front\Controller\Index' => 'Front\Controller\IndexController',
-		),
-	),
 
 );
 
