@@ -1,43 +1,36 @@
 <?php
 
-namespace ZfcUser\Form;
+namespace Users\Form;
 
-use ZfcBase\InputFilter\ProvidesEventsInputFilter;
-use ZfcUser\Module as ZfcUser;
-use ZfcUser\Options\RegistrationOptionsInterface;
+use ZG\InputFilter\ProvidesEventsInputFilter;
+use Users\Module as Users;
 
 class RegisterFilter extends ProvidesEventsInputFilter
 {
     protected $emailValidator;
     protected $usernameValidator;
 
-    /**
-     * @var RegistrationOptionsInterface
-     */
-    protected $options;
-
-    public function __construct($emailValidator, $usernameValidator, RegistrationOptionsInterface $options)
+    public function __construct($emailValidator, $usernameValidator)
     {
-        $this->setOptions($options);
         $this->emailValidator = $emailValidator;
         $this->usernameValidator = $usernameValidator;
 
-        if ($this->getOptions()->getEnableUsername()) {
-            $this->add(array(
-                'name'       => 'username',
-                'required'   => true,
-                'validators' => array(
-                    array(
-                        'name'    => 'StringLength',
-                        'options' => array(
-                            'min' => 3,
-                            'max' => 255,
-                        ),
+
+        $this->add(array(
+            'name'       => 'username',
+            'required'   => true,
+            'validators' => array(
+                array(
+                    'name'    => 'StringLength',
+                    'options' => array(
+                        'min' => 3,
+                        'max' => 255,
                     ),
-                    $this->usernameValidator,
                 ),
-            ));
-        }
+                $this->usernameValidator,
+            ),
+        ));
+
 
         $this->add(array(
             'name'       => 'email',
@@ -50,22 +43,22 @@ class RegisterFilter extends ProvidesEventsInputFilter
             ),
         ));
 
-        if ($this->getOptions()->getEnableDisplayName()) {
-            $this->add(array(
-                'name'       => 'display_name',
-                'required'   => true,
-                'filters'    => array(array('name' => 'StringTrim')),
-                'validators' => array(
-                    array(
-                        'name'    => 'StringLength',
-                        'options' => array(
-                            'min' => 3,
-                            'max' => 128,
-                        ),
+
+        $this->add(array(
+            'name'       => 'display_name',
+            'required'   => true,
+            'filters'    => array(array('name' => 'StringTrim')),
+            'validators' => array(
+                array(
+                    'name'    => 'StringLength',
+                    'options' => array(
+                        'min' => 3,
+                        'max' => 128,
                     ),
                 ),
-            ));
-        }
+            ),
+        ));
+
 
         $this->add(array(
             'name'       => 'password',
@@ -126,23 +119,4 @@ class RegisterFilter extends ProvidesEventsInputFilter
         return $this;
     }
 
-    /**
-     * set options
-     *
-     * @param RegistrationOptionsInterface $options
-     */
-    public function setOptions(RegistrationOptionsInterface $options)
-    {
-        $this->options = $options;
-    }
-
-    /**
-     * get options
-     *
-     * @return RegistrationOptionsInterface
-     */
-    public function getOptions()
-    {
-        return $this->options;
-    }
 }
