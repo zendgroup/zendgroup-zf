@@ -3,9 +3,9 @@
  * ZEND GROUP
  *
  * @name        CategoryController.php
- * @category 	backend
- * @package 	Content
- * @subpackage 	Content\Controller
+ * @category     backend
+ * @package     Content
+ * @subpackage     Content\Controller
  * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
  * @copyright   Copyright (c)2008-2010 ZEND GROUP. All rights reserved
  * @license     http://zendgroup.vn/license/
@@ -23,19 +23,19 @@
  *
  */
 
-namespace Content\Controller;
+namespace Gallery\Controller;
 
 use ZG\Mvc\Controller\ActionController;
 use Zend\View\Model\ViewModel;
 
-class CategoryController extends ActionController
+class IndexController extends ActionController
 {
     public function indexAction()
     {
 
-    	return new ViewModel(
-    	        array('abc' => 'aaaaaaaa')
-    	        );
+        return new ViewModel(
+                array('abc' => 'aaaaaaaa')
+                );
     }
 
     public function addAction()

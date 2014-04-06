@@ -1,58 +1,53 @@
 <?php echo $this->doctype(); ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php echo $this->render('layout/doctype');?>
+<?php echo $this->render('layout/doctype'); ?>
 
 <body>
 
+    <?php echo $this->render('layout/header'); ?>
+    <!-- Header ends -->
 
-<?php echo $this->render('layout/header');?>
-<!-- Header ends -->
+    <!-- Main content starts -->
 
-<!-- Main content starts -->
+    <div class="content">
 
-<div class="content">
+        <!-- Sidebar -->
+        <?php echo $this->render('layout/sidebar'); ?>
+        <!-- Sidebar ends -->
 
-  	<!-- Sidebar -->
-	<?php echo $this->render('layout/sidebar');?>
-  	<!-- Sidebar ends -->
+        <!-- Main bar -->
+        <div class="mainbar">
 
-  	<!-- Main bar -->
-  	<div class="mainbar">
+            <!-- Page heading -->
+            <?php echo $this->render('layout/breadcrumb'); ?>
+            <!-- Page heading ends -->
 
-	    <!-- Page heading -->
-		<?php echo $this->render('layout/breadcrumb');?>
-	    <!-- Page heading ends -->
+            <!-- Matter -->
 
+            <div class="matter">
+                <div class="container-fluid">
 
+                    <?php echo $this->content; ?>
 
-	    <!-- Matter -->
+                </div>
+            </div>
 
-	    <div class="matter">
-        	<div class="container-fluid">
+            <!-- Matter ends -->
 
-				<?php echo $this->content; ?>
-
-
-        	</div>
         </div>
 
-		<!-- Matter ends -->
+        <!-- Mainbar ends -->
+        <div class="clearfix"></div>
 
     </div>
+    <!-- Content ends -->
 
-   <!-- Mainbar ends -->
-   <div class="clearfix"></div>
+    <!-- Footer starts -->
 
-</div>
-<!-- Content ends -->
-
-<!-- Footer starts -->
-
-<?php echo $this->render('layout/footer');?>
-<!-- Footer ends -->
-<?php echo $this->render('layout/script');?>
+    <?php echo $this->render('layout/footer'); ?>
+    <!-- Footer ends -->
+    <?php echo $this->render('layout/script'); ?>
 
 </body>
 </html>
-
