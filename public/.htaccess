@@ -2,15 +2,9 @@
 RewriteEngine On
 RewriteBase /
 # Config Environtment
-<<<<<<< HEAD
-SetEnv ZF2_PATH "C:\Program Files (x86)\Zend\ZendServer\share\ZendFramework-2.3.0\library"
-SetEnv DT2_PATH "C:\Program Files (x86)\Zend\ZendServer\share\Doctrine2"
-SetEnv APP_ENV development
-=======
 SetEnv APP_ENV development
 SetEnv ZF2_PATH "C:\Program Files (x86)\Zend\ZendServer\share\ZendFramework-2.3.0\library"
 SetEnv DT2_PATH "C:\Program Files (x86)\Zend\ZendServer\share\Doctrine2"
->>>>>>> upstream/master
 
 # The following rule tells Apache that if the requested filename
 # exists, simply serve it.
